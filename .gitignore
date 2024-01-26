@@ -1,2 +1,6 @@
+# File extensions
 *.docx
 *.xlsx
+
+# Directories
+.trunk
