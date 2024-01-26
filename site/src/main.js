@@ -963,8 +963,6 @@ class Outline {
         return this.headings;
     }
     updateHeadings() {
-        // The following code was optimised with help from https://chat.openai.com/
-
         // EXAMPLE
         //
         // # First Heading
@@ -1008,6 +1006,8 @@ class Outline {
         //     }
         // }
         // ```
+
+        // The following code was optimised with help from https://chat.openai.com/
 
         const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
         const headingGroups = {};
@@ -1230,7 +1230,7 @@ class Article {
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
 
-class Contactinformation {
+class ContactInformation {
     phoneNumber;
     emailAddress;
     githubUsername;

@@ -22,83 +22,57 @@
     --header-p-padding: 0 7vw;
 
     --nav-color: black;
-    --nav-background-color: #2eb0da;
+    --nav-li-background-color: #2eb0da;
     /* --nav-font-size: 2vw; */
     --nav-font-size: 16pt;
     /* --nav-font-size: 1.35em; */
     --nav-text-align: center;
-    --nav-height: 1.25em;
+    --nav-height: 2em;
     --nav-padding: var(--nav-padding-top-bottom) var(--nav-padding-left-right);
     --nav-padding-top-bottom: 0.3em;
     --nav-padding-left-right: 1vw;
     --nav-overflow: default;
 
-    --nav-a-color: inherit;
-    --nav-a-text-decoration: none;
-    --nav-a-line-height: 1.4em;
-    --nav-a-width: 18vw;
-    --nav-a-height: 1.25em;
-    --nav-a-padding: var(--nav-a-padding-top-bottom)
-        var(--nav-a-padding-left-right);
-    --nav-a-padding-top-bottom: 0;
-    --nav-a-padding-left-right: 0.1vw;
-    --nav-a-position: relative;
-    --nav-a-display: block;
-    --nav-a-float: left;
-    --nav-a-transition: line-height 0.3s ease, height 0.3s ease,
-        transform 0.3s ease;
+    --nav-ul-style-type: none;
+    --nav-ul-padding: 0 auto;
 
-    --nav-a-hover-line-height: 1.7em;
-    --nav-a-hover-height: 3em;
-    --nav-a-hover-transform: translateY(
-        calc((var(--nav-a-hover-height) - var(--nav-a-height)) * -1)
+    --nav-li-a-color: inherit;
+    --nav-li-a-text-decoration: none;
+    --nav-li-a-line-height: 1.4em;
+    --nav-li-a-width: 14vw;
+    --nav-li-a-height: 1.5em;
+    --nav-li-a-padding: 5px 10px;
+    --nav-li-a-position: relative;
+    --nav-li-a-display: block;
+    --nav-li-a-float: left;
+    --nav-li-a-transition: all 0.3s ease;
+
+    --nav-li-a-selected-line-height: 1.7em;
+    --nav-li-a-selected-border-top: 10px solid var(--nav-li-background-color);
+    --nav-li-a-selected-transform: translateY(
+        var(--nav-li-a-selected-border-top)
     );
 
-    --nav-a-here-line-height: var(--nav-a-hover-line-height);
-    --nav-a-here-height: var(--nav-a-hover-height);
-    --nav-a-here-transform: var(--nav-a-hover-transform);
+    --dropdown-position: relative;
+    --dropdown-display: inline-block;
+    --dropdown-float: left;
+    --dropdown-transition: all 0.3s ease-in-out;
 
-    --nav-a-contact-button-width: 1.25em;
+    --dropdown-hover-dropdown-content-display: block;
 
-    --nav-a-contact-button-hover-height: 6em;
-    --nav-a-contact-button-hover-transform: translateY(
-        calc(
-            (var(--nav-a-contact-button-hover-height) - var(--nav-a-height)) *
-                -1
-        )
-    );
+    --dropdown-content-display: none;
+    --dropdown-content-position: absolute;
+    --dropdown-content-transition: all 0.3s ease-in-out;
+    --dropdown-content-min-width: 160px;
+    --dropdown-content-box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.2);
+    --dropdown-content-z-index: 1;
 
-    --nav-a-contact-button-here-height: var(
-        --nav-a-contact-button-hover-height
-    );
-    --nav-a-contact-button-here-transform: var(
-        --nav-a-contact-button-hover-transform
-    );
+    --dropdown-content-a-line-height: 2em;
+    --dropdown-content-a-height: 2em;
 
-    --nav-a-contact-button-img-width: calc(
-        var(--nav-a-contact-button-width) * 0.9
-    );
-
-    --nav-dropdown-position: relative;
-    --nav-dropdown-display: inline-block;
-    --nav-dropdown-float: left;
-    --nav-dropdown-transition: all 0.3s ease-in-out;
-
-    --nav-dropdown-hover-dropdown-content-display: block;
-
-    --nav-dropdown-content-display: none;
-    --nav-dropdown-content-position: absolute;
-    --nav-dropdown-content-transition: all 0.3s ease-in-out;
-    --nav-dropdown-content-min-width: 160px;
-    --nav-dropdown-content-box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.2);
-    --nav-dropdown-content-z-index: 1;
-
-    --nav-dropdown-content-a-line-height: 2em;
-    --nav-dropdown-content-a-height: 2em;
-
-    --nav-dropdown-content-a-hover-background-color: #278daf;
-    --nav-dropdown-content-a-hover-height: var(--nav-dropdown-content-a-height);
-    --nav-dropdown-content-a-hover-transform: none;
+    --dropdown-content-a-hover-background-color: #278daf;
+    --dropdown-content-a-hover-height: var(--dropdown-content-a-height);
+    --dropdown-content-a-hover-transform: none;
 
     --main-color: #e0ffe1;
     --main-background-color: #39363c;
@@ -124,7 +98,7 @@
     /* --main-a-position: relative; */
 
     --main-a-visited-color: #0077ff;
-    
+
     --main-a-hover-focus-color: #11aaff;
 
     --main-a-visited-hover-focus-color: #11aaff;
@@ -293,7 +267,7 @@ header p {
 
 nav {
     color: var(--nav-color);
-    background-color: var(--nav-background-color);
+    background-color: var(--nav-li-background-color);
     font-size: var(--nav-font-size);
     text-align: var(--nav-text-align);
     height: var(--nav-height);
@@ -301,80 +275,63 @@ nav {
     overflow: var(--nav-overflow);
 }
 
-nav a {
-    color: var(--nav-a-color);
-    background-color: var(--nav-background-color);
-    text-decoration: var(--nav-a-text-decoration);
-    line-height: var(--nav-a-line-height);
-    width: var(--nav-a-width);
-    height: var(--nav-a-height);
-    padding: var(--nav-a-padding);
-    position: var(--nav-a-position);
-    display: var(--nav-a-display);
-    float: var(--nav-a-float);
-    transition: var(--nav-a-transition);
+nav ul,
+nav ol {
+    list-style: var(--nav-ul-style-type);
+    padding: var(--nav-ul-padding);
+    margin: var(--nav-ul-items-margin);
 }
 
-nav a:hover,
-.dropdown:hover #portfolio-button {
-    line-height: var(--nav-a-hover-line-height);
-    height: var(--nav-a-hover-height);
-    transform: var(--nav-a-hover-transform);
+nav li a {
+    color: var(--nav-li-a-color);
+    background-color: var(--nav-li-background-color);
+    text-decoration: var(--nav-li-a-text-decoration);
+    line-height: var(--nav-li-a-line-height);
+    width: var(--nav-li-a-width);
+    height: var(--nav-li-a-height);
+    padding: var(--nav-li-a-padding);
+    position: var(--nav-li-a-position);
+    display: var(--nav-li-a-display);
+    float: var(--nav-li-a-float);
+    transition: var(--nav-li-a-transition);
 }
 
-nav a.here {
-    line-height: var(--nav-a-here-line-height);
-    height: var(--nav-a-here-height);
-    transform: var(--nav-a-here-transform);
+nav li a:hover,
+nav li a.here {
+    line-height: var(--nav-li-a-selected-line-height);
+    border-top: var(--nav-li-a-selected-border-top);
+    transform: var(--nav-li-a-selected-transform);
 }
 
-nav a#contact-button {
-    width: var(--nav-a-contact-button-width);
+.dropdown {
+    position: var(--dropdown-position);
+    display: var(--dropdown-display);
+    float: var(--dropdown-float);
+    transition: var(--dropdown-transition);
 }
 
-nav a#contact-button:hover {
-    height: var(--nav-a-contact-button-hover-height);
-    transform: var(--nav-a-contact-button-hover-transform);
+.dropdown-content {
+    display: var(--dropdown-content-display);
+    position: var(--dropdown-content-position);
+    transition: var(--dropdown-content-transition);
+    min-width: var(--dropdown-content-min-width);
+    box-shadow: var(--dropdown-content-box-shadow);
+    z-index: var(--dropdown-content-z-index);
 }
 
-nav a#contact-button.here {
-    height: var(--nav-a-contact-button-here-height);
-    transform: var(--nav-a-contact-button-here-transform);
+.dropdown-content a {
+    line-height: var(--dropdown-content-a-line-height);
+    height: var(--dropdown-content-a-height);
 }
 
-nav a#contact-button img {
-    width: var(--nav-a-contact-button-img-width);
+.dropdown-content a:hover {
+    background-color: var(--dropdown-content-a-hover-background-color);
+    height: var(--dropdown-content-a-hover-height);
+    transform: var(--dropdown-content-a-hover-transform);
 }
 
-nav .dropdown {
-    position: var(--nav-dropdown-position);
-    display: var(--nav-dropdown-display);
-    float: var(--nav-dropdown-float);
-    transition: var(--nav-dropdown-transition);
-}
-
-nav .dropdown-content {
-    display: var(--nav-dropdown-content-display);
-    position: var(--nav-dropdown-content-position);
-    transition: var(--nav-dropdown-content-transition);
-    min-width: var(--nav-dropdown-content-min-width);
-    box-shadow: var(--nav-dropdown-content-box-shadow);
-    z-index: var(--nav-dropdown-content-z-index);
-}
-
-nav .dropdown-content a {
-    line-height: var(--nav-dropdown-content-a-line-height);
-    height: var(--nav-dropdown-content-a-height);
-}
-
-nav .dropdown-content a:hover {
-    background-color: var(--nav-dropdown-content-a-hover-background-color);
-    height: var(--nav-dropdown-content-a-hover-height);
-    transform: var(--nav-dropdown-content-a-hover-transform);
-}
-
-nav .dropdown:hover .dropdown-content {
-    display: var(--nav-dropdown-hover-dropdown-content-display);
+.dropdown:hover .dropdown-content {
+    display: var(--dropdown-hover-dropdown-content-display);
 }
 
 main {
@@ -412,7 +369,8 @@ main a:focus {
     text-decoration: var(--main-a-visited-hover-focus-text-decoration);
 }
 
-main a:visited:hover, main a:visited:focus {
+main a:visited:hover,
+main a:visited:focus {
     color: var(--main-a-visited-hover-focus-color);
 }
 
