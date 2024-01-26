@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            rel="stylesheet"
+            id="style-sheet"
+            href="./src/styles/style1.css"
+        />
+        <!-- <link rel="stylesheet" href="./src/styles/style2.css" /> -->
+        <!-- <link rel="stylesheet" href="./src/styles/style3.css" /> -->
+
+        <title>Web Profile</title>
+    </head>
+
+    <body>
+        <header id="header">
+            <h1>Web Profile</h1>
+            <p>Frank Hudson</p>
+        </header>
+
+        <nav id="nav">
+            <a class="here" href="./index.html" id="home-button"> HOME </a>
+
+            <a class="there" href="./skills.html" id="skills-button">
+                SKILLS
+            </a>
+
+            <div class="dropdown">
+                <a class="there" href="./portfolio.html" id="portfolio-button">
+                    PORTFOLIO
+                </a>
+                <div class="dropdown-content">
+                    <a
+                        href="./portfolio/products.html"
+                        id="portfolio-products-button"
+                    >
+                        PRODUCTS
+                    </a>
+                    <a
+                        href="./portfolio/projects.html"
+                        id="portfolio-projects-button"
+                    >
+                        PROJECTS
+                    </a>
+                </div>
+            </div>
+
+            <a class="there" href="./knowledge.html" id="knowledge-button">
+                KNOWLEDGE
+            </a>
+
+            <a class="there" href="./interests.html" id="interests-button">
+                INTERESTS
+            </a>
+
+            <a class="there" href="./contact.html" id="contact-button">
+                <img
+                    src="./src/assets/call_FILL0_wght400_GRAD0_opsz24.svg"
+                    alt="CONTACT"
+                />
+            </a>
+        </nav>
+
+        <main id="main">
+            <div class="page home">
+                <h2>Hi,</h2>
+
+                <p>I'm Frank Hudson, and this is my (2nd) profile website.</p>
+
+                <p>
+                    I am a web and general software developer with a passion for
+                    creating beautiful and functional websites.
+                </p>
+
+                <p>
+                    Here, you can find information about me, my abilities, and
+                    my achievements.
+                </p>
+            </div>
+
+            <div class="invisible">
+                <hr />
+
+                <p>
+                    For more than 500 years now, I have roamed the wilds of this
+                    desolate rock, staying in your mud-huts and stone cubes.
+                </p>
+
+                <p>
+                    Your world is full of plotholes. You need to get better
+                    writers.
+                </p>
+
+                <p>
+                    If I had a nickel for every time I died and came back, I'd
+                    have no nickels, which isn't a lot, but it's normal that it
+                    didn't happen.
+                </p>
+            </div>
+        </main>
+
+        <!-- FIXED -->
+        <button id="totop" title="Go to top">&#9650; TOP</button>
+
+        <footer id="footer"></footer>
+    </body>
+
+    <script src="./src/main.js"></script>
+</html>

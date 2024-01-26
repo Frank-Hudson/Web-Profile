@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            rel="stylesheet"
+            id="style-sheet"
+            href="./src/styles/style1.css"
+        />
+        <!-- <link rel="stylesheet" href="./src/styles/style2.css" /> -->
+        <!-- <link rel="stylesheet" href="./src/styles/style3.css" /> -->
+
+        <title>Web Profile</title>
+    </head>
+
+    <body>
+        <header id="header">
+            <h1>Web Profile</h1>
+            <p>Frank Hudson</p>
+        </header>
+
+        <nav id="nav">
+            <a class="here" href="./index.html" id="home-button"> HOME </a>
+
+            <a class="there" href="./skills.html" id="skills-button">
+                SKILLS
+            </a>
+
+            <div class="dropdown">
+                <a class="there" href="./portfolio.html" id="portfolio-button">
+                    PORTFOLIO
+                </a>
+                <div class="dropdown-content">
+                    <a
+                        href="./portfolio/products.html"
+                        id="portfolio-products-button"
+                    >
+                        PRODUCTS
+                    </a>
+                    <a
+                        href="./portfolio/projects.html"
+                        id="portfolio-projects-button"
+                    >
+                        PROJECTS
+                    </a>
+                </div>
+            </div>
+
+            <a class="there" href="./knowledge.html" id="knowledge-button">
+                KNOWLEDGE
+            </a>
+
+            <a class="there" href="./interests.html" id="interests-button">
+                INTERESTS
+            </a>
+
+            <a class="there" href="./contact.html" id="contact-button">
+                <img
+                    src="./src/assets/call_FILL0_wght400_GRAD0_opsz24.svg"
+                    alt="CONTACT"
+                />
+            </a>
+        </nav>
+
+        <main id="main">
+            <div class="page 404">
+                <div class="err404">
+                    <h1>Error 404</h1>
+
+                    <p>Error 404 : Page Not Found</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- FIXED -->
+        <button id="totop" title="Go to top">&#9650; TOP</button>
+
+        <footer id="footer"></footer>
+    </body>
+
+    <script src="./src/main.js"></script>
+</html>

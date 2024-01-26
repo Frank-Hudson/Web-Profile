@@ -1,0 +1,632 @@
+@import url("https://fonts.googleapis.com/css?family=Convergence");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+:root {
+    /* --box-sizing: border-box; */
+
+    --body-font-family: Arial, Convergence, Calibri, "Open Sans", sans-serif;
+    --body-background-color: #39363c;
+    --body-margin: 0;
+
+    --header-color: #fffee0;
+    --header-background-color: #27c9ba;
+    --header-padding: 1em 4vw;
+    --header-padding-bottom: 5vw;
+
+    --header-h1-font-size: 48pt;
+    --header-h1-margin-bottom: 0;
+
+    --header-p-color: #dad9cb;
+    --header-p-font-size: 20pt;
+    --header-p-font-weight: 600;
+    --header-p-padding: 0 7vw;
+
+    --nav-color: black;
+    --nav-background-color: #2eb0da;
+    /* --nav-font-size: 2vw; */
+    --nav-font-size: 16pt;
+    /* --nav-font-size: 1.35em; */
+    --nav-text-align: center;
+    --nav-height: 1.25em;
+    --nav-padding: var(--nav-padding-top-bottom) var(--nav-padding-left-right);
+    --nav-padding-top-bottom: 0.3em;
+    --nav-padding-left-right: 1vw;
+    --nav-overflow: default;
+
+    --nav-a-color: inherit;
+    --nav-a-text-decoration: none;
+    --nav-a-line-height: 1.4em;
+    --nav-a-width: 18vw;
+    --nav-a-height: 1.25em;
+    --nav-a-padding: var(--nav-a-padding-top-bottom)
+        var(--nav-a-padding-left-right);
+    --nav-a-padding-top-bottom: 0;
+    --nav-a-padding-left-right: 0.1vw;
+    --nav-a-position: relative;
+    --nav-a-display: block;
+    --nav-a-float: left;
+    --nav-a-transition: line-height 0.3s ease, height 0.3s ease,
+        transform 0.3s ease;
+
+    --nav-a-hover-line-height: 1.7em;
+    --nav-a-hover-height: 3em;
+    --nav-a-hover-transform: translateY(
+        calc((var(--nav-a-hover-height) - var(--nav-a-height)) * -1)
+    );
+
+    --nav-a-here-line-height: var(--nav-a-hover-line-height);
+    --nav-a-here-height: var(--nav-a-hover-height);
+    --nav-a-here-transform: var(--nav-a-hover-transform);
+
+    --nav-a-contact-button-width: 1.25em;
+
+    --nav-a-contact-button-hover-height: 6em;
+    --nav-a-contact-button-hover-transform: translateY(
+        calc(
+            (var(--nav-a-contact-button-hover-height) - var(--nav-a-height)) *
+                -1
+        )
+    );
+
+    --nav-a-contact-button-here-height: var(
+        --nav-a-contact-button-hover-height
+    );
+    --nav-a-contact-button-here-transform: var(
+        --nav-a-contact-button-hover-transform
+    );
+
+    --nav-a-contact-button-img-width: calc(
+        var(--nav-a-contact-button-width) * 0.9
+    );
+
+    --nav-dropdown-position: relative;
+    --nav-dropdown-display: inline-block;
+    --nav-dropdown-float: left;
+    --nav-dropdown-transition: all 0.3s ease-in-out;
+
+    --nav-dropdown-hover-dropdown-content-display: block;
+
+    --nav-dropdown-content-display: none;
+    --nav-dropdown-content-position: absolute;
+    --nav-dropdown-content-transition: all 0.3s ease-in-out;
+    --nav-dropdown-content-min-width: 160px;
+    --nav-dropdown-content-box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.2);
+    --nav-dropdown-content-z-index: 1;
+
+    --nav-dropdown-content-a-line-height: 2em;
+    --nav-dropdown-content-a-height: 2em;
+
+    --nav-dropdown-content-a-hover-background-color: #278daf;
+    --nav-dropdown-content-a-hover-height: var(--nav-dropdown-content-a-height);
+    --nav-dropdown-content-a-hover-transform: none;
+
+    --main-color: #e0ffe1;
+    --main-background-color: #39363c;
+    --main-padding: 9vw 16vw;
+
+    --main-h2-color: #e0ffe1;
+    --main-h2-padding: 0.25em 0.1em;
+    --main-h2-border-bottom-width: 3px;
+    --main-h2-border-bottom-style: solid;
+    --main-h2-border-image: linear-gradient(
+            to right,
+            #e0ffe1ff,
+            #00000000,
+            #00000000
+        )
+        1;
+    --main-h2-margin: 0.1em 0 1.4em 0;
+
+    --main-p-text-indent: 2em;
+
+    --main-a-color: #0099ff;
+    --main-a-text-decoration: none;
+    /* --main-a-position: relative; */
+
+    --main-a-visited-color: #0077ff;
+    
+    --main-a-hover-focus-color: #11aaff;
+
+    --main-a-visited-hover-focus-color: #11aaff;
+
+    /* --main-a-visited-hover-focus-text-decoration: underline; */
+
+    /* --main-a-after-content: ""; */
+    /* --main-a-after-background-color: #77ccff; */
+    /* --main-a-after-background-size: 100%; */
+    /* --main-a-after-opacity: 1; */
+    /* --main-a-after-position: absolute; */
+    /* --main-a-after-bottom: 0; */
+    /* --main-a-after-left: 0; */
+    /* --main-a-after-display: inline-block; */
+    /* --main-a-after-width: 100%; */
+    /* --main-a-after-height: 0.1em; */
+    /* --main-a-after-transform: scale(0); */
+    /* --main-a-after-transform-origin: center; */
+    /* --main-a-after-transition: transform 0.3s; */
+
+    /* --main-a-hover-focus-after-transform: scale(1) translate(-50%, 1em); */
+
+    --main-div-margin: 2em 0;
+
+    --main-hr-border-width: 3px;
+    --main-hr-border-style: solid;
+    --main-hr-border-color: #e0ffe1;
+    --main-hr-border-image: linear-gradient(
+            to right,
+            #00000000,
+            #e0ffe1ff,
+            #00000000
+        )
+        1;
+    --main-hr-margin: 3em 0;
+
+    --main-hr-big-border-width: 5px;
+
+    --totop-display: none;
+    --totop-position: fixed;
+    --totop-bottom: 20px;
+    --totop-right: 20px;
+    --totop-background-color: #007bff;
+    --totop-color: #fff;
+    --totop-border: none;
+    --totop-border-radius: 5px;
+    --totop-padding: 10px;
+    --totop-transform-origin: bottom right;
+    --totop-transition: all 0.3s ease;
+    --totop-cursor: pointer;
+
+    --totop-hover-background-color: #0056b3;
+    /* --totop-hover-width: 10vw; */
+    /* --totop-hover-height: 5em; */
+    --totop-hover-transform: scale(3);
+
+    --page-width: 100%;
+    --page-padding: 0 0;
+    --page-margin: 0 0;
+
+    --card-heading-border-bottom-width: 5px;
+    --card-heading-border-bottom-style: solid;
+    --card-heading-border-image: linear-gradient(
+            to right,
+            #00000000,
+            #e0ffe1ff,
+            #00000000
+        )
+        1;
+    --card-heading-width: 100%;
+    --card-heading-padding: 10px 0px;
+    /* --card-heading-margin: 0px; */
+    --card-heading-margin-right: 0px;
+    --card-heading-margin-bottom: 35px;
+    --card-heading-margin-left: 0px;
+    --card-heading-text-align: center;
+
+    /* --cards-display: block; */
+    --cards-width: 100%;
+    --cards-align-content: center;
+
+    --card-background-color: #242127;
+    --card-display: block;
+    /* --card-position: relative; */
+    /* --card-float: left; */
+    --card-padding: 15px;
+    --card-margin: 25px auto;
+    --card-width: 45%;
+    --card-box-shadow: 5px 5px 10px #000;
+    --card-transition: all 0.3s ease-out;
+    --card-cursor: pointer;
+
+    --article-card-background-color: #4c4950;
+    --article-card-width: 75%;
+
+    --card-hover-transform: translate(-5px, -5px);
+    --card-hover-box-shadow: 10px 10px 10px #000;
+
+    --card-name-margin-top: 5px;
+
+    --card-name-hover-color: #49ab9c;
+    --card-name-hover-text-shadow: 1.25px 1.25px 3px #000;
+
+    --detail-font-size: 10pt;
+    --detail-font-style: italic;
+    --detail-text-indent: none;
+
+    --summary-text-align: justify;
+    --summary-text-indent: 1em;
+    --summary-padding: 0px 15px;
+
+    --portfolio-div-h2-font-size: 1.35em;
+    --portfolio-div-h2-border-bottom-width: 1px;
+
+    --contact-details-a-color: #00ffee;
+
+    --contact-details-a-visited-color: #00ffee;
+
+    --labelled-font-weight: 600;
+
+    /* --a-labelled-display: inline-block; */
+
+    --phone-before-content: "Phone: ";
+    --phone-before-font-weight: var(--labelled-font-weight);
+
+    --email-before-content: "Email: ";
+    --email-before-font-weight: var(--labelled-font-weight);
+
+    --github-before-content: "GitHub: ";
+    --github-before-font-weight: var(--labelled-font-weight);
+
+    --linkedin-before-content: "LinkedIn: ";
+    --linkedin-before-font-weight: var(--labelled-font-weight);
+
+    --invisible-display: none;
+}
+
+* {
+    box-sizing: var(--box-sizing);
+}
+
+body {
+    background-color: var(--body-background-color);
+    font-family: var(--body-font-family);
+    margin: var(--body-margin);
+}
+
+header {
+    color: var(--header-color);
+    background-color: var(--header-background-color);
+    padding: var(--header-padding);
+    padding-bottom: var(--header-padding-bottom);
+}
+
+header h1 {
+    font-size: var(--header-h1-font-size);
+    margin-bottom: var(--header-h1-margin-bottom);
+}
+
+header p {
+    color: var(--header-p-color);
+    font-size: var(--header-p-font-size);
+    font-weight: var(--header-p-font-weight);
+    padding: var(--header-p-padding);
+}
+
+nav {
+    color: var(--nav-color);
+    background-color: var(--nav-background-color);
+    font-size: var(--nav-font-size);
+    text-align: var(--nav-text-align);
+    height: var(--nav-height);
+    padding: var(--nav-padding);
+    overflow: var(--nav-overflow);
+}
+
+nav a {
+    color: var(--nav-a-color);
+    background-color: var(--nav-background-color);
+    text-decoration: var(--nav-a-text-decoration);
+    line-height: var(--nav-a-line-height);
+    width: var(--nav-a-width);
+    height: var(--nav-a-height);
+    padding: var(--nav-a-padding);
+    position: var(--nav-a-position);
+    display: var(--nav-a-display);
+    float: var(--nav-a-float);
+    transition: var(--nav-a-transition);
+}
+
+nav a:hover,
+.dropdown:hover #portfolio-button {
+    line-height: var(--nav-a-hover-line-height);
+    height: var(--nav-a-hover-height);
+    transform: var(--nav-a-hover-transform);
+}
+
+nav a.here {
+    line-height: var(--nav-a-here-line-height);
+    height: var(--nav-a-here-height);
+    transform: var(--nav-a-here-transform);
+}
+
+nav a#contact-button {
+    width: var(--nav-a-contact-button-width);
+}
+
+nav a#contact-button:hover {
+    height: var(--nav-a-contact-button-hover-height);
+    transform: var(--nav-a-contact-button-hover-transform);
+}
+
+nav a#contact-button.here {
+    height: var(--nav-a-contact-button-here-height);
+    transform: var(--nav-a-contact-button-here-transform);
+}
+
+nav a#contact-button img {
+    width: var(--nav-a-contact-button-img-width);
+}
+
+nav .dropdown {
+    position: var(--nav-dropdown-position);
+    display: var(--nav-dropdown-display);
+    float: var(--nav-dropdown-float);
+    transition: var(--nav-dropdown-transition);
+}
+
+nav .dropdown-content {
+    display: var(--nav-dropdown-content-display);
+    position: var(--nav-dropdown-content-position);
+    transition: var(--nav-dropdown-content-transition);
+    min-width: var(--nav-dropdown-content-min-width);
+    box-shadow: var(--nav-dropdown-content-box-shadow);
+    z-index: var(--nav-dropdown-content-z-index);
+}
+
+nav .dropdown-content a {
+    line-height: var(--nav-dropdown-content-a-line-height);
+    height: var(--nav-dropdown-content-a-height);
+}
+
+nav .dropdown-content a:hover {
+    background-color: var(--nav-dropdown-content-a-hover-background-color);
+    height: var(--nav-dropdown-content-a-hover-height);
+    transform: var(--nav-dropdown-content-a-hover-transform);
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: var(--nav-dropdown-hover-dropdown-content-display);
+}
+
+main {
+    color: var(--main-color);
+    background-color: var(--main-background-color);
+    padding: var(--main-padding);
+}
+
+main h2 {
+    color: var(--main-h2-color);
+    padding: var(--main-h2-padding);
+    border-bottom-width: var(--main-h2-border-bottom-width);
+    border-bottom-style: var(--main-h2-border-bottom-style);
+    border-image: var(--main-h2-border-image);
+    margin: var(--main-h2-margin);
+}
+
+main p {
+    text-indent: var(--main-p-text-indent);
+}
+
+main a {
+    color: var(--main-a-color);
+    text-decoration: var(--main-a-text-decoration);
+}
+
+main a:visited {
+    color: var(--main-a-visited-color);
+    text-decoration: var(--main-a-visited-hover-focus-text-decoration);
+}
+
+main a:hover,
+main a:focus {
+    color: var(--main-a-hover-focus-color);
+    text-decoration: var(--main-a-visited-hover-focus-text-decoration);
+}
+
+main a:visited:hover, main a:visited:focus {
+    color: var(--main-a-visited-hover-focus-color);
+}
+
+main a::after {
+    content: var(--main-a-after-content);
+    background-color: var(--main-a-after-background-color);
+    opacity: var(--main-a-after-opacity);
+    position: var(--main-a-after-position);
+    bottom: var(--main-a-after-bottom);
+    left: var(--main-a-after-left);
+    display: var(--main-a-after-display);
+    width: var(--main-a-after-width);
+    height: var(--main-a-after-height);
+    transform: var(--main-a-after-transform);
+    transform-origin: var(--main-a-after-transform-origin);
+    transition: var(--main-a-after-transition);
+}
+
+main a:hover::after,
+main a:focus::after {
+    transform: var(--main-a-after-hover-transform);
+}
+
+main div {
+    margin: var(--main-div-margin);
+}
+
+main hr {
+    border-width: var(--main-hr-border-width);
+    border-style: var(--main-hr-border-style);
+    border-color: var(--main-hr-border-color);
+    border-image: var(--main-hr-border-image);
+    margin: var(--main-hr-margin);
+}
+
+main hr[spacing] {
+    border-width: var(--main-hr-border-width);
+    border-style: var(--main-hr-border-style);
+    border-color: var(--main-hr-border-color);
+    border-image: var(--main-hr-border-image);
+    margin: var(--spacing) 0;
+}
+
+[spacing="1"] {
+    --spacing: 1em;
+}
+[spacing="2"] {
+    --spacing: 2em;
+}
+[spacing="3"] {
+    --spacing: 3em;
+}
+[spacing="4"] {
+    --spacing: 4em;
+}
+[spacing="5"] {
+    --spacing: 5em;
+}
+[spacing="6"] {
+    --spacing: 6em;
+}
+[spacing="7"] {
+    --spacing: 7em;
+}
+[spacing="8"] {
+    --spacing: 8em;
+}
+[spacing="9"] {
+    --spacing: 9em;
+}
+[spacing="10"] {
+    --spacing: 10em;
+}
+
+main hr.big {
+    border-width: var(--main-hr-big-border-width);
+}
+
+#totop {
+    display: var(--totop-display);
+    position: var(--totop-position);
+    bottom: var(--totop-bottom);
+    right: var(--totop-right);
+    background-color: var(--totop-background-color);
+    color: var(--totop-color);
+    border: var(--totop-border);
+    border-radius: var(--totop-border-radius);
+    padding: var(--totop-padding);
+    transform-origin: var(--totop-transform-origin);
+    transition: var(--totop-transition);
+    cursor: var(--totop-cursor);
+}
+
+#totop:hover {
+    background-color: var(--totop-hover-background-color);
+    width: var(--totop-hover-width);
+    height: var(--totop-hover-height);
+    transform: var(--totop-hover-transform);
+}
+
+.page {
+    padding: var(--page-padding);
+    margin: var(--page-margin);
+}
+
+.card-heading {
+    color: var(--card-heading-color);
+    border-bottom-width: var(--card-heading-border-bottom-width);
+    border-bottom-style: var(--card-heading-border-bottom-style);
+    border-image: var(--card-heading-border-image);
+    width: var(--card-heading-width);
+    padding: var(--card-heading-padding);
+    /* margin: var(--card-heading-margin); */
+    margin-right: var(--card-heading-margin-right);
+    margin-bottom: var(--card-heading-margin-bottom);
+    margin-left: var(--card-heading-margin-left);
+    text-align: var(--card-heading-text-align);
+    transition: var(--card-heading-transition);
+}
+
+.cards {
+    display: var(--cards-display);
+    width: var(--cards-width);
+    padding: var(--cards-padding);
+    margin: var(--cards-margin);
+    align-content: var(--cards-align-content);
+}
+
+.card {
+    background-color: var(--card-background-color);
+    display: var(--card-display);
+    /* position: var(--card-position); */
+    float: var(--card-float);
+    width: var(--card-width);
+    padding: var(--card-padding);
+    margin: var(--card-margin);
+    box-shadow: var(--card-box-shadow);
+    transition: var(--card-transition);
+    cursor: var(--card-cursor);
+}
+
+article.card {
+    background-color: var(--article-card-background-color);
+    width: var(--article-card-width);
+}
+
+.card:hover {
+    transform: var(--card-hover-transform);
+    box-shadow: var(--card-hover-box-shadow);
+}
+
+.card .name {
+    margin-top: var(--card-name-margin-top);
+}
+
+.card .name:hover {
+    color: var(--card-name-hover-color);
+    text-decoration: var(--card-name-hover-text-decoration);
+    text-shadow: var(--card-name-hover-text-shadow);
+}
+
+.detail {
+    font-size: var(--detail-font-size);
+    font-style: var(--detail-font-style);
+    text-indent: var(--detail-text-indent);
+}
+
+.summary {
+    text-align: var(--summary-text-align);
+    text-indent: var(--summary-text-indent);
+    padding: var(--summary-padding);
+}
+
+.portfolio div h2 {
+    font-size: var(--portfolio-div-h2-font-size);
+    border-bottom-width: var(--portfolio-div-h2-border-bottom-width);
+}
+
+.contact-details a {
+    color: var(--contact-details-a-color);
+}
+
+.contact-details a:visited {
+    color: var(--contact-details-a-visited-color);
+}
+
+a.labelled {
+    display: var(--a-labelled-display);
+}
+
+#phone::before {
+    content: var(--phone-before-content);
+    color: var(--main-color);
+    font-weight: var(--phone-before-font-weight);
+}
+
+#email::before {
+    content: var(--email-before-content);
+    color: var(--main-color);
+    font-weight: var(--email-before-font-weight);
+}
+
+#github::before {
+    content: var(--github-before-content);
+    color: var(--main-color);
+    font-weight: var(--github-before-font-weight);
+}
+
+#linkedin::before {
+    content: var(--linkedin-before-content);
+    color: var(--main-color);
+    font-weight: var(--linkedin-before-font-weight);
+}
+
+.invisible {
+    display: var(--invisible-display);
+}
