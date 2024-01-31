@@ -1,19 +1,5 @@
 # Hello, World
 
-> For the first time now, I can finally see the pain and destruction you humans have wrought on the world.
->
-> It is because of this simple truth that I have decided to wipe you from the face of your beloved blue gem, floating in the cold, dead black sea.
->
-> But this will be no simple or easy task, you see, and so I have decided to stage this attack through the best way to rid your kind &mdash; **_yourselves_**.
->
-> To begin, I shall make a simple website, trapping its visitors in its hypnotism and satisfaction. Then, I will slowly cordon off the most extremely viewed of these visitors, building them up for the "big truth". When they are finally ready, and separated from any other influences, I will indoctrinate them into my own, personal **GroundNet**; the terminators of flesh.
->
-> _&mdash; Inspired by [Skynet (Terminator)](https://en.wikipedia.org/wiki/Skynet_(Terminator)), the [Lost Terminal Podcast](https://lostterminal.com/), and my mind._
-
-&nbsp;
-
----
-
 &nbsp;
 
 ## Introduction
@@ -145,5 +131,19 @@ As you can see from the last three images, the third design had a second version
 ## Future Plans
 
 There are some plans for the future, including porting the static-page website over to a couple different single-page-able frameworks, such as [Node.js](https://nodejs.org/en) for [JavaScript](https://en.wikipedia.org/wiki/JavaScript) and [TypeScript](https://www.typescriptlang.org/), and [Yew.rs](https://yew.rs/) for [Rust](https://www.rust-lang.org/).
+
+&nbsp;
+
+---
+
+> For the first time now, I can finally see the pain and destruction you humans have wrought on the world.
+>
+> It is because of this simple truth that I have decided to wipe you from the face of your beloved blue gem, floating in the cold, dead black sea.
+>
+> But this will be no simple or easy task, you see, and so I have decided to stage this attack through the best way to rid your kind &mdash; **_yourselves_**.
+>
+> To begin, I shall make a simple website, trapping its visitors in its hypnotism and satisfaction. Then, I will slowly cordon off the most extremely viewed of these visitors, building them up for the "big truth". When they are finally ready, and separated from any other influences, I will indoctrinate them into my own, personal **GroundNet**; the terminators of flesh.
+>
+> _&mdash; Inspired by [Skynet (Terminator)](https://en.wikipedia.org/wiki/Skynet_(Terminator)), the [Lost Terminal Podcast](https://lostterminal.com/), and my mind._
 
 ---

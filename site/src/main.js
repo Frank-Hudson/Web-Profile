@@ -827,11 +827,11 @@ class Navigation extends MyElement {
     buttons;
     styles;
 
-    constructor(page) {
+    constructor(page, buttons = [], styles = new Styles()) {
         super();
         this.page = page;
-        this.buttons = [];
-        this.styles = new Styles();
+        this.buttons = buttons;
+        this.styles = styles;
     }
 
     getHtmlString() {
@@ -1111,14 +1111,14 @@ class Skill {
     id;
     skill;
     competency;
-    area;
+    areas;
     description;
     tags;
 
-    constructor(id, skill, competency, area, description = [], tags = []) {
+    constructor(id, skill, competency, areas, description = [], tags = []) {
         this.id = id;
         this.skill = skill;
-        this.area = area;
+        this.areas = areas;
         this.competency = competency;
         this.description = description;
         this.tags = tags;
@@ -1131,7 +1131,7 @@ class Skill {
             this.skill +
             "</h3>" +
             "<p class='detail'>" +
-            this.area +
+            this.areas.join(", ") +
             ". " +
             this.competency +
             " competency" +
@@ -1440,23 +1440,57 @@ class ThemeVariables {
 function to_top() {
     const toTopButton = document.getElementById("totop");
 
-    window.onscroll = function () {
-        if (
-            document.body.scrollTop > 20 ||
-            document.documentElement.scrollTop > 20
-        ) {
-            toTopButton.style.display = "block";
-        } else {
-            toTopButton.style.display = "none";
-        }
-    };
-
     toTopButton.onclick = function () {
         window.scrollTo({
             top: 0,
             behavior: "smooth",
         });
     };
+}
+
+// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
+
+function on_scroll() {
+    window.onscroll = function () {
+        console.log(`ScrollY: ${window.scrollY}`);
+        console.log(`ScrollTop: ${document.body.scrollTop}`);
+
+        to_top_update();
+        fix_navigation();
+    };
+}
+
+// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
+
+function to_top_update() {
+    const toTopButton = document.getElementById("totop");
+
+    if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+    ) {
+        toTopButton.style.display = "block";
+    } else {
+        toTopButton.style.display = "none";
+    }
+}
+
+// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
+
+function fix_navigation() {
+    const nav = document.getElementById("nav");
+    const header = document.getElementById("header");
+    const headerHeight = parseInt(header.style.height);
+
+    if (
+        document.body.scrollTop > headerHeight ||
+        document.documentElement.scrollTop > headerHeight
+    ) {
+        nav.style.position = "fixed";
+    } else {
+        nav.style.position = "absolute";
+        nav.style.top = headerHeight;
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1483,13 +1517,13 @@ function check_width() {
         navLinks.forEach((link) => {
             link.style.float = "none";
             if (link.id == "contact-button") {
-                link.style.width = link.style.height;
-                link.style.height = "xdg";
+                // link.style.width = link.style.height;
+                // link.style.height = "xdg";
             }
         });
     } else {
         navLinks.forEach((link) => {
-            link.style.float = "left";
+            // link.style.float = "left";
         });
     }
 }
@@ -1509,12 +1543,70 @@ function main() {
 
     to_top();
     check_width();
+    on_scroll();
 
     const tags = {
         info: new Tag("info"),
         data_content: new Tag("data_content"),
         portfolio: new Tag("portfolio"),
     };
+
+    const skills = [
+        new Skill(
+            "html",
+            "HTML (HyperText Markup Language)",
+            "Intermediate",
+            ["Frontend Web Development", "Backend Web Development"],
+            "Programming language for creating webpage structures."
+        ),
+        new Skill(
+            "css",
+            "CSS (Cascading Style Sheets)",
+            "Beginner",
+            ["Frontend Web Development", "Digital Graphics"],
+            "Programming language for styling web pages."
+        ),
+        new Skill(
+            "javascript",
+            "JavaScript",
+            "Intermediate",
+            [
+                "Frontend Web Development",
+                "Backend Web Development",
+                "Scripting",
+            ],
+            "Programming and scripting language that gives webpages functionality and interactivity."
+        ),
+        new Skill(
+            "rust",
+            "Rust",
+            "Beginner",
+            [
+                "Applications Development",
+                "Backend Development",
+                "Game Development",
+                "High-level Development",
+                "Low-level Development",
+                "Scripting",
+                "Systems Programming",
+                "Web Development",
+            ],
+            "High-level systems programming language, designed for interacting more safely with low-level concepts."
+        ),
+        new Skill(
+            "python",
+            "Python",
+            "Intermediate",
+            [
+                "Applications Development",
+                "High-level programming",
+                "Scripting",
+                "Web Development",
+            ],
+            "Programming and scripting lanuage commonly used for data science and statistics, as well as for testing code, teaching programming, and building small and portable scripts."
+        ),
+    ];
+
     const pages = [
         new Page("home", "")
             .addTag(tags["info"])

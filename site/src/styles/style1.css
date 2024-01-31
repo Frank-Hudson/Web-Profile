@@ -2,6 +2,12 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
 :root {
+    --center: -moz-center;
+    --center: -webkit-center;
+    --center: center;
+
+    --transition-default: all 0.3s ease;
+
     /* --box-sizing: border-box; */
 
     --body-font-family: Arial, Convergence, Calibri, "Open Sans", sans-serif;
@@ -23,56 +29,19 @@
 
     --nav-color: black;
     --nav-li-background-color: #2eb0da;
-    /* --nav-font-size: 2vw; */
-    --nav-font-size: 16pt;
-    /* --nav-font-size: 1.35em; */
-    --nav-text-align: center;
-    --nav-height: 2em;
-    --nav-padding: var(--nav-padding-top-bottom) var(--nav-padding-left-right);
-    --nav-padding-top-bottom: 0.3em;
-    --nav-padding-left-right: 1vw;
-    --nav-overflow: default;
-
-    --nav-ul-style-type: none;
-    --nav-ul-padding: 0 auto;
+    --nav-height: 100%;
 
     --nav-li-a-color: inherit;
-    --nav-li-a-text-decoration: none;
-    --nav-li-a-line-height: 1.4em;
-    --nav-li-a-width: 14vw;
     --nav-li-a-height: 1.5em;
-    --nav-li-a-padding: 5px 10px;
-    --nav-li-a-position: relative;
-    --nav-li-a-display: block;
-    --nav-li-a-float: left;
-    --nav-li-a-transition: all 0.3s ease;
 
-    --nav-li-a-selected-line-height: 1.7em;
+    --nav-li-a-selected-background-color: #278daf;
     --nav-li-a-selected-border-top: 10px solid var(--nav-li-background-color);
-    --nav-li-a-selected-transform: translateY(
-        var(--nav-li-a-selected-border-top)
-    );
+    --nav-li-a-selected-transform: translateY(-10px);
 
-    --dropdown-position: relative;
-    --dropdown-display: inline-block;
-    --dropdown-float: left;
-    --dropdown-transition: all 0.3s ease-in-out;
-
-    --dropdown-hover-dropdown-content-display: block;
-
-    --dropdown-content-display: none;
-    --dropdown-content-position: absolute;
-    --dropdown-content-transition: all 0.3s ease-in-out;
     --dropdown-content-min-width: 160px;
     --dropdown-content-box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.2);
-    --dropdown-content-z-index: 1;
 
-    --dropdown-content-a-line-height: 2em;
-    --dropdown-content-a-height: 2em;
-
-    --dropdown-content-a-hover-background-color: #278daf;
-    --dropdown-content-a-hover-height: var(--dropdown-content-a-height);
-    --dropdown-content-a-hover-transform: none;
+    /* --dropdown-content-a-line-height: 2em; */
 
     --main-color: #e0ffe1;
     --main-background-color: #39363c;
@@ -105,20 +74,6 @@
 
     /* --main-a-visited-hover-focus-text-decoration: underline; */
 
-    /* --main-a-after-content: ""; */
-    /* --main-a-after-background-color: #77ccff; */
-    /* --main-a-after-background-size: 100%; */
-    /* --main-a-after-opacity: 1; */
-    /* --main-a-after-position: absolute; */
-    /* --main-a-after-bottom: 0; */
-    /* --main-a-after-left: 0; */
-    /* --main-a-after-display: inline-block; */
-    /* --main-a-after-width: 100%; */
-    /* --main-a-after-height: 0.1em; */
-    /* --main-a-after-transform: scale(0); */
-    /* --main-a-after-transform-origin: center; */
-    /* --main-a-after-transition: transform 0.3s; */
-
     /* --main-a-hover-focus-after-transform: scale(1) translate(-50%, 1em); */
 
     --main-div-margin: 2em 0;
@@ -137,8 +92,6 @@
 
     --main-hr-big-border-width: 5px;
 
-    --totop-display: none;
-    --totop-position: fixed;
     --totop-bottom: 20px;
     --totop-right: 20px;
     --totop-background-color: #007bff;
@@ -151,9 +104,6 @@
     --totop-cursor: pointer;
 
     --totop-hover-background-color: #0056b3;
-    /* --totop-hover-width: 10vw; */
-    /* --totop-hover-height: 5em; */
-    --totop-hover-transform: scale(3);
 
     --page-width: 100%;
     --page-padding: 0 0;
@@ -246,101 +196,102 @@ body {
     margin: var(--body-margin);
 }
 
-header {
+#header {
     color: var(--header-color);
     background-color: var(--header-background-color);
     padding: var(--header-padding);
     padding-bottom: var(--header-padding-bottom);
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    top: 0;
 }
 
-header h1 {
+#header h1 {
     font-size: var(--header-h1-font-size);
     margin-bottom: var(--header-h1-margin-bottom);
 }
 
-header p {
+#header p {
     color: var(--header-p-color);
     font-size: var(--header-p-font-size);
     font-weight: var(--header-p-font-weight);
     padding: var(--header-p-padding);
 }
 
-nav {
+#nav {
+    list-style-type: none;
     color: var(--nav-color);
     background-color: var(--nav-li-background-color);
-    font-size: var(--nav-font-size);
-    text-align: var(--nav-text-align);
+    /* font-size: 2vw; */
+    /* font-size: 1.35em; */
+    font-size: 16pt;
+    text-align: var(--center);
+    width: 15%;
     height: var(--nav-height);
-    padding: var(--nav-padding);
-    overflow: var(--nav-overflow);
+    position: absolute;
+    top: 200px;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
 }
 
-nav ul,
-nav ol {
-    list-style: var(--nav-ul-style-type);
-    padding: var(--nav-ul-padding);
-    margin: var(--nav-ul-items-margin);
-}
-
-nav li a {
+#nav a,
+.dropdown-button {
     color: var(--nav-li-a-color);
     background-color: var(--nav-li-background-color);
-    text-decoration: var(--nav-li-a-text-decoration);
-    line-height: var(--nav-li-a-line-height);
-    width: var(--nav-li-a-width);
-    height: var(--nav-li-a-height);
-    padding: var(--nav-li-a-padding);
-    position: var(--nav-li-a-position);
-    display: var(--nav-li-a-display);
-    float: var(--nav-li-a-float);
-    transition: var(--nav-li-a-transition);
+    text-decoration: none;
+    /* line-height: 1.4em; */
+    width: 100%;
+    /* height: var(--nav-li-a-height); */
+    min-width: 140px;
+    padding: 5px 10px;
+    margin: 0;
+    border-width: 0;
+    display: block;
+    transition: all 0.3s ease;
 }
 
-nav li a:hover,
-nav li a.here {
-    line-height: var(--nav-li-a-selected-line-height);
-    border-top: var(--nav-li-a-selected-border-top);
-    transform: var(--nav-li-a-selected-transform);
+#nav a:hover,
+.dropdown-button:hover,
+.dropdown.active .dropdown-button,
+#nav a.here,
+.dropdown-button.here {
+    background-color: var(--nav-li-a-selected-background-color);
+    cursor: pointer;
 }
 
 .dropdown {
-    position: var(--dropdown-position);
-    display: var(--dropdown-display);
-    float: var(--dropdown-float);
-    transition: var(--dropdown-transition);
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    /* float: left; */
+    /* transition: all 0.3s ease-in-out; */
+}
+
+.dropdown.active .dropdown-content {
+    display: block;
 }
 
 .dropdown-content {
-    display: var(--dropdown-content-display);
-    position: var(--dropdown-content-position);
-    transition: var(--dropdown-content-transition);
-    min-width: var(--dropdown-content-min-width);
+    /* background-color: var(--nav-li-background-color); */
+    width: 100%;
+    /* position: absolute; */
+    display: none;
+    /* min-width: 120px; */
+    /* padding: 12px 16px; */
     box-shadow: var(--dropdown-content-box-shadow);
-    z-index: var(--dropdown-content-z-index);
+    z-index: 1;
 }
 
-.dropdown-content a {
-    line-height: var(--dropdown-content-a-line-height);
-    height: var(--dropdown-content-a-height);
-}
-
-.dropdown-content a:hover {
-    background-color: var(--dropdown-content-a-hover-background-color);
-    height: var(--dropdown-content-a-hover-height);
-    transform: var(--dropdown-content-a-hover-transform);
-}
-
-.dropdown:hover .dropdown-content {
-    display: var(--dropdown-hover-dropdown-content-display);
-}
-
-main {
+#main {
     color: var(--main-color);
     background-color: var(--main-background-color);
     padding: var(--main-padding);
+    margin-left: 20%;
 }
 
-main h2 {
+#main h2 {
     color: var(--main-h2-color);
     padding: var(--main-h2-padding);
     border-bottom-width: var(--main-h2-border-bottom-width);
@@ -349,32 +300,32 @@ main h2 {
     margin: var(--main-h2-margin);
 }
 
-main p {
+#main p {
     text-indent: var(--main-p-text-indent);
 }
 
-main a {
+#main a {
     color: var(--main-a-color);
     text-decoration: var(--main-a-text-decoration);
 }
 
-main a:visited {
+#main a:visited {
     color: var(--main-a-visited-color);
     text-decoration: var(--main-a-visited-hover-focus-text-decoration);
 }
 
-main a:hover,
-main a:focus {
+#main a:hover,
+#main a:focus {
     color: var(--main-a-hover-focus-color);
     text-decoration: var(--main-a-visited-hover-focus-text-decoration);
 }
 
-main a:visited:hover,
-main a:visited:focus {
+#main a:visited:hover,
+#main a:visited:focus {
     color: var(--main-a-visited-hover-focus-color);
 }
 
-main a::after {
+#main a::after {
     content: var(--main-a-after-content);
     background-color: var(--main-a-after-background-color);
     opacity: var(--main-a-after-opacity);
@@ -389,16 +340,16 @@ main a::after {
     transition: var(--main-a-after-transition);
 }
 
-main a:hover::after,
-main a:focus::after {
+#main a:hover::after,
+#main a:focus::after {
     transform: var(--main-a-after-hover-transform);
 }
 
-main div {
+#main div {
     margin: var(--main-div-margin);
 }
 
-main hr {
+#main hr {
     border-width: var(--main-hr-border-width);
     border-style: var(--main-hr-border-style);
     border-color: var(--main-hr-border-color);
@@ -406,7 +357,7 @@ main hr {
     margin: var(--main-hr-margin);
 }
 
-main hr[spacing] {
+#main hr[spacing] {
     border-width: var(--main-hr-border-width);
     border-style: var(--main-hr-border-style);
     border-color: var(--main-hr-border-color);
@@ -445,13 +396,13 @@ main hr[spacing] {
     --spacing: 10em;
 }
 
-main hr.big {
+#main hr.big {
     border-width: var(--main-hr-big-border-width);
 }
 
 #totop {
-    display: var(--totop-display);
-    position: var(--totop-position);
+    display: none;
+    position: fixed;
     bottom: var(--totop-bottom);
     right: var(--totop-right);
     background-color: var(--totop-background-color);
@@ -468,10 +419,11 @@ main hr.big {
     background-color: var(--totop-hover-background-color);
     width: var(--totop-hover-width);
     height: var(--totop-hover-height);
-    transform: var(--totop-hover-transform);
+    transform: scale(2);
 }
 
 .page {
+    width: var(--page-width);
     padding: var(--page-padding);
     margin: var(--page-margin);
 }
@@ -500,6 +452,7 @@ main hr.big {
 }
 
 .card {
+    color: #e0ffe1;
     background-color: var(--card-background-color);
     display: var(--card-display);
     /* position: var(--card-position); */
