@@ -17,45 +17,66 @@
             <p>Frank Hudson</p>
         </header>
 
-        <nav id="nav">
-            <a class="there" href="./index.html" id="home-button"> HOME </a>
+        <label class="hamburger-menu">
+            <input
+                type="checkbox"
+                id="nav-toggle"
+                title="navigation hamburger menu"
+            />
+        </label>
 
-            <a class="there" href="./skills.html" id="skills-button">
-                SKILLS
-            </a>
+        <ul id="nav">
+            <li>
+                <a class="there" href="./index.html" id="home-button"> HOME </a>
+            </li>
 
-            <div class="dropdown">
-                <a class="there" href="./portfolio.html" id="portfolio-button">
-                    PORTFOLIO
+            <li>
+                <a class="there" href="./skills.html" id="skills-button">
+                    SKILLS
                 </a>
-                <div class="dropdown-content">
-                    <a
-                        href="./portfolio/products.html"
-                        id="portfolio-products-button"
-                    >
-                        PRODUCTS
-                    </a>
-                    <a
-                        href="./portfolio/projects.html"
-                        id="portfolio-projects-button"
-                    >
-                        PROJECTS
-                    </a>
+            </li>
+
+            <li>
+                <div class="dropdown">
+                    <span class="dropdown-button" id="portfolio-button">
+                        PORTFOLIO &blacktriangleright;
+                    </span>
+                    <div class="dropdown-content">
+                        <a
+                            href="./portfolio/products.html"
+                            id="portfolio-products-button"
+                        >
+                            PRODUCTS
+                        </a>
+                        <a
+                            href="./portfolio/projects.html"
+                            id="portfolio-projects-button"
+                        >
+                            PROJECTS
+                        </a>
+                    </div>
                 </div>
-            </div>
+            </li>
 
-            <a class="there" href="./knowledge.html" id="knowledge-button">
-                KNOWLEDGE
-            </a>
+            <li>
+                <a class="there" href="./knowledge.html" id="knowledge-button">
+                    KNOWLEDGE
+                </a>
+            </li>
 
-            <a class="here" href="./interests.html" id="interests-button">
-                INTERESTS
-            </a>
+            <li>
+                <a class="here" href="./interests.html" id="interests-button">
+                    INTERESTS
+                </a>
+            </li>
 
-            <a class="there" href="./contact.html" id="contact-button">
-                CONTACT
-            </a>
-        </nav>
+            <li>
+                <a class="there" href="./contact.html" id="contact-button">
+                    <!-- <img src="./src/assets/call_FILL0_wght400_GRAD0_opsz24.svg" alt="" /> -->
+                    CONTACT
+                </a>
+            </li>
+        </ul>
 
         <main id="main">
             <div class="page interests">

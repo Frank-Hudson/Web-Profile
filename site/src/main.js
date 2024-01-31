@@ -1480,17 +1480,25 @@ function to_top_update() {
 function fix_navigation() {
     const nav = document.getElementById("nav");
     const header = document.getElementById("header");
-    const headerHeight = parseInt(header.style.height);
+    const headerHeight = header.clientHeight;
 
-    if (
-        document.body.scrollTop > headerHeight ||
-        document.documentElement.scrollTop > headerHeight
-    ) {
+    if (window.scrollY > headerHeight) {
         nav.style.position = "fixed";
+        nav.style.top = 0;
     } else {
         nav.style.position = "absolute";
-        nav.style.top = headerHeight;
+        nav.style.top = headerHeight + "px";
     }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// ####                           Elem Events                            #### //
+////////////////////////////////////////////////////////////////////////////////
+
+const navigationVisible = true;
+
+function navigation_toggle_events() {
+    const toggle = document.querySelector("#nav-toggle");
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1542,8 +1550,10 @@ function main() {
     const footer = document.getElementById("footer");
 
     to_top();
-    check_width();
+    navigation_toggle_events();
+
     on_scroll();
+    check_width();
 
     const tags = {
         info: new Tag("info"),

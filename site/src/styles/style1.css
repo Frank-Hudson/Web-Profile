@@ -8,34 +8,39 @@
 
     --transition-default: all 0.3s ease;
 
-    /* --box-sizing: border-box; */
+    /* ------------------------------ */
 
-    --body-font-family: Arial, Convergence, Calibri, "Open Sans", sans-serif;
+    --hamburger-bar-width: 60px;
+    --hamburger-bar-height: 8px;
+    --hamburger-gap: 4px;
+    --hamburger-background: #333;
+    --hamburger-foreground: #fff;
+    --hamburger-margin: 10px;
+    --hamburger-animation-timing: 200ms ease-in-out;
+    --hamburger-height: calc(
+        var(--hamburger-bar-height) * 3 + var(--hamburger-gap) * 2
+    );
+
+    /* ------------------------------ */
+
     --body-background-color: #39363c;
-    --body-margin: 0;
 
     --header-color: #fffee0;
     --header-background-color: #27c9ba;
     --header-padding: 1em 4vw;
     --header-padding-bottom: 5vw;
 
-    --header-h1-font-size: 48pt;
-    --header-h1-margin-bottom: 0;
-
     --header-p-color: #dad9cb;
-    --header-p-font-size: 20pt;
-    --header-p-font-weight: 600;
-    --header-p-padding: 0 7vw;
 
     --nav-color: black;
-    --nav-li-background-color: #2eb0da;
+    --nav-background-color: #2eb0da;
     --nav-height: 100%;
 
     --nav-li-a-color: inherit;
     --nav-li-a-height: 1.5em;
 
     --nav-li-a-selected-background-color: #278daf;
-    --nav-li-a-selected-border-top: 10px solid var(--nav-li-background-color);
+    --nav-li-a-selected-border-top: 10px solid var(--nav-background-color);
     --nav-li-a-selected-transform: translateY(-10px);
 
     --dropdown-content-min-width: 160px;
@@ -45,7 +50,6 @@
 
     --main-color: #e0ffe1;
     --main-background-color: #39363c;
-    --main-padding: 9vw 16vw;
 
     --main-h2-color: #e0ffe1;
     --main-h2-padding: 0.25em 0.1em;
@@ -75,8 +79,6 @@
     /* --main-a-visited-hover-focus-text-decoration: underline; */
 
     /* --main-a-hover-focus-after-transform: scale(1) translate(-50%, 1em); */
-
-    --main-div-margin: 2em 0;
 
     --main-hr-border-width: 3px;
     --main-hr-border-style: solid;
@@ -184,16 +186,21 @@
     --linkedin-before-font-weight: var(--labelled-font-weight);
 
     --invisible-display: none;
+
+    --header-height: 250px;
 }
 
-* {
-    box-sizing: var(--box-sizing);
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 body {
+    font-family: Arial, Convergence, Calibri, "Open Sans", "Segoe UI",
+        "Fira Sans", sans-serif;
     background-color: var(--body-background-color);
-    font-family: var(--body-font-family);
-    margin: var(--body-margin);
+    margin: 0;
 }
 
 #header {
@@ -202,27 +209,100 @@ body {
     padding: var(--header-padding);
     padding-bottom: var(--header-padding-bottom);
     width: 100%;
-    height: 200px;
+    height: var(--header-height);
     position: absolute;
     top: 0;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 #header h1 {
-    font-size: var(--header-h1-font-size);
-    margin-bottom: var(--header-h1-margin-bottom);
+    font-size: 48pt;
+    margin-bottom: 0;
 }
 
 #header p {
     color: var(--header-p-color);
-    font-size: var(--header-p-font-size);
-    font-weight: var(--header-p-font-weight);
-    padding: var(--header-p-padding);
+    font-size: 20pt;
+    font-weight: 600;
+    padding: 0 7vw;
+}
+
+/* Hamburger Menu Credits:
+  "Web Dev Simplified" on YouTube - https://www.youtube.com/watch?v=dAIVbLrAb_U
+*/
+
+.hamburger-menu {
+    --x-width: calc(var(--hamburger-height) * 1.41421356237);
+
+    width: max-content;
+    position: absolute;
+    top: calc(var(--hamburger-margin) + var(--header-height));
+    left: var(--hamburger-margin);
+    display: flex;
+    flex-direction: column;
+    gap: var(--hamburger-gap);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+    content: "";
+    width: var(--hamburger-bar-width);
+    height: var(--hamburger-bar-height);
+    background-color: var(--hamburger-foreground);
+    border-radius: 50px;
+    transform-origin: left center;
+    transition: opacity var(--hamburger-animation-timing),
+        width var(--hamburger-animation-timing),
+        rotate var(--hamburger-animation-timing),
+        translate var(--hamburger-animation-timing),
+        background-color var(--hamburger-animation-timing);
+}
+
+.hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+
+.hamburger-menu:has(input:checked) {
+    --hamburger-background: white;
+    --hamburger-foreground: #222;
+}
+
+.hamburger-menu:has(input:focus-visible)::before,
+.hamburger-menu:has(input:focus-visible)::after,
+.hamburger-menu input:focus-visible {
+    border: 1px solid var(--hamburger-background);
+    box-shadow: 0 0 0 1px var(--hamburger-foreground);
+}
+
+.hamburger-menu:has(input:checked)::before {
+    width: var(--x-width);
+    rotate: 45deg;
+    translate: 0 calc(var(--hamburger-bar-height) / -2);
+}
+
+.hamburger-menu:has(input:checked)::after {
+    width: var(--x-width);
+    rotate: -45deg;
+    translate: 0 calc(var(--hamburger-bar-height) / 2);
+}
+
+.hamburger-menu input:checked {
+    opacity: 0;
+    width: 0;
 }
 
 #nav {
     list-style-type: none;
     color: var(--nav-color);
-    background-color: var(--nav-li-background-color);
+    background-color: var(--nav-background-color);
     /* font-size: 2vw; */
     /* font-size: 1.35em; */
     font-size: 16pt;
@@ -230,16 +310,29 @@ body {
     width: 15%;
     height: var(--nav-height);
     position: absolute;
-    top: 200px;
+    top: var(--header-height);
     padding: 0;
+    padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
     margin: 0;
     overflow: auto;
+    translate: -100%;
+    transition: all var(--hamburger-animation-timing) 0s;
+    -webkit-user-select: none;
+    user-select: none;
 }
+
+.hamburger-menu:has(input:checked) + #nav {
+    translate: 0;
+}
+
+/* Dropdown Menu Credits:
+  W3Schools "CSS Dropdowns" tutorial - https://www.w3schools.com/css/css_dropdowns.asp
+*/
 
 #nav a,
 .dropdown-button {
     color: var(--nav-li-a-color);
-    background-color: var(--nav-li-background-color);
+    background-color: var(--nav-background-color);
     text-decoration: none;
     /* line-height: 1.4em; */
     width: 100%;
@@ -287,8 +380,14 @@ body {
 #main {
     color: var(--main-color);
     background-color: var(--main-background-color);
-    padding: var(--main-padding);
-    margin-left: 20%;
+    padding: 3vw 16vw;
+    margin-top: var(--header-height);
+    margin-left: 0;
+    transition: margin var(--hamburger-animation-timing);
+}
+
+.hamburger-menu:has(input:checked) + #nav + #main {
+    margin-left: 15%;
 }
 
 #main h2 {
@@ -346,7 +445,7 @@ body {
 }
 
 #main div {
-    margin: var(--main-div-margin);
+    margin: 2em 0;
 }
 
 #main hr {
@@ -444,10 +543,10 @@ body {
 }
 
 .cards {
-    display: var(--cards-display);
+    display: block;
     width: var(--cards-width);
     padding: var(--cards-padding);
-    margin: var(--cards-margin);
+    /* margin: var(--cards-margin) !important; */
     align-content: var(--cards-align-content);
 }
 
@@ -459,7 +558,7 @@ body {
     float: var(--card-float);
     width: var(--card-width);
     padding: var(--card-padding);
-    margin: var(--card-margin);
+    margin: 25px auto !important;
     box-shadow: var(--card-box-shadow);
     transition: var(--card-transition);
     cursor: var(--card-cursor);
