@@ -1551,16 +1551,65 @@ function fix_main_margin() {
 ////////////////////////////////////////////////////////////////////////////////
 
 function set_on_clicks() {
-    const portfolioDropdownButtonCheckbox = document.querySelector(".portfolio-checkbox");
-    const portfolioDropdownButton = document.querySelector(".portfolio-button");
-    const portfolioDropdownCaret = document.querySelector(".fa-solid.fa-caret-right");
+    const portfolioDropdownButtonCheckbox =
+        document.getElementsByClassName("portfolio-checkbox");
+    const portfolioDropdownButton =
+        document.getElementsByClassName("portfolio-button")[0];
+    const portfolioDropdownCaret =
+        document.getElementsByClassName("fa-caret-right")[0];
 
-    portfolioDropdownButton.addEventListener("onclick", function() {
+    portfolioDropdownButton.onclick = function () {
         if (portfolioDropdownButtonCheckbox.checked) {
-            portfolioDropdownCaret.classList[1] = "fa-caret-right";
+            portfolioDropdownCaret.styles.rotate = "0deg";
         } else {
-            portfolioDropdownCaret.classList[1] = "fa-caret-down";
+            portfolioDropdownCaret.styles.rotate = "90deg";
         }
+    };
+
+    // - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - //
+
+    const cardElements = document.querySelectorAll(".card");
+
+    cardElements.forEach(function (cardElement) {
+        cardElement.onclick = function () {
+            const currentLocationArray = window.location.href.split("/");
+            const oldPage = currentLocationArray.pop();
+            if (oldPage === "") {
+                oldPage = currentLocationArray.pop();
+            }
+            const currentLocationWithoutPage = currentLocationArray.join("/");
+
+            let newPageDirectory;
+
+            switch (oldPage) {
+                case "skills.html":
+                    newPageDirectory = "/skills/";
+                    break;
+                case "products.html":
+                    newPageDirectory = "/products/";
+                    break;
+                case "projects.html":
+                    newPageDirectory = "/projects/";
+                    break;
+                case "knowledge.html":
+                    newPageDirectory = "/knowledge/";
+                    break;
+                case "interests.html":
+                    newPageDirectory = "/interests/";
+                    break;
+                default:
+                    newPageDirectory = "/";
+                    break;
+            }
+
+            const newLocation =
+                currentLocationWithoutPage +
+                newPageDirectory +
+                cardElement.querySelector(".name").innerHTML +
+                ".html";
+            console.log(newLocation);
+            window.location = newLocation;
+        };
     });
 }
 

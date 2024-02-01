@@ -316,7 +316,7 @@ body {
     margin: 0;
     overflow: auto;
     translate: -100%;
-    transition: all var(--hamburger-animation-timing) 0s;
+    transition: translate var(--hamburger-animation-timing) 0s;
     -webkit-user-select: none;
     user-select: none;
 }
@@ -346,10 +346,6 @@ body {
     display: block;
     transition: all 0.3s ease;
 }
-
-/* #nav a i {
-    margin: auto 0;
-} */
 
 #nav a.here,
 #nav a:hover,
