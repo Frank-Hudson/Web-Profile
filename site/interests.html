@@ -9,6 +9,12 @@
         <!-- <link rel="stylesheet" href="./src/styles/style3.css" /> -->
 
         <title>Web Profile - Interests</title>
+
+        <!-- Icons from Font Awesome (https://fontawesome.com/) -->
+        <script
+            src="https://kit.fontawesome.com/a6b42c51ae.js"
+            crossorigin="anonymous"
+        ></script>
     </head>
 
     <body>
@@ -21,38 +27,48 @@
             <input
                 type="checkbox"
                 id="nav-toggle"
-                title="navigation hamburger menu"
+                title="Navigation hamburger menu"
             />
         </label>
 
         <ul id="nav">
             <li>
-                <a class="there" href="./index.html" id="home-button"> HOME </a>
+                <a class="there" href="./index.html" id="home-button">
+                    <i class="fa-solid fa-house"> HOME </i>
+                </a>
             </li>
 
             <li>
                 <a class="there" href="./skills.html" id="skills-button">
-                    SKILLS
+                    <i class="fa-solid fa-toolbox"> SKILLS </i>
                 </a>
             </li>
 
             <li>
                 <div class="dropdown">
-                    <span class="dropdown-button" id="portfolio-button">
-                        PORTFOLIO &blacktriangleright;
-                    </span>
+                    <label class="dropdown-button">
+                        <input
+                            type="checkbox"
+                            id="portfolio-checkbox"
+                            title="Portfolio dropdown menu"
+                        />
+                        <span class="portfolio-button">
+                            <i class="fa-solid fa-briefcase"> PORTFOLIO </i>
+                            <i class="fa-solid fa-caret-right"></i>
+                        </span>
+                    </label>
                     <div class="dropdown-content">
                         <a
                             href="./portfolio/products.html"
                             id="portfolio-products-button"
                         >
-                            PRODUCTS
+                            <i class="fa-solid fa-boxes-packing"> PRODUCTS </i>
                         </a>
                         <a
                             href="./portfolio/projects.html"
                             id="portfolio-projects-button"
                         >
-                            PROJECTS
+                            <i class="fa-solid fa-clipboard-list"> PROJECTS </i>
                         </a>
                     </div>
                 </div>
@@ -60,20 +76,19 @@
 
             <li>
                 <a class="there" href="./knowledge.html" id="knowledge-button">
-                    KNOWLEDGE
+                    <i class="fa-solid fa-book"> KNOWLEDGE </i>
                 </a>
             </li>
 
             <li>
                 <a class="here" href="./interests.html" id="interests-button">
-                    INTERESTS
+                    <i class="fa-solid fa-icons"> INTERESTS </i>
                 </a>
             </li>
 
             <li>
                 <a class="there" href="./contact.html" id="contact-button">
-                    <!-- <img src="./src/assets/call_FILL0_wght400_GRAD0_opsz24.svg" alt="" /> -->
-                    CONTACT
+                    <i class="fa-solid fa-address-book"> CONTACT </i>
                 </a>
             </li>
         </ul>

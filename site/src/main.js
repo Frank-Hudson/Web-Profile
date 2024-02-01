@@ -1478,9 +1478,9 @@ function to_top_update() {
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
 
 function fix_navigation() {
-    const nav = document.getElementById("nav");
     const header = document.getElementById("header");
     const headerHeight = header.clientHeight;
+    const nav = document.getElementById("nav");
 
     if (window.scrollY > headerHeight) {
         nav.style.position = "fixed";
@@ -1492,13 +1492,76 @@ function fix_navigation() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// ####                           Elem Events                            #### //
+// ####                              Fixes                              #### //
 ////////////////////////////////////////////////////////////////////////////////
 
-const navigationVisible = true;
+function is_user_device_mobile() {
+    const systemDetails = navigator.platform;
+    const mobileOSes = /android|iphone|kindle|ipad/i;
+    const swapWidth = 700;
+    const windowWidth = window.screen.width;
+    console.log(`System: ${systemDetails}\n
+Swap at: ${swapWidth}\n
+Window Width: ${windowWidth}`);
 
-function navigation_toggle_events() {
-    const toggle = document.querySelector("#nav-toggle");
+    const isMobile = mobileOSes.test(systemDetails);
+
+    return isMobile || windowWidth < swapWidth;
+}
+
+// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
+
+function user_OS_fixes() {
+    const isMobile = is_user_device_mobile();
+    console.log(`Mobile?: ${isMobile}`);
+
+    const bodyStyle = getComputedStyle(document.body);
+    const nav = document.getElementById("nav");
+    console.log(`Nav Font Size: ${nav.style.fontSize}`);
+
+    if (isMobile) {
+        nav.style.width = "100%";
+        nav.style.fontSize = "24pt";
+    } else {
+        nav.style.width = bodyStyle.getPropertyValue("--nav-width");
+        nav.style.fontSize = "16pt";
+    }
+}
+
+// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
+
+function fix_main_margin() {
+    const main = document.getElementById("main");
+    const bodyWidth = document.body.offsetWidth;
+    const bodyStyle = getComputedStyle(document.body);
+    const percentageNumber =
+        parseInt(bodyStyle.getPropertyValue("--nav-width")) / 100;
+
+    const percentagePixels = bodyWidth * percentageNumber;
+
+    if (!is_user_device_mobile()) {
+        main.style.setProperty("--main-margin-left", percentagePixels + "px");
+    } else {
+        main.style.marginLeft = "0";
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// ####                              Events                              #### //
+////////////////////////////////////////////////////////////////////////////////
+
+function set_on_clicks() {
+    const portfolioDropdownButtonCheckbox = document.querySelector(".portfolio-checkbox");
+    const portfolioDropdownButton = document.querySelector(".portfolio-button");
+    const portfolioDropdownCaret = document.querySelector(".fa-solid.fa-caret-right");
+
+    portfolioDropdownButton.addEventListener("onclick", function() {
+        if (portfolioDropdownButtonCheckbox.checked) {
+            portfolioDropdownCaret.classList[1] = "fa-caret-right";
+        } else {
+            portfolioDropdownCaret.classList[1] = "fa-caret-down";
+        }
+    });
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1515,29 +1578,6 @@ class Tag {
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
 
-function check_width() {
-    const swapWidth = 855;
-    const width = window.screen.width;
-    const nav = document.getElementById("nav");
-    const navLinks = nav.querySelectorAll("a");
-
-    if (width < swapWidth) {
-        navLinks.forEach((link) => {
-            link.style.float = "none";
-            if (link.id == "contact-button") {
-                // link.style.width = link.style.height;
-                // link.style.height = "xdg";
-            }
-        });
-    } else {
-        navLinks.forEach((link) => {
-            // link.style.float = "left";
-        });
-    }
-}
-
-// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
-
 function main() {
     const stylesheetPath = "./styles/style1.css";
     const siteTitle = "Web Profile";
@@ -1549,11 +1589,11 @@ function main() {
     const main = document.getElementById("main");
     const footer = document.getElementById("footer");
 
-    to_top();
-    navigation_toggle_events();
-
     on_scroll();
-    check_width();
+
+    fix_main_margin();
+    user_OS_fixes();
+    to_top();
 
     const tags = {
         info: new Tag("info"),
