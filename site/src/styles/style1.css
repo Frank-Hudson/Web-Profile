@@ -364,7 +364,7 @@ body {
 .dropdown-button i.fa-caret-bottom,
 .dropdown-button i.fa-caret-left {
     padding: 5px;
-    rotate: -90deg;
+    rotate: 90deg;
     transition: rotate 0.2s ease-in-out;
 }
 
@@ -372,7 +372,7 @@ body {
 .dropdown-button:has(input:checked) i.fa-caret-right,
 .dropdown-button:has(input:checked) i.fa-caret-bottom,
 .dropdown-button:has(input:checked) i.fa-caret-left {
-    rotate: 90deg;
+    rotate: -90deg;
 }
 
 .dropdown {

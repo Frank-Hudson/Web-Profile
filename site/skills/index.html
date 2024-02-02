@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            rel="stylesheet"
+            id="style-sheet"
+            href="../src/styles/style1.css"
+        />
+        <!-- <link rel="stylesheet" href="../src/styles/style2.css" /> -->
+        <!-- <link rel="stylesheet" href="../src/styles/style3.css" /> -->
+
+        <title>
+            Web Profile - Skills - <span id="title-content-name">SKILL NAME</span>
+        </title>
+
+        <!-- Icons from Font Awesome (https://fontawesome.com/) -->
+        <script
+            src="https://kit.fontawesome.com/a6b42c51ae.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+
+    <body>
+        <header id="header">
+            <h1>Web Profile</h1>
+            <p>Frank Hudson</p>
+        </header>
+
+        <label class="hamburger-menu">
+            <input
+                type="checkbox"
+                id="nav-toggle"
+                title="Navigation hamburger menu"
+            />
+        </label>
+
+        <ul id="nav">
+            <li>
+                <a class="there" href="../index.html" id="home-button">
+                    <i class="fa-solid fa-house"> HOME </i>
+                </a>
+            </li>
+
+            <li>
+                <a class="there" href="../skills.html" id="skills-button">
+                    <i class="fa-solid fa-toolbox"> SKILLS </i>
+                </a>
+            </li>
+
+            <li>
+                <div class="dropdown">
+                    <label class="dropdown-button">
+                        <input
+                            type="checkbox"
+                            id="portfolio-checkbox"
+                            title="Portfolio dropdown menu"
+                        />
+                        <span class="portfolio-button">
+                            <i class="fa-solid fa-briefcase"> PORTFOLIO </i>
+                            <i class="fa-solid fa-caret-right"></i>
+                        </span>
+                    </label>
+                    <div class="dropdown-content">
+                        <a
+                            href="../portfolio/products.html"
+                            id="portfolio-products-button"
+                        >
+                            <i class="fa-solid fa-boxes-packing"> PRODUCTS </i>
+                        </a>
+                        <a
+                            href="../portfolio/projects.html"
+                            id="portfolio-projects-button"
+                        >
+                            <i class="fa-solid fa-clipboard-list"> PROJECTS </i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <a class="there" href="../knowledge.html" id="knowledge-button">
+                    <i class="fa-solid fa-book"> KNOWLEDGE </i>
+                </a>
+            </li>
+
+            <li>
+                <a class="there" href="../interests.html" id="interests-button">
+                    <i class="fa-solid fa-icons"> INTERESTS </i>
+                </a>
+            </li>
+
+            <li>
+                <a class="there" href="../contact.html" id="contact-button">
+                    <i class="fa-solid fa-address-book"> CONTACT </i>
+                </a>
+            </li>
+        </ul>
+
+        <main id="main">
+            <div class="page skills content">
+                <div class="skill">
+                    <h2 id="skill-name"> { SKILL NAME } </h2>
+
+                    <p class="detail" id="skill-areas"></p>
+
+                    <p class="detail" id="skill-competency"></p>
+
+                    <div class="content" id="skill-description"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- FIXED -->
+        <button id="totop" title="Go to top">&#9650; TOP</button>
+
+        <footer id="footer"></footer>
+    </body>
+
+    <script src="../src/main.js"></script>
+</html>

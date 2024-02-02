@@ -1146,7 +1146,6 @@ class Skill {
             this.areas.join(", ") +
             ". " +
             this.competency +
-            " competency" +
             "</p>" +
             "</div>"
         );

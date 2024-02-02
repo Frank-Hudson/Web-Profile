@@ -18,7 +18,7 @@ It is intended to be easy to read, navigate and use, as well as to be visually a
 ## Contributors
 
 - [Frank Hudson (GitHub @Frank-Hudson)](https://github.com/Frank-Hudson)  
-    <sub>_(I can't believe the handle was available! In 2023!)_</sub>
+    <sub>_(I can't believe the handle was available! In 2022!)_</sub>
   - Creator and Developer
 - Anon. classmate
   - Feedback on designs
