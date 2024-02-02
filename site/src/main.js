@@ -836,17 +836,29 @@ class Navigation extends MyElement {
 
     getHtmlString() {
         return (
-            "<nav id='nav'>" +
+            "<ul id='nav'>" +
+            "<li>" +
             this.createNavigationAnchorHtmlString(Pages.Home) +
+            "</li>" +
+            "<li>" +
             this.createNavigationAnchorHtmlString(Pages.Skills) +
+            "</li>" +
+            "<li>" +
             this.createNavigationAnchorDropdownHtmlString(Pages.Portfolio, [
                 Pages.Products,
                 Pages.Projects,
             ]) +
+            "</li>" +
+            "<li>" +
             this.createNavigationAnchorHtmlString(Pages.Knowledge) +
+            "</li>" +
+            "<li>" +
             this.createNavigationAnchorHtmlString(Pages.Interests) +
+            "</li>" +
+            "<li>" +
             this.createNavigationAnchorHtmlString(Pages.Contact) +
-            "</nav>"
+            "</li>" +
+            "</ul>"
         );
     }
 
@@ -1611,13 +1623,18 @@ function fix_navigation() {
     const header = document.getElementById("header");
     const headerHeight = header.clientHeight;
     const nav = document.getElementById("nav");
+    const navHamburgerButton = document.getElementsByClassName("hamburger-menu")[0];
 
     if (window.scrollY > headerHeight) {
         nav.style.position = "fixed";
         nav.style.top = 0;
+        navHamburgerButton.style.position = "fixed";
+        navHamburgerButton.style.top = "var(--hamburger-margin)";
     } else {
         nav.style.position = "absolute";
         nav.style.top = headerHeight + "px";
+        navHamburgerButton.style.position = "absolute";
+        navHamburgerButton.style.top = "calc(var(--hamburger-margin) + var(--header-height))";
     }
 }
 
@@ -1920,16 +1937,11 @@ function main() {
     const ageElement = document.getElementById("age");
 
     // `Wednesday 14 September, 2005`
-    birthdayElement.innerHTML =
-        `${
-            weekday_name(myBirthday.getDay())
-        } ${
-            myBirthday.getDate()
-        } ${
-            month_name(myBirthday.getMonth())
-        }, ${
-            myBirthday.getFullYear()
-        }`;
+    birthdayElement.innerHTML = `${weekday_name(
+        myBirthday.getDay()
+    )} ${myBirthday.getDate()} ${month_name(
+        myBirthday.getMonth()
+    )}, ${myBirthday.getFullYear()}`;
 
     ageElement.innerHTML = myAge.ageInYears;
     ageElement.title = myAge.fullAge + ", to be exact";
