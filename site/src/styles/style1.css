@@ -359,6 +359,22 @@ body {
     cursor: pointer;
 }
 
+.dropdown-button i.fa-caret-top,
+.dropdown-button i.fa-caret-right,
+.dropdown-button i.fa-caret-bottom,
+.dropdown-button i.fa-caret-left {
+    padding: 5px;
+    rotate: -90deg;
+    transition: rotate 0.2s ease-in-out;
+}
+
+.dropdown-button:has(input:checked) i.fa-caret-top,
+.dropdown-button:has(input:checked) i.fa-caret-right,
+.dropdown-button:has(input:checked) i.fa-caret-bottom,
+.dropdown-button:has(input:checked) i.fa-caret-left {
+    rotate: 90deg;
+}
+
 .dropdown {
     background-color: rgba(0, 0, 0, 0.4);
     width: 100%;
