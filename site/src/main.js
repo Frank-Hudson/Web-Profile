@@ -1434,6 +1434,136 @@ class ThemeVariables {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// ####                          Functionality                          #### //
+////////////////////////////////////////////////////////////////////////////////
+
+function calculate_age(birthday) {
+    // SET CURRENT RELATIVE DATES
+    const today = new Date();
+    const yearNow = today.getUTCFullYear() - 1;
+    const monthNow = today.getMonth() + 1;
+    const lastMonth = monthNow - 1;
+    const dateNow = today.getDate();
+
+    // MONTHS LISTED BY DAY LENGTH (EXCLUDING FEB)
+    const monthLengthsMap = new Map([
+        [1, 31],
+        [2, 28],
+        [3, 31],
+        [4, 30],
+        [5, 31],
+        [6, 30],
+        [7, 31],
+        [8, 31],
+        [9, 30],
+        [10, 31],
+        [11, 30],
+        [12, 31],
+    ]);
+
+    // SETTING PREVIOUS MONTH LENGTH
+    const lastMonthLength = monthLengthsMap.get(lastMonth);
+
+    // BIRTHDAY
+    const birthYear = birthday.getFullYear();
+    const birthMonth = birthday.getMonth();
+    const birthDate = birthday.getDate();
+
+    // INCREASE YEAR AFTER BIRTHDAY
+    if (
+        (monthNow == birthMonth && dateNow >= birthDate) ||
+        monthNow > birthMonth
+    ) {
+        yearNow++;
+    }
+
+    // CALCULATE DIFFERENCE FROM BIRTH TO NOW
+    let yearDifference = yearNow - birthYear;
+    let monthDifference = monthNow - birthMonth;
+    let dateDifference = dateNow - birthDate - 1;
+
+    if (monthDifference < 1) {
+        monthDifference += 12;
+    }
+    if (dateDifference < 1) {
+        monthDifference--;
+    }
+    if (dateDifference < 0) {
+        dateDifference += lastMonthLength;
+    }
+
+    // RETURN AGE AS OBJECT
+    return {
+        ageInYears: yearDifference.toString(),
+        fullAge: `${yearDifference} years, ${monthDifference} months, and ${dateDifference} days`,
+        ageParts: {
+            year: yearDifference,
+            month: monthDifference,
+            date: dateDifference,
+        },
+    };
+}
+
+// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
+
+function weekday_name(weekdayIndex) {
+    const weekdayNamesMap = new Map([
+        [0, "Sunday"],
+        [1, "Monday"],
+        [2, "Tuesday"],
+        [3, "Wednesday"],
+        [4, "Thursday"],
+        [5, "Friday"],
+        [6, "Saturday"],
+    ]);
+
+    function fixWeekdayIndex(weekdayIndex) {
+        if (weekdayIndex > 6) {
+            return fixWeekdayIndex(weekdayIndex - 7);
+        } else if (weekdayIndex < 0) {
+            return fixWeekdayIndex(weekdayIndex + 7);
+        } else {
+            return weekdayIndex;
+        }
+    }
+
+    const workableWeekdayIndex = fixWeekdayIndex(weekdayIndex);
+    return weekdayNamesMap.get(workableWeekdayIndex);
+}
+
+// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
+
+function month_name(monthIndex) {
+    const monthNamesMap = new Map([
+        [0, "January"],
+        [1, "February"],
+        [2, "March"],
+        [3, "April"],
+        [4, "May"],
+        [5, "June"],
+        [6, "July"],
+        [7, "August"],
+        [8, "September"],
+        [9, "October"],
+        [10, "November"],
+        [11, "December"],
+    ]);
+
+    function fixMonthIndex(monthIndex) {
+        if (monthIndex > 11) {
+            return fixMonthIndex(monthIndex - 12);
+        } else if (monthIndex < 0) {
+            return fixMonthIndex(monthIndex + 12);
+        } else {
+            return monthIndex;
+        }
+    }
+
+    const workableMonthIndex = fixMonthIndex(monthIndex);
+    return monthNamesMap.get(workableMonthIndex);
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // ####                            Scrolling                            #### //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1650,6 +1780,9 @@ function main() {
         portfolio: new Tag("portfolio"),
     };
 
+    const myBirthday = new Date(2005, 8, 14);
+    const myAge = calculate_age(myBirthday);
+
     const skills = [
         new Skill(
             "html",
@@ -1782,6 +1915,24 @@ function main() {
         defaultLight: new Theme(new ThemeVariables()),
         defaultDark: new Theme(),
     };
+
+    const birthdayElement = document.getElementById("birthday");
+    const ageElement = document.getElementById("age");
+
+    // `Wednesday 14 September, 2005`
+    birthdayElement.innerHTML =
+        `${
+            weekday_name(myBirthday.getDay())
+        } ${
+            myBirthday.getDate()
+        } ${
+            month_name(myBirthday.getMonth())
+        }, ${
+            myBirthday.getFullYear()
+        }`;
+
+    ageElement.innerHTML = myAge.ageInYears;
+    ageElement.title = myAge.fullAge + ", to be exact";
 }
 
 main();

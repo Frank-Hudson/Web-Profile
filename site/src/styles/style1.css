@@ -664,3 +664,7 @@ a.labelled {
 .invisible {
     display: var(--invisible-display);
 }
+
+.italic {
+    font-style: italic;
+}
