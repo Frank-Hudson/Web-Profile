@@ -1622,7 +1622,8 @@ function fix_navigation() {
     const header = document.getElementById("header");
     const headerHeight = header.clientHeight;
     const nav = document.getElementById("nav");
-    const navHamburgerButton = document.getElementsByClassName("hamburger-menu")[0];
+    const navHamburgerButton =
+        document.getElementsByClassName("hamburger-menu")[0];
 
     if (window.scrollY > headerHeight) {
         nav.style.position = "fixed";
@@ -1633,7 +1634,8 @@ function fix_navigation() {
         nav.style.position = "absolute";
         nav.style.top = headerHeight + "px";
         navHamburgerButton.style.position = "absolute";
-        navHamburgerButton.style.top = "calc(var(--hamburger-margin) + var(--header-height))";
+        navHamburgerButton.style.top =
+            "calc(var(--hamburger-margin) + var(--header-height))";
     }
 }
 
@@ -1714,48 +1716,54 @@ function set_on_clicks() {
 
     // - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - //
 
-    const cardElements = document.querySelectorAll(".card");
+    const cardElements = document.querySelectorAll("div");
 
     cardElements.forEach(function (cardElement) {
-        cardElement.onclick = function () {
-            const currentLocationArray = window.location.href.split("/");
-            const oldPage = currentLocationArray.pop();
-            if (oldPage === "") {
-                oldPage = currentLocationArray.pop();
-            }
-            const currentLocationWithoutPage = currentLocationArray.join("/");
+        if (cardElement.classList.contains("card")) {
+            cardElement.onclick = function () {
+                const currentLocationArray = window.location.href.split("/");
 
-            let newPageDirectory;
+                const oldPage = currentLocationArray.pop();
 
-            switch (oldPage) {
-                case "skills.html":
-                    newPageDirectory = "/skills/";
-                    break;
-                case "products.html":
-                    newPageDirectory = "/products/";
-                    break;
-                case "projects.html":
-                    newPageDirectory = "/projects/";
-                    break;
-                case "knowledge.html":
-                    newPageDirectory = "/knowledge/";
-                    break;
-                case "interests.html":
-                    newPageDirectory = "/interests/";
-                    break;
-                default:
-                    newPageDirectory = "/";
-                    break;
-            }
+                if (oldPage == "") {
+                    oldPage = currentLocationArray.pop();
+                }
 
-            const newLocation =
-                currentLocationWithoutPage +
-                newPageDirectory +
-                cardElement.querySelector(".name").innerHTML +
-                ".html";
-            console.log(newLocation);
-            window.location = newLocation;
-        };
+                let newPageDirectory;
+
+                switch (oldPage) {
+                    case "skills.html":
+                        newPageDirectory = "/skills/";
+                        break;
+                    case "products.html":
+                        newPageDirectory = "/products/";
+                        break;
+                    case "projects.html":
+                        newPageDirectory = "/projects/";
+                        break;
+                    case "knowledge.html":
+                        newPageDirectory = "/knowledge/";
+                        break;
+                    case "interests.html":
+                        newPageDirectory = "/interests/";
+                        break;
+                    default:
+                        newPageDirectory = "/";
+                        break;
+                }
+
+                const currentLocationWithoutPage =
+                    currentLocationArray.join("/");
+
+                const newLocation =
+                    currentLocationWithoutPage +
+                    newPageDirectory +
+                    "index.html#" +
+                    cardElement.querySelector(".name").innerHTML;
+
+                window.open(newLocation, "_self");
+            };
+        }
     });
 }
 
@@ -1786,6 +1794,8 @@ function main() {
 
     on_scroll();
 
+    set_on_clicks();
+
     fix_main_margin();
     user_OS_fixes();
     to_top();
@@ -1801,21 +1811,21 @@ function main() {
 
     const skills = [
         new Skill(
-            "html",
+            "HTML",
             "HTML (HyperText Markup Language)",
             "Intermediate",
             ["Frontend Web Development", "Backend Web Development"],
             "Programming language for creating webpage structures."
         ),
         new Skill(
-            "css",
+            "CSS",
             "CSS (Cascading Style Sheets)",
             "Beginner",
             ["Frontend Web Development", "Digital Graphics"],
             "Programming language for styling web pages."
         ),
         new Skill(
-            "javascript",
+            "JavaScript",
             "JavaScript",
             "Intermediate",
             [
@@ -1826,7 +1836,7 @@ function main() {
             "Programming and scripting language that gives webpages functionality and interactivity."
         ),
         new Skill(
-            "rust",
+            "Rust",
             "Rust",
             "Beginner",
             [
@@ -1842,7 +1852,7 @@ function main() {
             "High-level systems programming language, designed for interacting more safely with low-level concepts."
         ),
         new Skill(
-            "python",
+            "Python",
             "Python",
             "Intermediate",
             [
@@ -1853,6 +1863,11 @@ function main() {
             ],
             "Programming and scripting lanuage commonly used for data science and statistics, as well as for testing code, teaching programming, and building small and portable scripts."
         ),
+    ];
+    const achievements = [
+        new Achievement("Advertisement", "Advertisement", new Date(), [
+            "Marketing",
+        ]),
     ];
 
     const pages = [
@@ -1932,18 +1947,97 @@ function main() {
         defaultDark: new Theme(),
     };
 
-    const birthdayElement = document.getElementById("birthday");
-    const ageElement = document.getElementById("age");
+    const directorySplitLocationArray = window.location.href.split("/");
+    const idSplitLocationArray = window.location.href.split("#");
 
-    // `Wednesday 14 September, 2005`
-    birthdayElement.innerHTML = `${weekday_name(
-        myBirthday.getDay()
-    )} ${myBirthday.getDate()} ${month_name(
-        myBirthday.getMonth()
-    )}, ${myBirthday.getFullYear()}`;
+    let currentPage = directorySplitLocationArray.pop();
+    if (currentPage == "") {
+        currentPage = directorySplitLocationArray.pop();
+    }
+    if (currentPage.includes("index.html")) {
+        currentPage = directorySplitLocationArray.pop() + "/index.html";
+    }
 
-    ageElement.innerHTML = myAge.ageInYears;
-    ageElement.title = myAge.fullAge + ", to be exact";
+    let currentContentId = idSplitLocationArray.pop();
+    if (currentContentId.includes(".html")) {
+        currentContentId = "";
+    }
+
+    const directorySplitLocationWithoutPageArray =
+        directorySplitLocationArray.join("/");
+
+    switch (currentPage) {
+        case "skills.html":
+            break;
+        case "skills/index.html":
+            break;
+        case "portfolio.html":
+            break;
+        case "products.html":
+            break;
+        case "products/index.html":
+            const contentElements = {
+                contentName: document.getElementById("content-name"),
+                achievementCompleted: document.getElementById(
+                    "achievement-completed"
+                ),
+                achievementArea: document.getElementById("achievement-area"),
+                achievementDescription: document.getElementById(
+                    "achievement-description"
+                ),
+                achievementTools: document.getElementById("achievement-tools"),
+                achievementSkills:
+                    document.getElementById("achievement-skills"),
+                setInnerHTMLs: function (achievement) {
+                    contentElements.contentName.innerHTML = achievement.name;
+                    contentElements.achievementCompleted.innerHTML =
+                        achievement.completed.toLocaleString();
+                    contentElements.achievementArea.innerHTML =
+                        achievement.area;
+                    contentElements.achievementDescription.innerHTML =
+                        achievement.description;
+                    contentElements.achievementTools.innerHTML =
+                        achievement.tools;
+                    contentElements.achievementSkills.innerHTML =
+                        achievement.skills;
+                },
+            };
+
+            const targetProduct = achievements.find(
+                (achievement) => achievement.id == currentContentId
+            );
+
+            contentElements.setInnerHTMLs(targetProduct);
+            break;
+        case "projects.html":
+            break;
+        case "projects/index.html":
+            break;
+        case "knowledge.html":
+            break;
+        case "knowledge/index.html":
+            break;
+        case "interests.html":
+            break;
+        case "interests/index.html":
+            break;
+        case "contact.html":
+            break;
+        default:
+            const birthdayElement = document.getElementById("birthday");
+            const ageElement = document.getElementById("age");
+
+            // `Wednesday 14 September, 2005`
+            birthdayElement.innerHTML = `${weekday_name(
+                myBirthday.getDay()
+            )} ${myBirthday.getDate()} ${month_name(
+                myBirthday.getMonth()
+            )}, ${myBirthday.getFullYear()}`;
+
+            ageElement.innerHTML = myAge.ageInYears;
+            ageElement.title = myAge.fullAge + ", to be exact";
+            break;
+    }
 }
 
 main();
