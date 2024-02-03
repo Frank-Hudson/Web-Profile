@@ -1689,13 +1689,13 @@ function fix_main_margin() {
     const main = document.getElementById("main");
     const bodyWidth = document.body.offsetWidth;
     const bodyStyle = getComputedStyle(document.body);
-    const percentageNumber =
+    const widthPercentage =
         parseInt(bodyStyle.getPropertyValue("--nav-width")) / 100;
 
-    const percentagePixels = bodyWidth * percentageNumber;
+    const widthPixels = bodyWidth * widthPercentage;
 
     if (!is_user_device_mobile()) {
-        main.style.setProperty("--main-margin-left", percentagePixels + "px");
+        main.style.setProperty("--main-margin-left", widthPixels + "px");
     } else {
         main.style.marginLeft = "0";
     }

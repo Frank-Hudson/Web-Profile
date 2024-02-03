@@ -419,18 +419,21 @@ body {
 }
 
 #main {
+    --main-margin-left: var(--nav-width);
+    --main-left-right-padding: 16vw;
+
     color: var(--main-color);
     background-color: var(--main-background-color);
-    /* width: 900px; */
-    min-width: 750px;
-    padding: 3vw 16vw;
+    /* min-width: 750px; */
+    padding: 3vw var(--main-left-right-padding);
     margin-top: var(--header-height);
     margin-left: 0;
-    transition: margin var(--hamburger-animation-timing);
+    transition: padding var(--hamburger-animation-timing),
+        margin var(--hamburger-animation-timing);
 }
 
 .hamburger-menu:has(input:checked) + #nav + #main {
-    --main-margin-left: var(--nav-width);
+    /* padding: 3vw calc(var(--main-margin-left) + var(--main-left-right-padding)); */
     margin-left: max(var(--main-margin-left), 250px);
 }
 
