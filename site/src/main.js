@@ -1290,6 +1290,16 @@ class ContactInformation {
     }
 }
 
+// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
+
+function fill_element_by_id(elementId, content) {
+    const element = document.getElementById(elementId);
+
+    if (element) {
+        element.innerHTML = content;
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // ####                         Theme Selection                         #### //
 ////////////////////////////////////////////////////////////////////////////////
@@ -1593,9 +1603,6 @@ function to_top() {
 
 function on_scroll() {
     window.onscroll = function () {
-        console.log(`ScrollY: ${window.scrollY}`);
-        console.log(`ScrollTop: ${document.body.scrollTop}`);
-
         to_top_update();
         fix_navigation();
     };
@@ -1865,9 +1872,26 @@ function main() {
         ),
     ];
     const achievements = [
-        new Achievement("Advertisement", "Advertisement", new Date(), [
-            "Marketing",
-        ]),
+        new Achievement(
+            "Advertisement",
+            "Advertisement",
+            new Date(),
+            ["Marketing"],
+            ["Photoshop"],
+            ["Graphic Design"],
+            ["An advertisement for a mobile phone made in Photoshop."]
+        ),
+        new Achievement(
+            "My_First_Database",
+            "My First Database",
+            new Date(),
+            ["Database Development", "Relational Database Systems"],
+            ["Microsoft Access Database"],
+            ["Database Management"],
+            [
+                "My first database, made for a fake medical clinic with Microsoft Access database.",
+            ]
+        ),
     ];
 
     const pages = [
@@ -1958,7 +1982,7 @@ function main() {
         currentPage = directorySplitLocationArray.pop() + "/index.html";
     }
 
-    let currentContentId = idSplitLocationArray.pop();
+    let currentContentId = idSplitLocationArray.pop().replace(/%20/g, "_");
     if (currentContentId.includes(".html")) {
         currentContentId = "";
     }
@@ -1970,48 +1994,48 @@ function main() {
         case "skills.html":
             break;
         case "skills/index.html":
+            const targetSkill = skills.find(
+                (skill) => skill.id === currentContentId
+            );
+
+            fill_element_by_id("content-name", targetSkill.skill);
+            fill_element_by_id(
+                "skill-area",
+                targetSkill.areas
+            );
+            fill_element_by_id(
+                "skill-competency",
+                targetSkill.competency
+            );
+            fill_element_by_id(
+                "skill-description",
+                targetSkill.description
+            );
             break;
         case "portfolio.html":
             break;
         case "products.html":
             break;
+        case "projects.html":
+            break;
         case "products/index.html":
-            const contentElements = {
-                contentName: document.getElementById("content-name"),
-                achievementCompleted: document.getElementById(
-                    "achievement-completed"
-                ),
-                achievementArea: document.getElementById("achievement-area"),
-                achievementDescription: document.getElementById(
-                    "achievement-description"
-                ),
-                achievementTools: document.getElementById("achievement-tools"),
-                achievementSkills:
-                    document.getElementById("achievement-skills"),
-                setInnerHTMLs: function (achievement) {
-                    contentElements.contentName.innerHTML = achievement.name;
-                    contentElements.achievementCompleted.innerHTML =
-                        achievement.completed.toLocaleString();
-                    contentElements.achievementArea.innerHTML =
-                        achievement.area;
-                    contentElements.achievementDescription.innerHTML =
-                        achievement.description;
-                    contentElements.achievementTools.innerHTML =
-                        achievement.tools;
-                    contentElements.achievementSkills.innerHTML =
-                        achievement.skills;
-                },
-            };
-
-            const targetProduct = achievements.find(
+        case "projects/index.html":
+            const targetAchievement = achievements.find(
                 (achievement) => achievement.id == currentContentId
             );
 
-            contentElements.setInnerHTMLs(targetProduct);
-            break;
-        case "projects.html":
-            break;
-        case "projects/index.html":
+            fill_element_by_id("content-name", targetAchievement.name);
+            fill_element_by_id(
+                "achievement-completed",
+                targetAchievement.completionDate.toLocaleDateString()
+            );
+            fill_element_by_id("achievement-area", targetAchievement.area);
+            fill_element_by_id(
+                "achievement-description",
+                targetAchievement.description
+            );
+            fill_element_by_id("achievement-tools", targetAchievement.tools);
+            fill_element_by_id("achievement-skills", targetAchievement.skills);
             break;
         case "knowledge.html":
             break;
