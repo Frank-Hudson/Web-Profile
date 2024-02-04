@@ -1893,6 +1893,18 @@ function main() {
             ]
         ),
     ];
+    const articles = [
+        new Article(
+            "What_is_Time_Travel?",
+            "What is Time Travel?",
+            ["Time", "Time Travel", "Theoretical Physics"],
+            "In this article, I explain my understanding of time travel, paradoxes, and timelines, as well as some minor theoretical physics.",
+            [
+                "Hello, this is indeed an article.",
+                "This should be another paragraph.",
+            ]
+        ),
+    ];
 
     const pages = [
         new Page("home", "")
@@ -1968,7 +1980,7 @@ function main() {
     ];
     const themes = {
         defaultLight: new Theme(new ThemeVariables()),
-        defaultDark: new Theme(),
+        defaultDark: new Theme(new ThemeVariables()),
     };
 
     const directorySplitLocationArray = window.location.href.split("/");
@@ -1998,19 +2010,11 @@ function main() {
                 (skill) => skill.id === currentContentId
             );
 
+            document.title = `${targetSkill.skill} ${document.title}`;
             fill_element_by_id("content-name", targetSkill.skill);
-            fill_element_by_id(
-                "skill-area",
-                targetSkill.areas
-            );
-            fill_element_by_id(
-                "skill-competency",
-                targetSkill.competency
-            );
-            fill_element_by_id(
-                "skill-description",
-                targetSkill.description
-            );
+            fill_element_by_id("skill-area", targetSkill.areas);
+            fill_element_by_id("skill-competency", targetSkill.competency);
+            fill_element_by_id("skill-description", targetSkill.description);
             break;
         case "portfolio.html":
             break;
@@ -2024,6 +2028,7 @@ function main() {
                 (achievement) => achievement.id == currentContentId
             );
 
+            document.title = `${targetAchievement.name} ${document.title}`;
             fill_element_by_id("content-name", targetAchievement.name);
             fill_element_by_id(
                 "achievement-completed",
@@ -2039,10 +2044,9 @@ function main() {
             break;
         case "knowledge.html":
             break;
-        case "knowledge/index.html":
-            break;
         case "interests.html":
             break;
+        case "knowledge/index.html":
         case "interests/index.html":
             break;
         case "contact.html":
