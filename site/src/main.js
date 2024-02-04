@@ -1237,6 +1237,10 @@ class Article {
             "</div>"
         );
     }
+
+    getContentHtml() {
+        return this.content.map((paragraph) => `<p>${paragraph}</p>`).join("");
+    }
 }
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
@@ -1706,72 +1710,54 @@ function fix_main_margin() {
 ////////////////////////////////////////////////////////////////////////////////
 
 function set_on_clicks() {
-    const portfolioDropdownButtonCheckbox =
-        document.getElementsByClassName("portfolio-checkbox");
-    const portfolioDropdownButton =
-        document.getElementsByClassName("portfolio-button")[0];
-    const portfolioDropdownCaret =
-        document.getElementsByClassName("fa-caret-right")[0];
-
-    portfolioDropdownButton.onclick = function () {
-        if (portfolioDropdownButtonCheckbox.checked) {
-            portfolioDropdownCaret.styles.rotate = "0deg";
-        } else {
-            portfolioDropdownCaret.styles.rotate = "90deg";
-        }
-    };
-
-    // - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - //
-
-    const cardElements = document.querySelectorAll("div");
+    const cardElements = document.querySelectorAll(".card");
 
     cardElements.forEach(function (cardElement) {
-        if (cardElement.classList.contains("card")) {
-            cardElement.onclick = function () {
-                const currentLocationArray = window.location.href.split("/");
+        cardElement.onclick = function () {
+            const currentLocationArray = window.location.href.split("/");
 
-                const oldPage = currentLocationArray.pop();
+            const oldPage = currentLocationArray.pop();
 
-                if (oldPage == "") {
-                    oldPage = currentLocationArray.pop();
-                }
+            if (oldPage == "") {
+                oldPage = currentLocationArray.pop();
+            }
 
-                let newPageDirectory;
+            let newPageDirectory;
 
-                switch (oldPage) {
-                    case "skills.html":
-                        newPageDirectory = "/skills/";
-                        break;
-                    case "products.html":
-                        newPageDirectory = "/products/";
-                        break;
-                    case "projects.html":
-                        newPageDirectory = "/projects/";
-                        break;
-                    case "knowledge.html":
-                        newPageDirectory = "/knowledge/";
-                        break;
-                    case "interests.html":
-                        newPageDirectory = "/interests/";
-                        break;
-                    default:
-                        newPageDirectory = "/";
-                        break;
-                }
+            switch (oldPage) {
+                case "skills.html":
+                    newPageDirectory = "/skills/";
+                    break;
+                case "products.html":
+                    newPageDirectory = "/products/";
+                    break;
+                case "projects.html":
+                    newPageDirectory = "/projects/";
+                    break;
+                case "knowledge.html":
+                    newPageDirectory = "/knowledge/";
+                    break;
+                case "interests.html":
+                    newPageDirectory = "/interests/";
+                    break;
+                default:
+                    newPageDirectory = "/";
+                    break;
+            }
 
-                const currentLocationWithoutPage =
-                    currentLocationArray.join("/");
+            const currentLocationWithoutPage = currentLocationArray.join("/");
 
-                const newLocation =
-                    currentLocationWithoutPage +
-                    newPageDirectory +
-                    "index.html#" +
-                    cardElement.querySelector(".name").innerHTML;
+            const newLocation =
+                currentLocationWithoutPage +
+                newPageDirectory +
+                "index.html#" +
+                cardElement.querySelector(".name").innerHTML;
 
-                window.open(newLocation, "_self");
-            };
-        }
+            window.open(newLocation, "_self");
+        };
     });
+
+    // - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - //
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1894,14 +1880,28 @@ function main() {
         ),
     ];
     const articles = [
+        // ###                         Knowledge                         ### //
+        //  -- -- -- -- -- -- -- -- -- --------- -- -- -- -- -- -- -- -- --  //
         new Article(
             "What_is_Time_Travel?",
             "What is Time Travel?",
             ["Time", "Time Travel", "Theoretical Physics"],
             "In this article, I explain my understanding of time travel, paradoxes, and timelines, as well as some minor theoretical physics.",
             [
-                "Hello, this is indeed an article.",
-                "This should be another paragraph.",
+                "The idea of time travel is a complicated one. It raises many questions about the nature of time, whether that be what it is in a physical sense, or if there is any way to travel through it in any direction other than our forward.",
+                "Throughout history, many people have theorised the ability to travel to the past, or even the now <attr title='lightspeed warping, etc\nI'm not a physicist, I shouldn't have even started this article'>proven</attr> ability to travel to the future faster than we are currently.",
+            ]
+        ),
+        // ###                         Interests                         ### //
+        //  -- -- -- -- -- -- -- -- -- --------- -- -- -- -- -- -- -- -- --  //
+        new Article(
+            "I_Like_Gaming",
+            "I Like Gaming",
+            ["Games", "Gaming"],
+            "This article will cover the kinds of games I like, and how I play them.",
+            [
+                "I like gaming because I like to play games, and I like to play games because I like to play games.",
+                "I talk and I talk and I talk.",
             ]
         ),
     ];
@@ -2048,6 +2048,17 @@ function main() {
             break;
         case "knowledge/index.html":
         case "interests/index.html":
+            const targetArticle = articles.find(
+                (article) => article.id === currentContentId
+            );
+
+            document.title = `${targetArticle.title} ${document.title}`;
+            fill_element_by_id("content-name", targetArticle.title);
+            fill_element_by_id("article-topic", targetArticle.topic);
+            fill_element_by_id(
+                "article-content",
+                targetArticle.getContentHtml()
+            );
             break;
         case "contact.html":
             break;
