@@ -557,6 +557,45 @@ class ListItem extends MyElement {
     }
 }
 
+// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
+
+class ImageElement extends MyElement {
+    src;
+    alt;
+
+    constructor(
+        src,
+        alt,
+        width,
+        height,
+        id = "",
+        classes = "",
+        styles = new Styles(),
+        attributes = {},
+        tags = []
+    ) {
+        super("", id, classes, styles, attributes, tags);
+        this.src = src;
+        this.alt = alt;
+        this.width = width;
+        this.height = height;
+    }
+
+    getHtmlString() {
+        return `<img \
+                src="${this.src}" \
+                alt="${this.alt}" \
+                width="${this.width}" \
+                height="${this.height}" \
+                id="${this.id}" \
+                class="${this.classes}" \
+                style="${this.styles.getCssString()}" \
+                ${this.attributes.map(
+                    ([attribute, value]) => ` ${attribute}="${value}" `
+                )} />`;
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // ####                              Pages                              #### //
 ////////////////////////////////////////////////////////////////////////////////
@@ -1162,6 +1201,7 @@ class Achievement {
     tools;
     skills;
     description;
+    content;
     tags;
 
     constructor(
@@ -1172,6 +1212,7 @@ class Achievement {
         tools = [],
         skills = [],
         description = [],
+        content = "",
         tags = []
     ) {
         this.id = id;
@@ -1181,6 +1222,7 @@ class Achievement {
         this.tools = tools;
         this.skills = skills;
         this.description = description;
+        this.content = content;
         this.tags = tags;
     }
 
@@ -1865,7 +1907,11 @@ function main() {
             ["Marketing"],
             ["Photoshop"],
             ["Graphic Design"],
-            ["An advertisement for a mobile phone made in Photoshop."]
+            ["An advertisement for a mobile phone made in Photoshop."],
+            new ImageElement(
+                "../../src/assets/achievements/mobile_advertisement.png",
+                "Advertisement for a mobile phone"
+            ).getHtmlString()
         ),
         new Achievement(
             "My_First_Database",
