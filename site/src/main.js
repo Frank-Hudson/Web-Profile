@@ -4,75 +4,6 @@
 // ####                               CSS                               #### //
 ////////////////////////////////////////////////////////////////////////////////
 
-const StyleProperty = Object.freeze({
-    font: "font",
-    fontFamily: "font-family",
-    fontColour: "font-color",
-    fontSize: "font-size",
-    fontWeight: "font-weight",
-    fontStyle: "font-style",
-    background: "background",
-    backgroundColour: "background-color",
-    backgroundImage: "background-image",
-    backgroundPosition: "background-position",
-    boxShadow: "boxShadow",
-    opacity: "opacity",
-    textAlign: "textAlign",
-    textDecoration: "textDecoration",
-    lineHeight: "lineHeight",
-    display: "display",
-    floatStyle: "floatStyle",
-    position: "position",
-    top: "top",
-    right: "right",
-    bottom: "bottom",
-    left: "left",
-    width: "width",
-    height: "height",
-    minWidth: "minWidth",
-    minHeight: "minHeight",
-    padding: "padding",
-    paddingTop: "padding-top",
-    paddingBottom: "padding-bottom",
-    paddingLeft: "padding-left",
-    paddingRight: "padding-right",
-    border: "border",
-    borderTop: "border-top",
-    borderTopWidth: "border-top-width",
-    borderTopColour: "border-top-color",
-    borderTopImage: "border-top-image",
-    borderTopStyle: "border-top-style",
-    borderBottom: "border-bottom",
-    borderBottomWidth: "border-bottom-width",
-    borderBottomColour: "border-bottom-color",
-    borderBottomImage: "border-bottom-image",
-    borderBottomStyle: "border-bottom-style",
-    borderLeft: "border-left",
-    borderLeftWidth: "border-left-width",
-    borderLeftColour: "border-left-color",
-    borderLeftImage: "border-left-image",
-    borderLeftStyle: "border-left-style",
-    borderRight: "border-right",
-    borderRightWidth: "border-right-width",
-    borderRightColour: "border-right-color",
-    borderRightImage: "border-right-image",
-    borderRightStyle: "border-right-style",
-    borderRadius: "border-radius",
-    margin: "margin",
-    marginTop: "margin-top",
-    marginBottom: "margin-bottom",
-    marginLeft: "margin-left",
-    marginRight: "margin-right",
-    overflow: "overflow",
-    zIndex: "zIndex",
-    transform: "transform",
-    transition: "transition",
-    cursor: "cursor",
-    content: "content",
-});
-
-// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
-
 class Styles {
     font;
     background;
@@ -100,39 +31,34 @@ class Styles {
     transform;
     transition;
     cursor;
-    content;
 
     constructor(
         font = new Font(),
         background = new Background(),
-        boxShadow = new BoxShadow(
-            StyleMeasurement.px(0),
-            StyleMeasurement.px(0)
-        ),
-        opacity = 1.0,
-        textAlign = Alignment.centre,
-        textDecoration = null,
-        lineHeight,
-        display,
-        floatStyle,
-        position,
-        top,
-        right,
-        bottom,
-        left,
-        width,
-        height,
-        minWidth,
-        minHeight,
-        padding,
-        border,
-        margin,
-        overflow,
-        zIndex,
-        transform,
-        transition,
-        cursor,
-        content
+        boxShadow = new BoxShadow(),
+        opacity = "initial",
+        textAlign = Alignment.initial,
+        textDecoration = "initial",
+        lineHeight = StyleMeasurement.initial(),
+        display = "initial",
+        floatStyle = "initial",
+        position = "initial",
+        top = StyleMeasurement.initial(),
+        right = StyleMeasurement.initial(),
+        bottom = StyleMeasurement.initial(),
+        left = StyleMeasurement.initial(),
+        width = StyleMeasurement.initial(),
+        height = StyleMeasurement.initial(),
+        minWidth = StyleMeasurement.initial(),
+        minHeight = StyleMeasurement.initial(),
+        padding = new OuterArea(),
+        border = new Border(),
+        margin = new OuterArea(),
+        overflow = "initial",
+        zIndex = "initial",
+        transform = "initial",
+        transition = "initial",
+        cursor = "initial"
     ) {
         this.font = font;
         this.background = background;
@@ -160,7 +86,31 @@ class Styles {
         this.transform = transform;
         this.transition = transition;
         this.cursor = cursor;
-        this.content = content;
+    }
+
+    getCssString() {
+        const cssString =
+            this.font.getCssString() +
+            this.background.getCssString() +
+            this.boxShadow.getCssString() +
+            ` opacity: ${this.opacity}; ` +
+            ` text-align: ${this.textAlign}; text-decoration: ${this.textDecoration}; ` +
+            ` line-height: ${this.lineHeight.getCssString()}; ` +
+            ` display: ${this.display}; ` +
+            ` float: ${this.floatStyle}; ` +
+            ` position: ${this.position}; ` +
+            ` top: ${this.top.getCssString()}; right: ${this.right.getCssString()}; bottom: ${this.bottom.getCssString()}; left: ${this.left.getCssString()}; ` +
+            ` width: ${this.width.getCssString()}; height: ${this.height.getCssString()}; ` +
+            ` min-width: ${this.minWidth.getCssString()}; min-height: ${this.minHeight.getCssString()}; ` +
+            this.padding.getCssString(OuterAreaType.padding) +
+            this.margin.getCssString(OuterAreaType.margin) +
+            ` overflow: ${this.overflow}; ` +
+            ` z-index: ${this.zIndex}; ` +
+            ` transform: ${this.transform}; ` +
+            ` transition: ${this.transition}; ` +
+            ` cursor: ${this.cursor}; `;
+
+        return cssString;
     }
 }
 
@@ -172,6 +122,24 @@ class Font {
     size;
     style;
     weight;
+
+    constructor(
+        family = "initial",
+        colour = "initial",
+        size = "initial",
+        style = "initial",
+        weight = "initial"
+    ) {
+        this.family = family;
+        this.colour = colour;
+        this.size = size;
+        this.style = style;
+        this.weight = weight;
+    }
+
+    getCssString() {
+        return ` font-family: ${this.family}; color: ${this.colour}; font-size: ${this.size}; font-style: ${this.style}; font-weight: ${this.weight}; `;
+    }
 }
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
@@ -180,6 +148,16 @@ class Background {
     colour;
     image;
     position;
+
+    constructor(colour = "initial", image = "initial", position = "initial") {
+        this.colour = colour;
+        this.image = image;
+        this.position = position;
+    }
+
+    getCssString() {
+        return ` background-color: ${this.colour}; background-image: ${this.image}; background-position: ${this.position}; `;
+    }
 }
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
@@ -192,17 +170,23 @@ class BoxShadow {
     colour;
 
     constructor(
-        horizontalOffset,
-        verticalOffset,
-        blur = StyleMeasurement.px(0),
-        spread = StyleMeasurement.px(0),
-        colour = "#000000"
+        horizontalOffset = StyleMeasurement.initial(),
+        verticalOffset = StyleMeasurement.initial(),
+        blur = StyleMeasurement.initial(),
+        spread = StyleMeasurement.initial(),
+        colour = "transparent"
     ) {
         this.horizontalOffset = horizontalOffset;
         this.verticalOffset = verticalOffset;
         this.blur = blur;
         this.spread = spread;
         this.colour = colour;
+    }
+
+    getCssString() {
+        return ` box-shadow: ${this.horizontalOffset.getCssString()} ${this.verticalOffset.getCssString()} ${this.blur.getCssString()} ${this.spread.getCssString()} ${
+            this.colour
+        }; `;
     }
 }
 
@@ -214,6 +198,24 @@ class Border {
     left;
     right;
     radius;
+
+    constructor(
+        top = new BorderEdge(),
+        bottom = new BorderEdge(),
+        left = new BorderEdge(),
+        right = new BorderEdge(),
+        radius = StyleMeasurement.initial()
+    ) {
+        this.top = top;
+        this.bottom = bottom;
+        this.left = left;
+        this.right = right;
+        this.radius = radius;
+    }
+
+    getCssString() {
+        return ` border-top: ${this.top.getCssValue()}; border-bottom: ${this.bottom.getCssValue()}; border-left: ${this.left.getCssValue()}; border-right: ${this.right.getCssValue()}; border-radius: ${this.radius.getCssString()}; `;
+    }
 }
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
@@ -223,6 +225,28 @@ class BorderEdge {
     colour;
     image;
     style;
+
+    constructor(
+        width = StyleMeasurement.initial(),
+        colour = "initial",
+        image = "initial",
+        style = "initial"
+    ) {
+        this.width = width;
+        this.colour = colour;
+        this.image = image;
+        this.style = style;
+    }
+
+    getCssString() {
+        return ` width: ${this.width.getCssString()}; color: ${
+            this.colour
+        }; image: ${this.image}; style: ${this.style}; `;
+    }
+
+    getCssValue() {
+        return ` ${this.width} ${this.colour} ${this.image} ${this.style}`;
+    }
 }
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
@@ -232,6 +256,26 @@ class OuterArea {
     bottom;
     left;
     right;
+
+    constructor(
+        top = StyleMeasurement.initial(),
+        bottom = StyleMeasurement.initial(),
+        left = StyleMeasurement.initial(),
+        right = StyleMeasurement.initial()
+    ) {
+        this.top = top;
+        this.bottom = bottom;
+        this.left = left;
+        this.right = right;
+    }
+
+    getCssString(outerAreaType) {
+        return ` ${outerAreaType}-top: ${this.top.getCssString()}; ${outerAreaType}-bottom: ${this.bottom.getCssString()}; ${outerAreaType}-left: ${this.left.getCssString()}; ${outerAreaType}-right: ${this.right.getCssString()}; `;
+    }
+
+    getCssValues() {
+        return ` ${this.top.getCssString()} ${this.bottom.getCssString()} ${this.left.getCssString()} ${this.right.getCssString()}`;
+    }
 }
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
@@ -240,45 +284,78 @@ class StyleMeasurement {
     value;
     measurementType;
 
+    constructor(value = 0, measurementType = "px") {
+        this.value = value;
+        this.measurementType = measurementType;
+    }
+
+    static initial() {
+        this.value = "initial";
+        this.measurementType = "";
+        return new this();
+    }
+    static inherit() {
+        this.value = "inherit";
+        this.measurementType = "";
+        return new this();
+    }
     static px(value) {
         this.value = value;
         this.measurementType = "px";
-        return this;
+        return new this();
     }
     static em(value) {
         this.value = value;
         this.measurementType = "em";
-        return this;
+        return new this();
     }
     static pt(value) {
         this.value = value;
         this.measurementType = "pt";
-        return this;
+        return new this();
     }
     static cm(value) {
         this.value = value;
         this.measurementType = "cm";
-        return this;
+        return new this();
     }
     static vw(value) {
         this.value = value;
         this.measurementType = "vw";
-        return this;
+        return new this();
     }
     static vh(value) {
         this.value = value;
         this.measurementType = "vh";
-        return this;
+        return new this();
+    }
+    static percent(value) {
+        this.value = value;
+        this.measurementType = "%";
+        return new this();
+    }
+
+    getCssString() {
+        return `${this.value}${this.measurementType}`;
     }
 }
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
 
 const Alignment = Object.freeze({
+    inherit: "inherit",
+    initial: "initial",
     centre: "centre",
     left: "left",
     right: "right",
     top: "justify",
+});
+
+// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
+
+const OuterAreaType = Object.freeze({
+    padding: "padding",
+    margin: "margin",
 });
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -566,8 +643,6 @@ class ImageElement extends MyElement {
     constructor(
         src,
         alt,
-        width,
-        height,
         id = "",
         classes = "",
         styles = new Styles(),
@@ -577,20 +652,24 @@ class ImageElement extends MyElement {
         super("", id, classes, styles, attributes, tags);
         this.src = src;
         this.alt = alt;
-        this.width = width;
-        this.height = height;
     }
 
     getHtmlString() {
+        const elementIdString = this.id === "" ? "" : `id="${this.id}"`;
+        const elementClassesString =
+            this.classes === "" ? "" : `classes="${this.classes}"`;
+        const elementStylesString =
+            this.styles.getCssString() == new Styles().getCssString()
+                ? ""
+                : `style="${this.styles.getCssString()}"`;
+
         return `<img \
                 src="${this.src}" \
                 alt="${this.alt}" \
-                width="${this.width}" \
-                height="${this.height}" \
-                id="${this.id}" \
-                class="${this.classes}" \
-                style="${this.styles.getCssString()}" \
-                ${this.attributes.map(
+                ${elementIdString}" \
+                ${elementClassesString}" \
+                ${elementStylesString}" \
+                ${Object.entries(this.attributes).map(
                     ([attribute, value]) => ` ${attribute}="${value}" `
                 )} />`;
     }
@@ -1844,6 +1923,14 @@ function main() {
     const myBirthday = new Date(2005, 8, 14);
     const myAge = calculate_age(myBirthday);
 
+    const assets = {
+        mobile_advertisement: new ImageElement(
+            "../../src/assets/achievements/mobile_advertisement.png",
+            "Advertisement for a mobile phone",
+            (styles = new Styles((width = StyleMeasurement.percent(100))))
+        ),
+    };
+
     const skills = [
         new Skill(
             "HTML",
@@ -1908,10 +1995,7 @@ function main() {
             ["Photoshop"],
             ["Graphic Design"],
             ["An advertisement for a mobile phone made in Photoshop."],
-            new ImageElement(
-                "../../src/assets/achievements/mobile_advertisement.png",
-                "Advertisement for a mobile phone"
-            ).getHtmlString()
+            assets.mobile_advertisement.getHtmlString()
         ),
         new Achievement(
             "My_First_Database",
@@ -2084,6 +2168,10 @@ function main() {
             fill_element_by_id(
                 "achievement-description",
                 targetAchievement.description
+            );
+            fill_element_by_id(
+                "achievement-content",
+                targetAchievement.content
             );
             fill_element_by_id("achievement-tools", targetAchievement.tools);
             fill_element_by_id("achievement-skills", targetAchievement.skills);
