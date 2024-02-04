@@ -65,14 +65,6 @@
 
     --main-p-text-indent: 2em;
 
-    --main-a-color: #0099ff;
-    --main-a-text-decoration: none;
-    /* --main-a-position: relative; */
-
-    --main-a-visited-color: #0077ff;
-
-    --main-a-hover-focus-color: #11aaff;
-
     --main-a-visited-hover-focus-color: #11aaff;
 
     /* --main-a-visited-hover-focus-text-decoration: underline; */
@@ -451,24 +443,28 @@ body {
 }
 
 #main a {
+    --main-a-color: #17a2ff;
+
     color: var(--main-a-color);
-    text-decoration: var(--main-a-text-decoration);
+    text-decoration: none;
 }
 
 #main a:visited {
-    color: var(--main-a-visited-color);
+    color: var(--main-a-color);
     text-decoration: var(--main-a-visited-hover-focus-text-decoration);
 }
 
 #main a:hover,
 #main a:focus {
-    color: var(--main-a-hover-focus-color);
+    --main-a-focus-color: #5bc6ff;
+
+    color: var(--main-a-focus-color);
     text-decoration: var(--main-a-visited-hover-focus-text-decoration);
 }
 
 #main a:visited:hover,
 #main a:visited:focus {
-    color: var(--main-a-visited-hover-focus-color);
+    color: var(--main-a-focus-color);
 }
 
 #main a::after {
