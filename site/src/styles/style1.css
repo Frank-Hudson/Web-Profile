@@ -412,21 +412,40 @@ body {
 
 #main {
     --main-margin-left: var(--nav-width);
-    --main-left-right-padding: 16vw;
+    --main-side-padding: 200px;
 
     color: var(--main-color);
     background-color: var(--main-background-color);
-    /* min-width: 750px; */
-    padding: 3vw var(--main-left-right-padding);
+    /* width: 100%; */
+    padding-right: 10px;
+    padding-left: 10px;
     margin-top: var(--header-height);
     margin-left: 0;
+    align-items: end;
     transition: padding var(--hamburger-animation-timing),
         margin var(--hamburger-animation-timing);
 }
 
-.hamburger-menu:has(input:checked) + #nav + #main {
-    /* padding: 3vw calc(var(--main-margin-left) + var(--main-left-right-padding)); */
-    margin-left: max(var(--main-margin-left), 250px);
+#main div {
+    margin: 2em 0;
+}
+
+#main .page {
+    max-width: 900px;
+    position: absolute;
+    top: var(--header-height);
+    left: var(--main-side-padding);
+    right: var(--main-side-padding);
+    transition: left var(--hamburger-animation-timing),
+        right var(--hamburger-animation-timing);
+}
+
+.hamburger-menu:has(input:checked) + #nav + #main .page {
+    left: max(
+        calc(var(--main-side-padding) + var(--main-margin-left)),
+        var(--main-margin-left)
+    );
+    right: calc(var(--main-side-padding) - var(--main-margin-left));
 }
 
 #main h2 {
@@ -440,6 +459,7 @@ body {
 
 #main p {
     text-indent: var(--main-p-text-indent);
+    text-align: justify;
 }
 
 #main a {
@@ -485,10 +505,6 @@ body {
 #main a:hover::after,
 #main a:focus::after {
     transform: var(--main-a-after-hover-transform);
-}
-
-#main div {
-    margin: 2em 0;
 }
 
 #main hr {

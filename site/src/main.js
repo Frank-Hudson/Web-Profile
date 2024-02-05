@@ -1460,6 +1460,23 @@ class Theme {
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
 
+[
+    "body { font-family }",
+    "#header { background-color }",
+    "#header h1 { color }",
+    "#header p { color }",
+    "#nav { color }",
+    "#nav { background-color }",
+    "#nav a:hover { background-color }",
+    ".hamburger-menu { color }",
+    "#main { color }",
+    "#main { background-color }",
+    "#main a { color }",
+    "#main a:hover { color }",
+    ".totop { color }",
+    ".totop { background-color }",
+];
+
 class ThemeVariables {
     get(variable) {
         return this[variable];
@@ -1468,114 +1485,67 @@ class ThemeVariables {
         this[variable] = value;
     }
 
-    // # Entities
-    // body
-    // header
-    // nav
-    // nav a
-    // nav a:hover
-    // nav a.here
-    // nav a.contact-button
-    // nav a.contact-button:hover
-    // nav .dropdown
-    // nav .dropdown:hover
-    // nav .dropdown-content
-    // nav .dropdown-content a
-    // nav .dropdown-content a:hover
-    // main
-    // main h2
-    // main div
-    // main div.page
-    // main hr
-    // main hr.big
-    // .totop
-    // .totop:hover
-    // .detail
-    // .portfolio div h2
-    // .contact a
-    // .contact a:visited
-    // .labelled::before
-    body = new Styles();
-    header = new Styles();
-    nav = new Styles();
-    nav_a = new Styles();
-    nav_a_hover = new Styles();
-    nav_a_here = new Styles();
-    nav_a_contactButton = new Styles();
-    nav_a_contactButton_hover = new Styles();
-    nav_dropdown = new Styles();
-    nav_dropdown_hover = new Styles();
-    nav_dropdownContent = new Styles();
-    nav_dropdownContent_a = new Styles();
-    nav_dropdownContent_a_hover = new Styles();
-    main = new Styles();
-    main_h2 = new Styles();
-    main_div = new Styles();
-    main_div_page = new Styles();
-    main_hr = new Styles();
-    main_hr_big = new Styles();
-    totop = new Styles();
-    totop_hover = new Styles();
-    detail = new Styles();
-    portfolio_div_h2 = new Styles();
-    contact_a = new Styles();
-    contact_a_visited = new Styles();
-    labelled_before = new Styles();
+    body = { fontFamily: "sans-serif;" };
+    header = {
+        backgroundColour: "#777777",
+        h1: { colour: "#000000" },
+        p: { colour: "#000000" },
+    };
+    nav = {
+        colour: "#000000",
+        backgroundColour: "#bbbbbb",
+        a_hover: { backgroundColour: "#909090" },
+    };
+    hamburgerMenu = { colour: "#000000" };
+    main = {
+        colour: "#000000",
+        backgroundColour: "#ffffff",
+        a: { colour: "#548ace" },
+        a_hover: { colour: "#304568" },
+    };
+    totop = { colour: "#ffffff", backgroundColour: "#111111" };
 
     constructor(
-        body = new Styles(),
-        header = new Styles(),
-        nav = new Styles(),
-        nav_a = new Styles(),
-        nav_a_hover = new Styles(),
-        nav_a_here = new Styles(),
-        nav_a_contactButton = new Styles(),
-        nav_a_contactButton_hover = new Styles(),
-        nav_dropdown = new Styles(),
-        nav_dropdown_hover = new Styles(),
-        nav_dropdownContent = new Styles(),
-        nav_dropdownContent_a = new Styles(),
-        nav_dropdownContent_a_hover = new Styles(),
-        main = new Styles(),
-        main_h2 = new Styles(),
-        main_div = new Styles(),
-        main_div_page = new Styles(),
-        main_hr = new Styles(),
-        main_hr_big = new Styles(),
-        totop = new Styles(),
-        totop_hover = new Styles(),
-        detail = new Styles(),
-        portfolio_div_h2 = new Styles(),
-        contact_a = new Styles(),
-        contact_a_visited = new Styles(),
-        labelled_before = new Styles()
+        variablesObject = {
+            body: { fontFamily: "sans-serif;" },
+            header: {
+                backgroundColour: "#777777",
+                h1: { colour: "#000000" },
+                p: { colour: "#000000" },
+            },
+            nav: {
+                colour: "#000000",
+                backgroundColour: "#bbbbbb",
+                a_hover: { backgroundColour: "#909090" },
+            },
+            hamburgerMenu: { colour: "#000000" },
+            main: {
+                colour: "#000000",
+                backgroundColour: "#ffffff",
+                a: { colour: "#548ace" },
+                a_hover: { colour: "#304568" },
+            },
+            totop: { colour: "#ffffff", backgroundColour: "#111111" },
+        }
     ) {
-        this.body = body;
-        this.header = header;
-        this.nav = nav;
-        this.nav_a = nav_a;
-        this.nav_a_hover = nav_a_hover;
-        this.nav_a_here = nav_a_here;
-        this.nav_a_contactButton = nav_a_contactButton;
-        this.nav_a_contactButton_hover = nav_a_contactButton_hover;
-        this.nav_dropdown = nav_dropdown;
-        this.nav_dropdown_hover = nav_dropdown_hover;
-        this.nav_dropdownContent = nav_dropdownContent;
-        this.nav_dropdownContent_a = nav_dropdownContent_a;
-        this.nav_dropdownContent_a_hover = nav_dropdownContent_a_hover;
-        this.main = main;
-        this.main_h2 = main_h2;
-        this.main_div = main_div;
-        this.main_div_page = main_div_page;
-        this.main_hr = main_hr;
-        this.main_hr_big = main_hr_big;
-        this.totop = totop;
-        this.totop_hover = totop_hover;
-        this.detail = detail;
-        this.portfolio_div_h2 = portfolio_div_h2;
-        this.contact_a = contact_a;
-        this.contact_a_visited = contact_a_visited;
-        this.labelled_before = labelled_before;
+        if (variablesObject.body) {
+            this.body = variablesObject.body;
+        }
+        if (variablesObject.header) {
+            this.header = variablesObject.header;
+        }
+        if (variablesObject.nav) {
+            this.nav = variablesObject.nav;
+        }
+        if (variablesObject.hamburgerMenu) {
+            this.hamburgerMenu = variablesObject.hamburgerMenu;
+        }
+        if (variablesObject.main) {
+            this.main = variablesObject.main;
+        }
+        if (variablesObject.totop) {
+            this.totop = variablesObject.totop;
+        }
     }
 }
 
@@ -1754,8 +1724,9 @@ function fix_navigation() {
     const header = document.getElementById("header");
     const headerHeight = header.clientHeight;
     const nav = document.getElementById("nav");
-    const navHamburgerButton =
-        document.getElementsByClassName("hamburger-menu")[0];
+    const navHamburgerButton = document.getElementsByClassName(
+        "hamburger-menu"
+    )[0];
 
     if (window.scrollY > headerHeight) {
         nav.style.position = "fixed";
@@ -2129,8 +2100,9 @@ function main() {
         currentContentId = "";
     }
 
-    const directorySplitLocationWithoutPageArray =
-        directorySplitLocationArray.join("/");
+    const directorySplitLocationWithoutPageArray = directorySplitLocationArray.join(
+        "/"
+    );
 
     switch (currentPage) {
         case "skills.html":
