@@ -1724,9 +1724,8 @@ function fix_navigation() {
     const header = document.getElementById("header");
     const headerHeight = header.clientHeight;
     const nav = document.getElementById("nav");
-    const navHamburgerButton = document.getElementsByClassName(
-        "hamburger-menu"
-    )[0];
+    const navHamburgerButton =
+        document.getElementsByClassName("hamburger-menu")[0];
 
     if (window.scrollY > headerHeight) {
         nav.style.position = "fixed";
@@ -1750,14 +1749,13 @@ function is_user_device_mobile() {
     const systemDetails = navigator.platform;
     const mobileOSes = /android|iphone|kindle|ipad/i;
     const swapWidth = 700;
-    const windowWidth = window.screen.width;
     console.log(`System: ${systemDetails}\n
 Swap at: ${swapWidth}\n
-Window Width: ${windowWidth}`);
+Window Width: ${window.screen.width}`);
 
     const isMobile = mobileOSes.test(systemDetails);
 
-    return isMobile || windowWidth < swapWidth;
+    return isMobile || document.body.clientWidth < swapWidth;
 }
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
@@ -1782,19 +1780,48 @@ function user_OS_fixes() {
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
 
 function fix_main_margin() {
-    const main = document.getElementById("main");
-    const bodyWidth = document.body.offsetWidth;
     const bodyStyle = getComputedStyle(document.body);
-    const widthPercentage =
-        parseInt(bodyStyle.getPropertyValue("--nav-width")) / 100;
 
-    const widthPixels = bodyWidth * widthPercentage;
+    const main = document.getElementById("main");
+    const page = main.querySelector(".page");
+    const pageMaxWidthPixels = 900;
 
-    if (!is_user_device_mobile()) {
-        main.style.setProperty("--main-margin-left", widthPixels + "px");
-    } else {
+    const nav = document.getElementById("nav");
+    const hamburgerMenu = document.querySelector(".hamburger-menu");
+
+    if (is_user_device_mobile()) {
         main.style.marginLeft = "0";
     }
+
+    if (!hamburgerMenu.checked) {
+        document.body.style.setProperty(
+            "--main-side-padding",
+            (document.body.offsetWidth - pageMaxWidthPixels) / 2 + "px"
+        );
+    } else {
+        document.body.style.setProperty(
+            "--main-side-padding",
+            (document.body.offsetWidth - pageMaxWidthPixels - nav.style.width) /
+                2 +
+                "px"
+        );
+    }
+
+    if (document.body.clientWidth < pageMaxWidthPixels) {
+        page.style.width = "auto";
+    } else {
+        page.style.width = bodyStyle.getPropertyValue("900px");
+    }
+
+    // const widthPercentage =
+    //     parseInt(bodyStyle.getPropertyValue("--nav-width")) / 100;
+    // const widthPixels = bodyWidth * widthPercentage;
+
+    // if (!is_user_device_mobile()) {
+    //     main.style.setProperty("--main-margin-left", widthPixels + "px");
+    // } else {
+    //     main.style.marginLeft = "0";
+    // }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1850,6 +1877,12 @@ function set_on_clicks() {
     });
 
     // - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - //
+
+    const hamburgerMenu = document.querySelector(".hamburger-menu");
+
+    hamburgerMenu.onclick = function () {
+        fix_main_margin();
+    };
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2100,9 +2133,8 @@ function main() {
         currentContentId = "";
     }
 
-    const directorySplitLocationWithoutPageArray = directorySplitLocationArray.join(
-        "/"
-    );
+    const directorySplitLocationWithoutPageArray =
+        directorySplitLocationArray.join("/");
 
     switch (currentPage) {
         case "skills.html":
@@ -2185,4 +2217,5 @@ function main() {
     }
 }
 
+document.body.onload = main;
 main();
