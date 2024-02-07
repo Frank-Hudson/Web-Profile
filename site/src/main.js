@@ -1425,6 +1425,33 @@ function fill_element_by_id(elementId, content) {
     }
 }
 
+// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
+
+const lorem = {
+    "lorem"       : "welcome",
+    "ipsum"       : "very",
+    "dolor"       : "pain",
+    "sit"         : "let it be",
+    "amet"        : "a lot",
+    "consectetur" : "will be followed",
+    // "adipisicing" : "adipiscing",
+    "adipiscing"  : "coaching",
+    "elit"        : "developer",
+};
+// Oh, my god. Lorem ipsum filler text is dark.
+//
+//
+// Full-sentence translations:
+//  First (VSCode's generated filler):
+/*   Lorem ipsum dolor sit amet consectetur [adipisicing] elit.
+     BECOMES
+     The company itself is a very successful company. */
+//
+//  And Second (Google's correction, with search and translate):
+/*   Lorem ipsum dolor sit amet consectetur [adipiscing] elit.
+     BECOMES
+     The customer should be able to follow the customer's customer service. */
+
 ////////////////////////////////////////////////////////////////////////////////
 // ####                         Theme Selection                         #### //
 ////////////////////////////////////////////////////////////////////////////////
@@ -1462,31 +1489,29 @@ class Theme {
 
 [
     "body { font-family }",
+    "#header { color }",
     "#header { background-color }",
     "#header h1 { color }",
     "#header p { color }",
     "#nav { color }",
     "#nav { background-color }",
     "#nav a:hover { background-color }",
-    ".hamburger-menu { color }",
+    ".hamburger-menu { --hamburger-foreground }",
+    ".hamburger-menu { --hamburger-background }",
     "#main { color }",
     "#main { background-color }",
     "#main a { color }",
     "#main a:hover { color }",
-    ".totop { color }",
-    ".totop { background-color }",
+    ".utility-button { color }",
+    ".utility-button { background-color }",
+    ".utility-button { border }",
+    ".utility-button { border-radius }",
 ];
 
 class ThemeVariables {
-    get(variable) {
-        return this[variable];
-    }
-    set(variable, value) {
-        this[variable] = value;
-    }
-
     body = { fontFamily: "sans-serif;" };
     header = {
+        colour: "#000000",
         backgroundColour: "#777777",
         h1: { colour: "#000000" },
         p: { colour: "#000000" },
@@ -1496,14 +1521,14 @@ class ThemeVariables {
         backgroundColour: "#bbbbbb",
         a_hover: { backgroundColour: "#909090" },
     };
-    hamburgerMenu = { colour: "#000000" };
+    hamburgerMenu = { hamburgerForeground: "#000000", hamburgerBackground: "#ffffff", };
     main = {
         colour: "#000000",
         backgroundColour: "#ffffff",
         a: { colour: "#548ace" },
         a_hover: { colour: "#304568" },
     };
-    totop = { colour: "#ffffff", backgroundColour: "#111111" };
+    utilityButton = { colour: "#ffffff", backgroundColour: "#111111" };
 
     constructor(
         variablesObject = {
@@ -1525,7 +1550,7 @@ class ThemeVariables {
                 a: { colour: "#548ace" },
                 a_hover: { colour: "#304568" },
             },
-            totop: { colour: "#ffffff", backgroundColour: "#111111" },
+            utilityButton: { colour: "#ffffff", backgroundColour: "#111111" },
         }
     ) {
         if (variablesObject.body) {
@@ -1543,8 +1568,8 @@ class ThemeVariables {
         if (variablesObject.main) {
             this.main = variablesObject.main;
         }
-        if (variablesObject.totop) {
-            this.totop = variablesObject.totop;
+        if (variablesObject.utilityButton) {
+            this.utilityButton = variablesObject.utilityButton;
         }
     }
 }
@@ -1684,7 +1709,7 @@ function month_name(monthIndex) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function to_top() {
-    const toTopButton = document.getElementById("totop");
+    const toTopButton = document.getElementById("to-top");
 
     toTopButton.onclick = function () {
         window.scrollTo({
@@ -1706,7 +1731,7 @@ function on_scroll() {
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
 
 function to_top_update() {
-    const toTopButton = document.getElementById("totop");
+    const toTopButton = document.getElementById("to-top");
 
     if (
         document.body.scrollTop > 20 ||
@@ -1726,6 +1751,10 @@ function fix_navigation() {
     const nav = document.getElementById("nav");
     const navHamburgerButton =
         document.getElementsByClassName("hamburger-menu")[0];
+
+    if (!navHamburgerButton) {
+        return;
+    }
 
     if (window.scrollY > headerHeight) {
         nav.style.position = "fixed";

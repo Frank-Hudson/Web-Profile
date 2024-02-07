@@ -1,0 +1,158 @@
+
+/* Select All Elements */
+*,
+*::before,
+*::after {
+    /* Set box-sizing to `border-box`
+        - Padding and Border count as part of the Width */
+    box-sizing: border-box;
+}
+
+/* Select the <body> Element */
+body {
+    /* Remove the margin */
+    margin: 0;
+}
+
+/* Select Elements with any Class containing "col-" */
+/* This is for Columns when the Screen is the Size of a Small- to Regular-Sized 
+   Mobile Device */
+[class*="col-"] {
+    /* Set width to fill the parent element */
+    width: 100%;
+    /* Set the floating position to the left of the screen */
+    float: left;
+    /* Remove the padding from the element */ 
+    padding: 0px;
+    /* Give the grid items a red border to show their positions, 
+       like an uneven table */
+    border: 1px solid red;
+}
+
+/* Select any Element with the .header Class */
+.header {
+    /* Pad the header `30px` on the top and bottom and `50px` on the sides */
+    padding: 30px 50px;
+}
+
+/* Select any Element with the .sidebar Class */
+.sidebar {
+    /* Set the font-size to be larger */
+    font-size: 18pt;
+    /* Remove bullet points if it's a list */
+    list-style-type: none;
+    /* Pad the sidebar `15px` on the top and bottom and `0px` on the sides */
+    padding: 15px 0px;
+    /* Remove the margin from the sidebar */
+    margin: 0;
+}
+
+/* Select any <li> Elements in a Parent Element with the .sidebar Class */
+.sidebar li {
+    /* Pad the items `5px` on the top and bottom and `20px` on the sides */
+    padding: 5px 20px;
+    /* Set the cursor to be a pointer when hovering */
+    cursor: pointer;
+}
+
+/* Select any Element with the .content Class */
+.content {
+    /* Pad the content `20px` on the top and bottom and `90px` on the sides */
+    padding: 20px 10%;
+}
+
+/* Select any specified Elements when the Screen Width is at least `600px` */
+/* This is for Portrait Tablet and Large Phone Screen Sizes */
+@media only screen and (min-width: 600px) {
+    /* Columns are split into 12ths of the Viewport's Width */
+    .col-s-1  { width:   8.33%; }
+    .col-s-2  { width:  16.66%; }
+    .col-s-3  { width:  25.00%; }
+    .col-s-4  { width:  33.33%; }
+    .col-s-5  { width:  41.66%; }
+    .col-s-6  { width:  50.00%; }
+    .col-s-7  { width:  58.33%; }
+    .col-s-8  { width:  66.66%; }
+    .col-s-9  { width:  75.00%; }
+    .col-s-10 { width:  83.33%; }
+    .col-s-11 { width:  91.66%; }
+    .col-s-12 { width: 100.00%; }
+}
+
+/* Select any specified Elements when the Screen Width is at least `768px` */
+/* This is for Landscape Tablet Screen Sizes */
+@media only screen and (min-width: 768px) {
+    .col-m-1  { width:   8.33%; }
+    .col-m-2  { width:  16.66%; }
+    .col-m-3  { width:  25.00%; }
+    .col-m-4  { width:  33.33%; }
+    .col-m-5  { width:  41.66%; }
+    .col-m-6  { width:  50.00%; }
+    .col-m-7  { width:  58.33%; }
+    .col-m-8  { width:  66.66%; }
+    .col-m-9  { width:  75.00%; }
+    .col-m-10 { width:  83.33%; }
+    .col-m-11 { width:  91.66%; }
+    .col-m-12 { width: 100.00%; }
+
+    .sidebar {
+        /* Set the height to be the same as the Viewport Height */
+        height: 100vh;
+    }
+}
+
+/* Select any specified Elements when the Screen Width is at least `992px` */
+/* This is for Laptop, Desktop and other Large Screen Sizes */
+@media only screen and (min-width: 992px) {
+    .col-1  { width:   8.33%; }
+    .col-2  { width:  16.66%; }
+    .col-3  { width:  25.00%; }
+    .col-4  { width:  33.33%; }
+    .col-5  { width:  41.66%; }
+    .col-6  { width:  50.00%; }
+    .col-7  { width:  58.33%; }
+    .col-8  { width:  66.66%; }
+    .col-9  { width:  75.00%; }
+    .col-10 { width:  83.33%; }
+    .col-11 { width:  91.66%; }
+    .col-12 { width: 100.00%; }
+}
+
+/* The above Media Queries are separated for the sake of giving the HTML file 
+   the capacity for specify different Widths for Tablet Screens to the Widths 
+   specified for Larger Screens. */
+
+/* Select <picture> and <img> Elements */
+picture, img {
+    /* Set width to fill the parent element */
+    max-width: 100%;
+    /* Set height to automatically keep the aspect ratio of the image */
+    height: auto;
+}
+
+.utility-button {
+    /* Set the padding to `10px` */
+    padding: 10px;
+    /* Set the cursor to be a pointer when hovering */
+    cursor: pointer;
+    /* Set the transition duration to `0.5s` */
+    transition-duration: 0.5s;
+    /* Set the transition timing function to `ease` */
+    transition-timing-function: ease;
+    /* Give the transition properties `transform` and `color` */
+    transition-property: transform, color;
+}
+
+/* Select the Element with the #to-top Identifier */
+#to-top {
+    /* Set the display to none */
+    display: none;
+    /* Set the position to fixed */
+    position: fixed;
+    /* Set the bottom margin to `20px` */
+    bottom: 20px;
+    /* Set the right margin to `20px` */
+    right: 20px;
+    /* Set the transformation origin to the element's bottom right */
+    transform-origin: bottom right;
+}

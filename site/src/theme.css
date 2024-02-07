@@ -1,0 +1,130 @@
+/* Download fonts from online sources to use on the page */
+@import url("https://fonts.googleapis.com/css?family=Convergence");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+/* Define variables at the root of the file, to be accessible globally */
+:root {
+    /* Set the primary font-family for the site */
+    --font-family: Convergence, "Open Sans", "Segoe UI", Calibri, Arial, "Fira Sans", sans-serif;
+
+    /* ------------------------------ */
+
+    /* Set the foreground/text colour for the site's header */
+    --header-foreground: #e0ffe1;
+    /* Set the background colour for the site's header */
+    --header-background: #39363c;
+    
+    /* ------------------------------ */
+
+    /* Set the foreground/text colour for the site's navigation bar */
+    --navigation-foreground: #ffffff;
+    /* Set the background colour for the site's navigation bar */
+    --navigation-background: #205f74;
+
+    /* Set the foreground/text colour for a hovered navigation bar item */
+    --navigation-hover-foreground: #ffffff;
+    /* Set the background colour for a hovered navigation bar item */
+    --navigation-hover-background: #2f84a0;
+
+    /* Set the foreground/text colour for the navigation bar's toggle button */
+    --navigation-toggle-foreground: #000000;
+    /* Set the background colour for the navigation bar's toggle button */
+    --navigation-toggle-background: #ffffff;
+    
+    /* ------------------------------ */
+
+    /* Set the foreground/text colour for the site's main content */
+    --main-foreground: #08440a;
+    /* Set the background colour for the site's main content */
+    --main-background: #ffffff;
+
+    /* Set the foreground/text colour for a link in the main content */
+    --main-link: #16cfa3;
+
+    /* Set the colour for a hovered link in the main content */
+    --main-link-hover: #1bb692;
+
+    /* ------------------------------ */
+
+    /* Set the foreground/text colour for utility buttons on the site */
+    --utility-button-foreground: #ffffff;
+    /* Set the background colour for utility buttons on the site */
+    --utility-button-background: #007bff;
+    /* Set the border for utility buttons on the site */
+    --utility-button-border: 0px none transparent;
+    /* Set the border-radius for utility buttons on the site */
+    --utility-button-roundedness: 5px;
+
+    /* Set the foreground/text colour for hovered utility buttons on the site */
+    --utility-button-hover-foreground: #ffffff;
+    /* Set the background colour for hovered utility buttons on the site */
+    --utility-button-hover-background: #0056b3;
+    /* Set the scale for hovered utility buttons on the site */
+    --utility-button-hover-scale: 2;
+
+    /* ------------------------------ */
+}
+
+/* ------------------------------------------------------------ */
+
+body {
+    font-family: var(--font-family);
+}
+
+/* ------------------------------------------------------------ */
+
+#header {
+    color: var(--header-foreground);
+    background-color: var(--header-background);
+}
+
+/* ------------------------------------------------------------ */
+
+#nav {
+    color: var(--navigation-foreground);
+    background-color: var(--navigation-background);
+}
+
+#nav li:hover,
+#nav a:hover {
+    color: var(--navigation-hover-foreground);
+    background-color: var(--navigation-hover-background);
+}
+
+.hamburger-menu {
+    color: var(--navigation-toggle-foreground);
+    background-color: var(--navigation-toggle-background);
+}
+
+/* ------------------------------------------------------------ */
+
+#main {
+    color: var(--main-foreground);
+    background-color: var(--main-background);
+}
+
+#main a {
+    color: var(--main-link);
+    text-decoration: none;
+}
+
+#main a:hover {
+    color: var(--main-link-hover);
+}
+
+/* ------------------------------------------------------------ */
+
+.utility-button {
+    color: var(--utility-button-foreground);
+    background-color: var(--utility-button-background);
+    border: var(--utility-button-border);
+    border-radius: var(--utility-button-roundedness);
+}
+
+.utility-button:hover {
+    color: var(--utility-button-hover-foreground);
+    background-color: var(--utility-button-hover-background);
+    transform: scale(var(--utility-button-hover-scale));
+}
+
+/* ------------------------------------------------------------ */

@@ -1,0 +1,37 @@
+
+/* Select any Element with the .invisible Class */
+.invisible {
+    /* Set the display to none, hiding the element */
+    display: none;
+}
+
+/* Select any Element with the .italic Class */
+.italic {
+    /* Set the font-style to italic */
+    font-style: italic;
+}
+
+/* Select any Element with the .no-repeat Class */
+.fill-parent {
+    width: 100%;
+    height: 100%;
+}
+
+/* Select any Element with the .no-repeat Class */
+.no-repeat {
+    /* Set the background-image to non-repeating */
+    background-repeat: no-repeat;
+}
+
+/* Select any Element with the .contain Class */
+.contain {
+    /* Set the background-image size to fit within the parent element */
+    background-size: contain;
+}
+
+/* Select any Element with the .cover Class */
+.cover {
+    /* Set the background-image size to fill the parent element, clipping any 
+       potential overflow */
+    background-size: cover;
+}

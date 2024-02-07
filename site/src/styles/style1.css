@@ -86,18 +86,18 @@
 
     --main-hr-big-border-width: 5px;
 
-    --totop-bottom: 20px;
-    --totop-right: 20px;
-    --totop-background-color: #007bff;
-    --totop-color: #fff;
-    --totop-border: none;
-    --totop-border-radius: 5px;
-    --totop-padding: 10px;
-    --totop-transform-origin: bottom right;
-    --totop-transition: all 0.3s ease;
-    --totop-cursor: pointer;
+    --to-top-bottom: 20px;
+    --to-top-right: 20px;
+    --to-top-background-color: #007bff;
+    --to-top-color: #fff;
+    --to-top-border: none;
+    --to-top-border-radius: 5px;
+    --to-top-padding: 10px;
+    --to-top-transform-origin: bottom right;
+    --to-top-transition: all 0.3s ease;
+    --to-top-cursor: pointer;
 
-    --totop-hover-background-color: #0056b3;
+    --to-top-hover-background-color: #0056b3;
 
     --page-width: 100%;
     --page-padding: 0 0;
@@ -559,25 +559,25 @@ body {
     border-width: var(--main-hr-big-border-width);
 }
 
-#totop {
+#to-top {
     display: none;
     position: fixed;
-    bottom: var(--totop-bottom);
-    right: var(--totop-right);
-    background-color: var(--totop-background-color);
-    color: var(--totop-color);
-    border: var(--totop-border);
-    border-radius: var(--totop-border-radius);
-    padding: var(--totop-padding);
-    transform-origin: var(--totop-transform-origin);
-    transition: var(--totop-transition);
-    cursor: var(--totop-cursor);
+    bottom: var(--to-top-bottom);
+    right: var(--to-top-right);
+    background-color: var(--to-top-background-color);
+    color: var(--to-top-color);
+    border: var(--to-top-border);
+    border-radius: var(--to-top-border-radius);
+    padding: var(--to-top-padding);
+    transform-origin: var(--to-top-transform-origin);
+    transition: var(--to-top-transition);
+    cursor: var(--to-top-cursor);
 }
 
-#totop:hover {
-    background-color: var(--totop-hover-background-color);
-    width: var(--totop-hover-width);
-    height: var(--totop-hover-height);
+#to-top:hover {
+    background-color: var(--to-top-hover-background-color);
+    width: var(--to-top-hover-width);
+    height: var(--to-top-hover-height);
     transform: scale(2);
 }
 
@@ -654,6 +654,12 @@ article.card {
     text-align: var(--summary-text-align);
     text-indent: var(--summary-text-indent);
     padding: var(--summary-padding);
+}
+
+.content {
+    img, picture {
+        max-width: 100%;
+    }
 }
 
 .portfolio div h2 {
