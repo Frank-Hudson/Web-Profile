@@ -41,6 +41,8 @@ body {
     font-size: 18pt;
     /* Remove bullet points if it's a list */
     list-style-type: none;
+    /* Set width to fill the parent element */
+    width: 100%;
     /* Pad the sidebar `15px` on the top and bottom and `0px` on the sides */
     padding: 15px 0px;
     /* Remove the margin from the sidebar */

@@ -1747,26 +1747,28 @@ function to_top_update() {
 
 function fix_navigation() {
     const header = document.getElementById("header");
-    const headerHeight = header.clientHeight;
+    const headerHeight = header.offsetHeight;
     const nav = document.getElementById("nav");
-    const navHamburgerButton =
-        document.getElementsByClassName("hamburger-menu")[0];
-
-    if (!navHamburgerButton) {
-        return;
-    }
+    const navHamburgerButton = document.getElementsByClassName("hamburger-menu")[0];
 
     if (window.scrollY > headerHeight) {
         nav.style.position = "fixed";
         nav.style.top = 0;
+        nav.style.width = "16.66%";
+
+        if (!navHamburgerButton) { return; }
+
         navHamburgerButton.style.position = "fixed";
         navHamburgerButton.style.top = "var(--hamburger-margin)";
     } else {
         nav.style.position = "absolute";
         nav.style.top = headerHeight + "px";
+        nav.style.width = "100%";
+
+        if (!navHamburgerButton) { return; }
+
         navHamburgerButton.style.position = "absolute";
-        navHamburgerButton.style.top =
-            "calc(var(--hamburger-margin) + var(--header-height))";
+        navHamburgerButton.style.top = "calc(var(--hamburger-margin) + " + headerHeight + ")";
     }
 }
 
