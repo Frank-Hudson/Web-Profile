@@ -135,8 +135,8 @@ picture, img {
     padding: 10px;
     /* Set the cursor to be a pointer when hovering */
     cursor: pointer;
-    /* Set the transition duration to `0.5s` */
-    transition-duration: 0.5s;
+    /* Set the transition duration to `0.3s` */
+    transition-duration: 0.3s;
     /* Set the transition timing function to `ease` */
     transition-timing-function: ease;
     /* Give the transition properties `transform` and `color` */

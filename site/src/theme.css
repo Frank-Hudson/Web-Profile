@@ -60,7 +60,7 @@
     /* Set the background colour for hovered utility buttons on the site */
     --utility-button-hover-background: #0056b3;
     /* Set the scale for hovered utility buttons on the site */
-    --utility-button-hover-scale: 2;
+    --utility-button-hover-scale: 1.25;
 
     /* ------------------------------ */
 }
