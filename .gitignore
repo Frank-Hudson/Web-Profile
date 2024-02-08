@@ -4,3 +4,5 @@
 
 # Directories
 .trunk
+build
+builds

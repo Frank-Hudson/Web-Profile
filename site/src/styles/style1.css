@@ -205,6 +205,7 @@ body {
     top: 0;
     -webkit-user-select: none;
     user-select: none;
+    cursor: pointer;
 }
 
 #header h1 {
@@ -561,6 +562,32 @@ body {
     border-width: var(--main-hr-big-border-width);
 }
 
+#back-button {
+    position: absolute;
+    top: calc(var(--header-height) - 20px);
+    transition: transform var(--hamburger-animation-timing),
+        letter-spacing var(--hamburger-animation-timing);
+    cursor: pointer;
+
+    * {
+        display: block;
+        float: left;
+        margin-left: 5px;
+        margin-right: 5px;
+        transition: inherit;
+    }
+}
+
+#back-button:hover {
+    i[class*="fa-"] {
+        transform: translateX(-5px);
+    }
+
+    span {
+        letter-spacing: 2px;
+    }
+}
+
 #to-top {
     display: none;
     position: fixed;
@@ -653,7 +680,9 @@ article.card {
 }
 
 .content {
-    img, picture {
+    img, picture,
+    video,
+    iframe {
         max-width: 100%;
     }
 }
@@ -661,6 +690,11 @@ article.card {
 .portfolio div h2 {
     font-size: var(--portfolio-div-h2-font-size);
     border-bottom-width: var(--portfolio-div-h2-border-bottom-width);
+}
+
+.contact-details {
+    font-size: 18pt;
+    list-style-type: none;
 }
 
 .contact-details a {
@@ -675,25 +709,25 @@ a.labelled {
     display: var(--a-labelled-display);
 }
 
-#phone::before {
+.labelled#phone::before {
     content: var(--phone-before-content);
     color: var(--main-color);
     font-weight: var(--phone-before-font-weight);
 }
 
-#email::before {
+.labelled#email::before {
     content: var(--email-before-content);
     color: var(--main-color);
     font-weight: var(--email-before-font-weight);
 }
 
-#github::before {
+.labelled#github::before {
     content: var(--github-before-content);
     color: var(--main-color);
     font-weight: var(--github-before-font-weight);
 }
 
-#linkedin::before {
+.labelled#linkedin::before {
     content: var(--linkedin-before-content);
     color: var(--main-color);
     font-weight: var(--linkedin-before-font-weight);
@@ -705,4 +739,11 @@ a.labelled {
 
 .italic {
     font-style: italic;
+}
+
+.centred {
+    text-align: var(--center);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

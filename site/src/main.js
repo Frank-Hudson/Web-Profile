@@ -1,364 +1,6 @@
 // [Documentation Index](../../docs/index.md)
 
 ////////////////////////////////////////////////////////////////////////////////
-// ####                               CSS                               #### //
-////////////////////////////////////////////////////////////////////////////////
-
-class Styles {
-    font;
-    background;
-    boxShadow;
-    opacity;
-    textAlign;
-    textDecoration;
-    lineHeight;
-    display;
-    floatStyle;
-    position;
-    top;
-    right;
-    bottom;
-    left;
-    width;
-    height;
-    minWidth;
-    minHeight;
-    padding;
-    border;
-    margin;
-    overflow;
-    zIndex;
-    transform;
-    transition;
-    cursor;
-
-    constructor(
-        font = new Font(),
-        background = new Background(),
-        boxShadow = new BoxShadow(),
-        opacity = "initial",
-        textAlign = Alignment.initial,
-        textDecoration = "initial",
-        lineHeight = StyleMeasurement.initial(),
-        display = "initial",
-        floatStyle = "initial",
-        position = "initial",
-        top = StyleMeasurement.initial(),
-        right = StyleMeasurement.initial(),
-        bottom = StyleMeasurement.initial(),
-        left = StyleMeasurement.initial(),
-        width = StyleMeasurement.initial(),
-        height = StyleMeasurement.initial(),
-        minWidth = StyleMeasurement.initial(),
-        minHeight = StyleMeasurement.initial(),
-        padding = new OuterArea(),
-        border = new Border(),
-        margin = new OuterArea(),
-        overflow = "initial",
-        zIndex = "initial",
-        transform = "initial",
-        transition = "initial",
-        cursor = "initial"
-    ) {
-        this.font = font;
-        this.background = background;
-        this.boxShadow = boxShadow;
-        this.opacity = opacity;
-        this.textAlign = textAlign;
-        this.textDecoration = textDecoration;
-        this.lineHeight = lineHeight;
-        this.display = display;
-        this.floatStyle = floatStyle;
-        this.position = position;
-        this.top = top;
-        this.right = right;
-        this.bottom = bottom;
-        this.left = left;
-        this.width = width;
-        this.height = height;
-        this.minWidth = minWidth;
-        this.minHeight = minHeight;
-        this.padding = padding;
-        this.border = border;
-        this.margin = margin;
-        this.overflow = overflow;
-        this.zIndex = zIndex;
-        this.transform = transform;
-        this.transition = transition;
-        this.cursor = cursor;
-    }
-
-    getCssString() {
-        const cssString =
-            this.font.getCssString() +
-            this.background.getCssString() +
-            this.boxShadow.getCssString() +
-            ` opacity: ${this.opacity}; ` +
-            ` text-align: ${this.textAlign}; text-decoration: ${this.textDecoration}; ` +
-            ` line-height: ${this.lineHeight.getCssString()}; ` +
-            ` display: ${this.display}; ` +
-            ` float: ${this.floatStyle}; ` +
-            ` position: ${this.position}; ` +
-            ` top: ${this.top.getCssString()}; right: ${this.right.getCssString()}; bottom: ${this.bottom.getCssString()}; left: ${this.left.getCssString()}; ` +
-            ` width: ${this.width.getCssString()}; height: ${this.height.getCssString()}; ` +
-            ` min-width: ${this.minWidth.getCssString()}; min-height: ${this.minHeight.getCssString()}; ` +
-            this.padding.getCssString(OuterAreaType.padding) +
-            this.margin.getCssString(OuterAreaType.margin) +
-            ` overflow: ${this.overflow}; ` +
-            ` z-index: ${this.zIndex}; ` +
-            ` transform: ${this.transform}; ` +
-            ` transition: ${this.transition}; ` +
-            ` cursor: ${this.cursor}; `;
-
-        return cssString;
-    }
-}
-
-// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
-
-class Font {
-    family;
-    colour;
-    size;
-    style;
-    weight;
-
-    constructor(
-        family = "initial",
-        colour = "initial",
-        size = "initial",
-        style = "initial",
-        weight = "initial"
-    ) {
-        this.family = family;
-        this.colour = colour;
-        this.size = size;
-        this.style = style;
-        this.weight = weight;
-    }
-
-    getCssString() {
-        return ` font-family: ${this.family}; color: ${this.colour}; font-size: ${this.size}; font-style: ${this.style}; font-weight: ${this.weight}; `;
-    }
-}
-
-// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
-
-class Background {
-    colour;
-    image;
-    position;
-
-    constructor(colour = "initial", image = "initial", position = "initial") {
-        this.colour = colour;
-        this.image = image;
-        this.position = position;
-    }
-
-    getCssString() {
-        return ` background-color: ${this.colour}; background-image: ${this.image}; background-position: ${this.position}; `;
-    }
-}
-
-// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
-
-class BoxShadow {
-    horizontalOffset;
-    verticalOffset;
-    blur;
-    spread;
-    colour;
-
-    constructor(
-        horizontalOffset = StyleMeasurement.initial(),
-        verticalOffset = StyleMeasurement.initial(),
-        blur = StyleMeasurement.initial(),
-        spread = StyleMeasurement.initial(),
-        colour = "transparent"
-    ) {
-        this.horizontalOffset = horizontalOffset;
-        this.verticalOffset = verticalOffset;
-        this.blur = blur;
-        this.spread = spread;
-        this.colour = colour;
-    }
-
-    getCssString() {
-        return ` box-shadow: ${this.horizontalOffset.getCssString()} ${this.verticalOffset.getCssString()} ${this.blur.getCssString()} ${this.spread.getCssString()} ${
-            this.colour
-        }; `;
-    }
-}
-
-// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
-
-class Border {
-    top;
-    bottom;
-    left;
-    right;
-    radius;
-
-    constructor(
-        top = new BorderEdge(),
-        bottom = new BorderEdge(),
-        left = new BorderEdge(),
-        right = new BorderEdge(),
-        radius = StyleMeasurement.initial()
-    ) {
-        this.top = top;
-        this.bottom = bottom;
-        this.left = left;
-        this.right = right;
-        this.radius = radius;
-    }
-
-    getCssString() {
-        return ` border-top: ${this.top.getCssValue()}; border-bottom: ${this.bottom.getCssValue()}; border-left: ${this.left.getCssValue()}; border-right: ${this.right.getCssValue()}; border-radius: ${this.radius.getCssString()}; `;
-    }
-}
-
-// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
-
-class BorderEdge {
-    width;
-    colour;
-    image;
-    style;
-
-    constructor(
-        width = StyleMeasurement.initial(),
-        colour = "initial",
-        image = "initial",
-        style = "initial"
-    ) {
-        this.width = width;
-        this.colour = colour;
-        this.image = image;
-        this.style = style;
-    }
-
-    getCssString() {
-        return ` width: ${this.width.getCssString()}; color: ${
-            this.colour
-        }; image: ${this.image}; style: ${this.style}; `;
-    }
-
-    getCssValue() {
-        return ` ${this.width} ${this.colour} ${this.image} ${this.style}`;
-    }
-}
-
-// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
-
-class OuterArea {
-    top;
-    bottom;
-    left;
-    right;
-
-    constructor(
-        top = StyleMeasurement.initial(),
-        bottom = StyleMeasurement.initial(),
-        left = StyleMeasurement.initial(),
-        right = StyleMeasurement.initial()
-    ) {
-        this.top = top;
-        this.bottom = bottom;
-        this.left = left;
-        this.right = right;
-    }
-
-    getCssString(outerAreaType) {
-        return ` ${outerAreaType}-top: ${this.top.getCssString()}; ${outerAreaType}-bottom: ${this.bottom.getCssString()}; ${outerAreaType}-left: ${this.left.getCssString()}; ${outerAreaType}-right: ${this.right.getCssString()}; `;
-    }
-
-    getCssValues() {
-        return ` ${this.top.getCssString()} ${this.bottom.getCssString()} ${this.left.getCssString()} ${this.right.getCssString()}`;
-    }
-}
-
-// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
-
-class StyleMeasurement {
-    value;
-    measurementType;
-
-    constructor(value = 0, measurementType = "px") {
-        this.value = value;
-        this.measurementType = measurementType;
-    }
-
-    static initial() {
-        this.value = "initial";
-        this.measurementType = "";
-        return new this();
-    }
-    static inherit() {
-        this.value = "inherit";
-        this.measurementType = "";
-        return new this();
-    }
-    static px(value) {
-        this.value = value;
-        this.measurementType = "px";
-        return new this();
-    }
-    static em(value) {
-        this.value = value;
-        this.measurementType = "em";
-        return new this();
-    }
-    static pt(value) {
-        this.value = value;
-        this.measurementType = "pt";
-        return new this();
-    }
-    static cm(value) {
-        this.value = value;
-        this.measurementType = "cm";
-        return new this();
-    }
-    static vw(value) {
-        this.value = value;
-        this.measurementType = "vw";
-        return new this();
-    }
-    static vh(value) {
-        this.value = value;
-        this.measurementType = "vh";
-        return new this();
-    }
-    static percent(value) {
-        this.value = value;
-        this.measurementType = "%";
-        return new this();
-    }
-
-    getCssString() {
-        return `${this.value}${this.measurementType}`;
-    }
-}
-
-// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
-
-const Alignment = Object.freeze({
-    inherit: "inherit",
-    initial: "initial",
-    centre: "centre",
-    left: "left",
-    right: "right",
-    top: "justify",
-});
-
-// - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
-
-const OuterAreaType = Object.freeze({
-    padding: "padding",
-    margin: "margin",
-});
-
-////////////////////////////////////////////////////////////////////////////////
 // ####                               HTML                               #### //
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -387,85 +29,40 @@ class MyElement {
     styles;
     attributes;
     innerHTML;
-    tags;
 
     constructor(
         innerHTML = "",
         id = "",
         classes = "",
-        styles = new Styles(),
+        styles = "",
         attributes = {},
-        tags = []
     ) {
         this.innerHTML = innerHTML;
         this.id = id;
         this.classes = classes;
         this.styles = styles;
         this.attributes = attributes;
-        this.tags = tags;
     }
 
     getHtmlString() {
         console.error(
-            "Method `getHtmlString()` must be implemented by implementors"
+            "Method `getHtmlString()` must be implemented by extenders of the `MyElement` base class"
         );
     }
 
-    getId() {
-        return this.id;
-    }
-    setId(id) {
-        this.id = id;
-    }
-
-    getClasses() {
-        return this.classes;
-    }
     addClass(newClass) {
         this.classes += ` ${newClass}`;
     }
-    setClasses(classes) {
-        this.classes = classes;
-    }
 
-    getStyles() {
-        return this.styles;
-    }
-    setStyles(styles) {
-        this.styles = styles;
+    addStyle(newStyle) {
+        this.styles += ` ${newStyle}; `;
     }
 
     getAttribute(attribute) {
         return this.attributes[attribute];
     }
-    getAttributes() {
-        return this.attributes;
-    }
     setAttribute(attribute, value) {
         this.attributes[attribute] = value;
-    }
-
-    getInnerHtml() {
-        return this.styles;
-    }
-    setInnerHTML(innerHTML) {
-        this.innerHTML = innerHTML;
-    }
-    appendToInnerHTML(innerHTML) {
-        this.innerHTML += innerHTML;
-    }
-
-    getTag(tag) {
-        return this.tags.find((tagItem) => tagItem.name === tag.name);
-    }
-    getTags() {
-        return this.tags;
-    }
-    addTag(tag) {
-        this.tags.push(tag);
-    }
-    setTags(tags) {
-        this.tags = tags;
     }
 }
 
@@ -479,11 +76,10 @@ class DynamicElement extends MyElement {
         innerHTML = "",
         id = "",
         classes = "",
-        styles = new Styles(),
+        styles = "",
         attributes = {},
-        tags = []
     ) {
-        super(innerHTML, id, classes, styles, attributes, tags);
+        super(innerHTML, id, classes, styles, attributes);
         this.elementType = elementType;
     }
 }
@@ -495,14 +91,13 @@ class Heading extends MyElement {
 
     constructor(
         innerHTML,
-        level = 1,
         id = "",
+        level = 1,
         classes = "",
-        styles = new Styles(),
+        styles = "",
         attributes = {},
-        tags = []
     ) {
-        super(innerHTML, id, classes, styles, attributes, tags);
+        super(innerHTML, id, classes, styles, attributes);
         this.level = level;
     }
 }
@@ -514,11 +109,10 @@ class Paragraph extends MyElement {
         innerHTML,
         classes = "",
         id = "",
-        styles = new Styles(),
+        styles = "",
         attributes = {},
-        tags = []
     ) {
-        super(innerHTML, id, classes, styles, attributes, tags);
+        super(innerHTML, id, classes, styles, attributes);
     }
 }
 
@@ -532,11 +126,10 @@ class Anchor extends MyElement {
         innerHTML,
         id = "",
         classes = "",
-        styles = new Styles(),
+        styles = "",
         attributes = {},
-        tags = []
     ) {
-        super(innerHTML, id, classes, styles, attributes, tags);
+        super(innerHTML, id, classes, styles, attributes);
         this.href = href;
     }
 
@@ -544,7 +137,7 @@ class Anchor extends MyElement {
         return `<a href="${this.href}" \
                 id="${this.id}" \
                 class="${this.classes}" \
-                style="${this.styles.getCssString()}"> \
+                style="${this.styles}"> \
                     ${this.innerHTML} \
             </a>`;
     }
@@ -568,11 +161,10 @@ class List extends MyElement {
         listItems = [],
         id = "",
         classes = "",
-        styles = new Styles(),
+        styles = "",
         attributes = {},
-        tags = []
     ) {
-        super(innerHTML, id, classes, styles, attributes, tags);
+        super(innerHTML, id, classes, styles, attributes);
         this.isOrdered = isOrdered;
         this.listItems = listItems;
     }
@@ -587,9 +179,9 @@ class List extends MyElement {
         this.innerHTML = listItemsHtmlString;
 
         return `<${listType} \
-                class="${this.classes}" \
-                id="${this.id}" \
-                style="${this.styles.getCssString()}" \
+            id="${this.id}" \
+            class="${this.classes}" \
+                style="${this.styles}" \
                 ${this.getAttributesHtmlString()}> \
                     ${this.innerHTML} \
             </${listType}>`;
@@ -616,18 +208,17 @@ class ListItem extends MyElement {
         innerHTML,
         classes = "",
         id = "",
-        styles = new Styles(),
+        styles = "",
         attributes = {},
-        tags = []
     ) {
-        super(innerHTML, id, classes, styles, attributes, tags);
+        super(innerHTML, id, classes, styles, attributes);
     }
 
     getHtmlString() {
         return `<li \
-                class="${this.classes}" \
                 id="${this.id}" \
-                style="${this.styles.getCssString()}" \
+                class="${this.classes}" \
+                style="${this.styles}" \
                 ${this.getAttributesHtmlString()}> \
                     ${this.innerHTML} \
             </li>`;
@@ -645,11 +236,10 @@ class ImageElement extends MyElement {
         alt,
         id = "",
         classes = "",
-        styles = new Styles(),
+        styles = "",
         attributes = {},
-        tags = []
     ) {
-        super("", id, classes, styles, attributes, tags);
+        super("", id, classes, styles, attributes);
         this.src = src;
         this.alt = alt;
     }
@@ -657,11 +247,9 @@ class ImageElement extends MyElement {
     getHtmlString() {
         const elementIdString = this.id === "" ? "" : `id="${this.id}"`;
         const elementClassesString =
-            this.classes === "" ? "" : `classes="${this.classes}"`;
+            this.classes === "" ? "" : `class="${this.classes}"`;
         const elementStylesString =
-            this.styles.getCssString() == new Styles().getCssString()
-                ? ""
-                : `style="${this.styles.getCssString()}"`;
+            this.styles === "" ? "" : `style="${this.styles}"`;
 
         return `<img \
                 src="${this.src}" \
@@ -745,7 +333,6 @@ class Page {
     outline;
     main;
     footer;
-    tags;
 
     constructor(
         name,
@@ -756,7 +343,6 @@ class Page {
         outline = new Outline(),
         main = new Main(),
         footer = new Footer(),
-        tags = []
     ) {
         this.name = name;
         this.location = location;
@@ -766,7 +352,6 @@ class Page {
         this.outline = outline;
         this.main = main;
         this.footer = footer;
-        this.tags = tags;
     }
 
     getHtmlString() {
@@ -782,74 +367,28 @@ class Page {
         );
     }
 
-    getName() {
-        return this.name;
-    }
-
-    getLocation() {
-        return this.location;
-    }
-    setLocation(location) {
-        this.location = location;
-        return this;
-    }
-
-    getHead() {
-        return this.head;
-    }
-    setHead(head) {
+    setHead(head = new Head("Web Profile", "style.css")) {
         this.head = head;
         return this;
     }
 
-    getHeader() {
-        return this.header;
-    }
-    setHeader(header) {
+    setHeader(header = new Header()) {
         this.header = header;
         return this;
     }
 
-    getNavigation() {
-        return this.navigation;
-    }
-    setNavigation(navigation) {
+    setNavigation(navigation = new Navigation(this.name)) {
         this.navigation = navigation;
         return this;
     }
 
-    getOutline() {
-        return this.outline;
-    }
-    setOutline(outline) {
-        this.outline = outline;
-        return this;
-    }
-
-    getMain() {
-        return this.main;
-    }
-    setMain(main) {
+    setMain(main = new Main()) {
         this.main = main;
         return this;
     }
 
-    getFooter() {
-        return this.footer;
-    }
-    setFooter(footer) {
+    setFooter(footer = new Footer()) {
         this.footer = footer;
-        return this;
-    }
-
-    getTag(tag) {
-        return this.tags.find((item) => item.name === tag.name);
-    }
-    getTags() {
-        return this.tags;
-    }
-    addTag(tag) {
-        this.tags.push(tag);
         return this;
     }
 }
@@ -861,7 +400,7 @@ class Head extends MyElement {
     stylesheetPath;
     // language; // not implemented
 
-    constructor(title, stylesheetPath = "") {
+    constructor(title, stylesheetPath) {
         super();
         this.title = title;
         this.stylesheetPath = stylesheetPath;
@@ -898,13 +437,11 @@ class Head extends MyElement {
 class Header extends MyElement {
     title;
     subtitle;
-    styles;
 
     constructor(title = "Web Profile", subtitle = "Frank Hudson") {
         super();
         this.title = title;
         this.subtitle = subtitle;
-        this.styles = new Styles();
     }
 
     getHtmlString() {
@@ -915,27 +452,6 @@ class Header extends MyElement {
             "</header>"
         );
     }
-
-    getTitle() {
-        return this.title;
-    }
-    setTitle(title) {
-        this.title = title;
-    }
-
-    getSubtitle() {
-        return this.subtitle;
-    }
-    setSubtitle(subtitle) {
-        this.subtitle = subtitle;
-    }
-
-    getStyles() {
-        return this.styles;
-    }
-    setStyles(styles) {
-        this.styles = styles;
-    }
 }
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
@@ -945,7 +461,7 @@ class Navigation extends MyElement {
     buttons;
     styles;
 
-    constructor(page, buttons = [], styles = new Styles()) {
+    constructor(page, buttons = [], styles = "") {
         super();
         this.page = page;
         this.buttons = buttons;
@@ -1017,24 +533,11 @@ class Navigation extends MyElement {
         );
     }
 
-    getButtons() {
-        return this.buttons;
-    }
-    setButtons(buttons) {
-        this.buttons = buttons;
-    }
     addButton(button) {
         this.buttons.push(button);
     }
     removeButton(button) {
         this.buttons.splice(this.buttons.indexOf(button), 1);
-    }
-
-    getStyles() {
-        return this.styles;
-    }
-    setStyles(styles) {
-        this.styles = styles;
     }
 }
 
@@ -1044,31 +547,13 @@ class Main extends MyElement {
     styles;
     innerHTML;
 
-    constructor() {
-        super();
-        this.styles = new Styles();
-        this.innerHTML = "";
+    constructor(innerHTML = "", styles = "") {
+        super(innerHTML, "main");
+        this.styles = styles;
     }
 
     getHtmlString() {
         return "<main id='main'>" + this.innerHTML + "</main>";
-    }
-
-    getStyles() {
-        return this.styles;
-    }
-    setStyles(styles) {
-        this.styles = styles;
-    }
-
-    getInnerHTML() {
-        return this.innerHTML;
-    }
-    setInnerHTML(innerHTML) {
-        this.innerHTML = innerHTML;
-    }
-    appendToInnerHTML(innerHTML) {
-        this.innerHTML += innerHTML;
     }
 }
 
@@ -1079,19 +564,16 @@ class Outline {
     page;
     styles;
 
-    constructor(page) {
-        this.headings = {};
+    constructor(page, styles = "") {
         this.page = page;
-        this.styles = new Styles();
+        this.styles = styles;
+        this.headings = {};
     }
 
     getHtmlString() {
         return "<div class='page-outline' id='outline'>" + "</div>";
     }
 
-    getHeadings() {
-        return this.headings;
-    }
     updateHeadings() {
         // EXAMPLE
         //
@@ -1170,46 +652,13 @@ class Outline {
         console.log(headingGroups);
         this.headings = headingGroups;
     }
-
-    getPage() {
-        return this.page;
-    }
-
-    getStyles() {
-        return this.styles;
-    }
-    setStyles(styles) {
-        this.styles = styles;
-    }
 }
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
 
 class Footer extends MyElement {
-    styles;
-    innerHTML;
-
-    constructor() {
-        super();
-        this.styles = new Styles();
-        this.innerHTML = "";
-    }
-
-    getStyles() {
-        return this.styles;
-    }
-    setStyles(styles) {
-        this.styles = styles;
-    }
-
-    getInnerHTML() {
-        return this.innerHTML;
-    }
-    setInnerHTML(innerHTML) {
-        this.innerHTML = innerHTML;
-    }
-    appendToInnerHTML(innerHTML) {
-        this.innerHTML += innerHTML;
+    constructor(innerHTML = "", classes = "", styles = "", attributes = {}) {
+        super(innerHTML, "footer", classes, styles, attributes);
     }
 }
 
@@ -1220,15 +669,14 @@ class PageHeading extends Heading {
 
     constructor(
         innerHTML,
-        level = 1,
         id = "",
         parentId = null,
+        level = 1,
         classes = "",
-        styles = new Styles(),
+        styles = "",
         attributes = {},
-        tags = []
     ) {
-        super(innerHTML, level, id, classes, styles, attributes, tags);
+        super(innerHTML, level, id, classes, styles, attributes);
         this.parentId = parentId;
     }
 }
@@ -1243,15 +691,13 @@ class Skill {
     competency;
     areas;
     description;
-    tags;
 
-    constructor(id, skill, competency, areas, description = [], tags = []) {
+    constructor(id, skill, competency, areas, description = []) {
         this.id = id;
         this.skill = skill;
         this.areas = areas;
         this.competency = competency;
         this.description = description;
-        this.tags = tags;
     }
 
     getHtmlString() {
@@ -1281,7 +727,6 @@ class Achievement {
     skills;
     description;
     content;
-    tags;
 
     constructor(
         id,
@@ -1292,7 +737,6 @@ class Achievement {
         skills = [],
         description = [],
         content = "",
-        tags = []
     ) {
         this.id = id;
         this.name = name;
@@ -1302,7 +746,6 @@ class Achievement {
         this.skills = skills;
         this.description = description;
         this.content = content;
-        this.tags = tags;
     }
 
     getHtmlString() {
@@ -1332,15 +775,13 @@ class Article {
     topic;
     summary;
     content;
-    tags;
 
-    constructor(id, title, topic, summary, content = [], tags = []) {
+    constructor(id, title, topic, summary, content = []) {
         this.id = id;
         this.title = title;
         this.topic = topic;
         this.summary = summary;
         this.content = content;
-        this.tags = tags;
     }
 
     getHtmlString() {
@@ -1428,15 +869,15 @@ function fill_element_by_id(elementId, content) {
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
 
 const lorem = {
-    "lorem"       : "welcome",
-    "ipsum"       : "very",
-    "dolor"       : "pain",
-    "sit"         : "let it be",
-    "amet"        : "a lot",
-    "consectetur" : "will be followed",
+    lorem: "welcome",
+    ipsum: "very",
+    dolor: "pain",
+    sit: "let it be",
+    amet: "a lot",
+    consectetur: "will be followed",
     // "adipisicing" : "adipiscing",
-    "adipiscing"  : "coaching",
-    "elit"        : "developer",
+    adipiscing: "coaching",
+    elit: "developer",
 };
 // Oh, my god. Lorem ipsum filler text is dark.
 //
@@ -1459,29 +900,13 @@ const lorem = {
 class Theme {
     variables;
     isDarkMode;
-    tags;
 
     constructor(
         variables = new ThemeVariables(),
         isDarkMode = false,
-        tags = []
     ) {
         this.variables = variables;
         this.isDarkMode = isDarkMode;
-        this.tags = tags;
-    }
-
-    getVariableValue(variable) {
-        return this.variables.get(variable);
-    }
-    setVariableValue(variable, value) {
-        this.variables.set(variable, value);
-    }
-    getVariables() {
-        return this.variables;
-    }
-    setVariables(themeVariables) {
-        this.variables = themeVariables;
     }
 }
 
@@ -1521,7 +946,10 @@ class ThemeVariables {
         backgroundColour: "#bbbbbb",
         a_hover: { backgroundColour: "#909090" },
     };
-    hamburgerMenu = { hamburgerForeground: "#000000", hamburgerBackground: "#ffffff", };
+    hamburgerMenu = {
+        hamburgerForeground: "#000000",
+        hamburgerBackground: "#ffffff",
+    };
     main = {
         colour: "#000000",
         backgroundColour: "#ffffff",
@@ -1759,7 +1187,9 @@ function fix_navigation() {
     const header = document.getElementById("header");
     const headerHeight = header.offsetHeight;
     const nav = document.getElementById("nav");
-    const navHamburgerButton = document.getElementsByClassName("hamburger-menu")[0];
+    const navHamburgerButton = document.getElementsByClassName(
+        "hamburger-menu"
+    )[0];
 
     fixCondition: if (window.scrollY > headerHeight) {
         nav.style.position = "fixed";
@@ -1778,7 +1208,8 @@ function fix_navigation() {
         if (!navHamburgerButton) break fixCondition;
 
         navHamburgerButton.style.position = "absolute";
-        navHamburgerButton.style.top = "calc(var(--hamburger-margin) + var(--header-height))";
+        navHamburgerButton.style.top =
+            "calc(var(--hamburger-margin) + var(--header-height))";
     }
 }
 
@@ -1918,6 +1349,15 @@ function set_on_clicks() {
     });
 
     // - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - //
+
+    const header = document.getElementById("header");
+    const homeButton = document.getElementById("home-button");
+
+    header.onclick = function() {
+        window.open(homeButton.getAttribute("href"), "_self");
+    }
+
+    // - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - //
     // const hamburgerMenu = document.querySelector(".hamburger-menu");
     // hamburgerMenu.onclick = function () {
     //     // fix_main_margin();
@@ -1928,18 +1368,10 @@ function set_on_clicks() {
 // ####                               MAIN                               #### //
 ////////////////////////////////////////////////////////////////////////////////
 
-class Tag {
-    name;
-
-    constructor(name) {
-        this.name = name;
-    }
-}
-
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
 
 function main() {
-    const stylesheetPath = "./styles/style1.css";
+    const stylesheetPath = "/styles/style1.css";
     const siteTitle = "Web Profile";
 
     const head = document.head;
@@ -1953,15 +1385,8 @@ function main() {
 
     set_on_clicks();
 
-    fix_main_margin();
     user_OS_fixes();
     to_top();
-
-    const tags = {
-        info: new Tag("info"),
-        data_content: new Tag("data_content"),
-        portfolio: new Tag("portfolio"),
-    };
 
     const myBirthday = new Date(2005, 8, 14);
     const myAge = calculate_age(myBirthday);
@@ -1970,7 +1395,16 @@ function main() {
         mobile_advertisement: new ImageElement(
             "../../src/assets/achievements/mobile_advertisement.png",
             "Advertisement for a mobile phone",
-            (styles = new Styles((width = StyleMeasurement.percent(100))))
+            "mobile-advertisement",
+            "centred",
+            "width: 50%",
+        ),
+        mobile_user_guide: new ImageElement(
+            "../../src/assets/achievements/mobile_user_guide.png",
+            "User guide for a mobile phone",
+            "mobile-user-guide",
+            "centred",
+            "width: 50%",
         ),
     };
 
@@ -2035,10 +1469,20 @@ function main() {
             "Advertisement",
             new Date(),
             ["Marketing"],
-            ["Photoshop"],
+            ["Adobe Photoshop"],
             ["Graphic Design"],
             ["An advertisement for a mobile phone made in Photoshop."],
             assets.mobile_advertisement.getHtmlString()
+        ),
+        new Achievement(
+            "User_Guide",
+            "User Guide",
+            new Date(),
+            ["Help"],
+            ["Adobe Illustrator"],
+            ["Graphic Design"],
+            ["A user guide for a mobile phone made in Adobe Illustrator."],
+            assets.mobile_user_guide.getHtmlString()
         ),
         new Achievement(
             "My_First_Database",
@@ -2079,81 +1523,69 @@ function main() {
         ),
     ];
 
+    const headerElement = new Header("Web Profile", "Frank Hudson");
+    const footerElement = new Footer(`<h3></h3>`);
+
     const pages = [
         new Page("home", "")
-            .addTag(tags["info"])
             .setHead(new Head(siteTitle, stylesheetPath))
-            .setHeader(new Header())
+            .setHeader(headerElement)
             .setNavigation(new Navigation())
             .setMain(new Main())
-            .setFooter(new Footer()),
+            .setFooter(footerElement),
         new Page("skills", "#skills")
-            .addTag(tags["info"])
-            .addTag(tags["data_content"])
             .setHead(new Head("Skills - " + siteTitle, stylesheetPath))
-            .setHeader(new Header())
+            .setHeader(headerElement)
             .setNavigation(new Navigation())
             .setMain(new Main())
-            .setFooter(new Footer()),
+            .setFooter(footerElement),
         new Page("portfolio", "#portfolio")
-            .addTag(tags["info"])
-            .addTag(tags["data_content"])
-            .addTag(tags["portfolio"])
             .setHead(new Head("Portfolio - " + siteTitle, stylesheetPath))
-            .setHeader(new Header())
+            .setHeader(headerElement)
             .setNavigation(new Navigation())
             .setMain(new Main())
-            .setFooter(new Footer()),
+            .setFooter(footerElement),
         new Page("products", "#portfolio#products")
-            .addTag(tags["info"])
-            .addTag(tags["data_content"])
-            .addTag(tags["portfolio"])
             .setHead(
                 new Head("Products - Portfolio - " + siteTitle, stylesheetPath)
             )
-            .setHeader(new Header())
+            .setHeader(headerElement)
             .setNavigation(new Navigation())
             .setMain(new Main())
-            .setFooter(new Footer()),
+            .setFooter(footerElement),
         new Page("projects", "#portfolio#projects")
-            .addTag(tags["info"])
-            .addTag(tags["data_content"])
-            .addTag(tags["portfolio"])
             .setHead(
                 new Head("Projects - Portfolio - " + siteTitle, stylesheetPath)
             )
-            .setHeader(new Header())
+            .setHeader(headerElement)
             .setNavigation(new Navigation())
             .setMain(new Main())
-            .setFooter(new Footer()),
+            .setFooter(footerElement),
         new Page("knowledge", "#knowledge")
-            .addTag(tags["info"])
-            .addTag(tags["data_content"])
             .setHead(new Head("Knowledge - " + siteTitle, stylesheetPath))
-            .setHeader(new Header())
+            .setHeader(headerElement)
             .setNavigation(new Navigation())
             .setMain(new Main())
-            .setFooter(new Footer()),
+            .setFooter(footerElement),
         new Page("interests", "#interests")
-            .addTag(tags["info"])
-            .addTag(tags["data_content"])
             .setHead(new Head("Interests - " + siteTitle, stylesheetPath))
-            .setHeader(new Header())
+            .setHeader(headerElement)
             .setNavigation(new Navigation())
             .setMain(new Main())
-            .setFooter(new Footer()),
+            .setFooter(footerElement),
         new Page("contact", "#contact")
-            .addTag(tags["info"])
-            .addTag(tags["data_content"])
             .setHead(new Head("Contact - " + siteTitle, stylesheetPath))
-            .setHeader(new Header())
+            .setHeader(headerElement)
             .setNavigation(new Navigation())
             .setMain(new Main())
-            .setFooter(new Footer()),
+            .setFooter(footerElement),
     ];
+
     const themes = {
-        defaultLight: new Theme(new ThemeVariables()),
-        defaultDark: new Theme(new ThemeVariables()),
+        defaultDark: new Theme(new ThemeVariables(), true),
+        defaultLight: new Theme(new ThemeVariables(), false),
+        dark2: new Theme(new ThemeVariables(), true),
+        light2: new Theme(new ThemeVariables(), false),
     };
 
     const directorySplitLocationArray = window.location.href.split("/");
@@ -2172,8 +1604,7 @@ function main() {
         currentContentId = "";
     }
 
-    const directorySplitLocationWithoutPageArray =
-        directorySplitLocationArray.join("/");
+    const directorySplitLocationWithoutPageArray = directorySplitLocationArray.join("/");
 
     switch (currentPage) {
         case "skills.html":
