@@ -35,7 +35,7 @@
     --nav-color: black;
     --nav-background-color: #2eb0da;
     /* --nav-width: 13%; */
-    --nav-width: 250px;
+    --nav-width: 100%;
     --nav-height: 100%;
 
     --nav-item-color: inherit;
@@ -100,7 +100,6 @@
     --to-top-hover-background-color: #0056b3;
 
     --page-width: 100%;
-    --page-padding: 0 0;
     --page-margin: 0 0;
 
     --card-heading-border-bottom-width: 5px;
@@ -299,7 +298,7 @@ body {
     background-color: var(--nav-background-color);
     /* font-size: 2vw; */
     /* font-size: 1.35em; */
-    font-size: 16pt;
+    font-size: 24pt;
     text-align: left;
     width: var(--nav-width);
     height: var(--nav-height);
@@ -431,22 +430,25 @@ body {
     margin: 2em 0;
 }
 
-#main .page {
-    max-width: 900px;
+.page {
+    /* max-width: 900px; */
     /* position: absolute; */
-    padding-top: 50px;
-    margin-left: var(--main-side-padding);
-    margin-right: var(--main-side-padding);
+    /* width: var(--page-width); */
+    padding: 50px var(--main-side-padding);
+    margin: 0 var(--main-side-padding);
+    /* margin: 0 var(--main-side-padding); */
+    /* margin-left: var(--main-side-padding); */
+    /* margin-right: var(--main-side-padding); */
     transition: margin var(--hamburger-animation-timing),
         left var(--hamburger-animation-timing),
         right var(--hamburger-animation-timing);
 }
 
 .hamburger-menu:has(input:checked) + #nav + #main .page {
-    margin-left: max(
+    /* margin-left: max(
         calc(var(--main-side-padding) + var(--main-margin-left)),
         var(--main-margin-left)
-    );
+    ); */
 }
 
 #main h2 {
@@ -579,12 +581,6 @@ body {
     width: var(--to-top-hover-width);
     height: var(--to-top-hover-height);
     transform: scale(2);
-}
-
-.page {
-    width: var(--page-width);
-    padding: var(--page-padding);
-    margin: var(--page-margin);
 }
 
 .card-heading {

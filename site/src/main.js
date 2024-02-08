@@ -1528,7 +1528,12 @@ class ThemeVariables {
         a: { colour: "#548ace" },
         a_hover: { colour: "#304568" },
     };
-    utilityButton = { colour: "#ffffff", backgroundColour: "#111111" };
+    utilityButton = {
+        colour: "#ffffff",
+        backgroundColour: "#111111",
+        border: "1px solid transparent",
+        borderRadius: "5px",
+    };
 
     constructor(
         variablesObject = {
@@ -1550,7 +1555,12 @@ class ThemeVariables {
                 a: { colour: "#548ace" },
                 a_hover: { colour: "#304568" },
             },
-            utilityButton: { colour: "#ffffff", backgroundColour: "#111111" },
+            utilityButton: {
+                colour: "#ffffff",
+                backgroundColour: "#111111",
+                border: "1px solid transparent",
+                borderRadius: "5px",
+            },
         }
     ) {
         if (variablesObject.body) {
@@ -1751,12 +1761,12 @@ function fix_navigation() {
     const nav = document.getElementById("nav");
     const navHamburgerButton = document.getElementsByClassName("hamburger-menu")[0];
 
-    if (window.scrollY > headerHeight) {
+    fixCondition: if (window.scrollY > headerHeight) {
         nav.style.position = "fixed";
         nav.style.top = 0;
-        nav.style.width = "16.66%";
+        // nav.style.width = "16.66%";
 
-        if (!navHamburgerButton) { return; }
+        if (!navHamburgerButton) break fixCondition;
 
         navHamburgerButton.style.position = "fixed";
         navHamburgerButton.style.top = "var(--hamburger-margin)";
@@ -1765,10 +1775,10 @@ function fix_navigation() {
         nav.style.top = headerHeight + "px";
         nav.style.width = "100%";
 
-        if (!navHamburgerButton) { return; }
+        if (!navHamburgerButton) break fixCondition;
 
         navHamburgerButton.style.position = "absolute";
-        navHamburgerButton.style.top = "calc(var(--hamburger-margin) + " + headerHeight + ")";
+        navHamburgerButton.style.top = "calc(var(--hamburger-margin) + var(--header-height))";
     }
 }
 
@@ -1779,7 +1789,7 @@ function fix_navigation() {
 function is_user_device_mobile() {
     const systemDetails = navigator.platform;
     const mobileOSes = /android|iphone|kindle|ipad/i;
-    const swapWidth = 700;
+    const swapWidth = 600;
     console.log(`System: ${systemDetails}\n
 Swap at: ${swapWidth}\n
 Window Width: ${window.screen.width}`);
@@ -1795,65 +1805,65 @@ function user_OS_fixes() {
     const isMobile = is_user_device_mobile();
     console.log(`Mobile?: ${isMobile}`);
 
-    const bodyStyle = getComputedStyle(document.body);
-    const nav = document.getElementById("nav");
-    console.log(`Nav Font Size: ${nav.style.fontSize}`);
+    // const bodyStyle = getComputedStyle(document.body);
+    // const nav = document.getElementById("nav");
+    // console.log(`Nav Font Size: ${nav.style.fontSize}`);
 
-    if (isMobile) {
-        nav.style.width = "100%";
-        nav.style.fontSize = "24pt";
-    } else {
-        nav.style.width = bodyStyle.getPropertyValue("--nav-width");
-        nav.style.fontSize = "16pt";
-    }
+    // if (isMobile) {
+    //     nav.style.width = "100%";
+    //     nav.style.fontSize = "24pt";
+    // } else {
+    //     nav.style.width = bodyStyle.getPropertyValue("--nav-width");
+    //     nav.style.fontSize = "16pt";
+    // }
 }
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
 
-function fix_main_margin() {
-    const bodyStyle = getComputedStyle(document.body);
+// function fix_main_margin() {
+//     const bodyStyle = getComputedStyle(document.body);
 
-    const main = document.getElementById("main");
-    const page = main.querySelector(".page");
-    const pageMaxWidthPixels = 900;
+//     const main = document.getElementById("main");
+//     const page = main.querySelector(".page");
+//     const pageMaxWidthPixels = 900;
 
-    const nav = document.getElementById("nav");
-    const hamburgerMenu = document.querySelector(".hamburger-menu");
+//     const nav = document.getElementById("nav");
+//     const hamburgerMenu = document.querySelector(".hamburger-menu");
 
-    if (is_user_device_mobile()) {
-        main.style.marginLeft = "0";
-    }
+//     // if (is_user_device_mobile()) {
+//     //     main.style.marginLeft = "0";
+//     // }
 
-    if (!hamburgerMenu.checked) {
-        document.body.style.setProperty(
-            "--main-side-padding",
-            (document.body.offsetWidth - pageMaxWidthPixels) / 2 + "px"
-        );
-    } else {
-        document.body.style.setProperty(
-            "--main-side-padding",
-            (document.body.offsetWidth - pageMaxWidthPixels - nav.style.width) /
-                2 +
-                "px"
-        );
-    }
+//     // if (!hamburgerMenu.checked) {
+//     //     document.body.style.setProperty(
+//     //         "--main-side-padding",
+//     //         (document.body.offsetWidth - pageMaxWidthPixels) / 2 + "px"
+//     //     );
+//     // } else {
+//     //     document.body.style.setProperty(
+//     //         "--main-side-padding",
+//     //         (document.body.offsetWidth - pageMaxWidthPixels - nav.style.width) /
+//     //             2 +
+//     //             "px"
+//     //     );
+//     // }
 
-    if (document.body.clientWidth < pageMaxWidthPixels) {
-        page.style.width = "auto";
-    } else {
-        page.style.width = bodyStyle.getPropertyValue("900px");
-    }
+//     // if (document.body.clientWidth < pageMaxWidthPixels) {
+//     //     page.style.width = "auto";
+//     // } else {
+//     //     page.style.width = bodyStyle.getPropertyValue("900px");
+//     // }
 
-    // const widthPercentage =
-    //     parseInt(bodyStyle.getPropertyValue("--nav-width")) / 100;
-    // const widthPixels = bodyWidth * widthPercentage;
+//     // const widthPercentage =
+//     //     parseInt(bodyStyle.getPropertyValue("--nav-width")) / 100;
+//     // const widthPixels = bodyWidth * widthPercentage;
 
-    // if (!is_user_device_mobile()) {
-    //     main.style.setProperty("--main-margin-left", widthPixels + "px");
-    // } else {
-    //     main.style.marginLeft = "0";
-    // }
-}
+//     // if (!is_user_device_mobile()) {
+//     //     main.style.setProperty("--main-margin-left", widthPixels + "px");
+//     // } else {
+//     //     main.style.marginLeft = "0";
+//     // }
+// }
 
 ////////////////////////////////////////////////////////////////////////////////
 // ####                              Events                              #### //
@@ -1908,12 +1918,10 @@ function set_on_clicks() {
     });
 
     // - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - //
-
-    const hamburgerMenu = document.querySelector(".hamburger-menu");
-
-    hamburgerMenu.onclick = function () {
-        fix_main_margin();
-    };
+    // const hamburgerMenu = document.querySelector(".hamburger-menu");
+    // hamburgerMenu.onclick = function () {
+    //     // fix_main_margin();
+    // };
 }
 
 ////////////////////////////////////////////////////////////////////////////////
