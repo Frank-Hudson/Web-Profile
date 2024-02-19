@@ -1,10 +1,9 @@
+
 # Hello, World
 
 &nbsp;
 
 ## Introduction
-
-<sup>Don't mind the text above.</sup>
 
 Hi, my name is Frank Hudson, and this is my second rendition of a portfolio/profile website.  
 (You can find my first portfolio [here](https://github.com/Frank-Hudson/portfolio-website--old-))
@@ -12,6 +11,10 @@ Hi, my name is Frank Hudson, and this is my second rendition of a portfolio/prof
 The site is meant to promote myself to any employers, or other interviewers, by demonstrating my knowledge, skills, achievements and interests.
 
 It is intended to be easy to read, navigate and use, as well as to be visually appealling in its clarity and simplicity. It should also be accessible to any potential users and have accurate content and information<abbr title="Can you tell this was written for the assignment?">.</abbr>
+
+&nbsp;
+
+[Find the site here](https://frank-hudson.github.io/Web-Profile/)
 
 &nbsp;
 
