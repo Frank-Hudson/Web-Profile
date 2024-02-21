@@ -400,7 +400,7 @@ body {
     /* left: 100%; */
     display: none;
     /* min-width: 120px; */
-    margin-right: 15px;
+    margin-left: 5px;
     transition: transform 0.3s ease-in-out 0.1s;
     /* box-shadow: -25px 0px 15px -10px rgba(0, 0, 0, 0.2); */
     z-index: 1;
