@@ -1,6 +1,7 @@
-/* Download fonts from online sources to use on the page */
+/* Import fonts from online sources to use on the site */
 @import url("https://fonts.googleapis.com/css?family=Convergence");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
 /* Define variables at the root of the file, to be accessible globally */
 :root {
@@ -43,6 +44,23 @@
 
     /* Set the colour for a hovered link in the main content */
     --main-link-hover: #1bb692;
+
+    /* ------------------------------ */
+
+    /* Set the foreground/text colour for codeblocks in the site */
+    --code-foreground: #e0ffe1;
+    /* Set the background colour for codeblocks in the site */
+    --code-background: #39363c;
+
+    /* ------------------------------ */
+
+    /* Set the foreground/text colour for button links */
+    --button-link-foreground: #007bff;
+    /* Set the background colour for button links */
+    --button-link-background: transparent;
+
+    /* Set the foreground/text colour for a hovered button link */
+    --button-link-hover-foreground: #4ea9ff;
 
     /* ------------------------------ */
 
@@ -110,6 +128,51 @@ body {
 
 #main a:hover {
     color: var(--main-link-hover);
+}
+
+/* ------------------------------------------------------------ */
+
+code {
+    font-family: 
+        'Fira Code', 
+        'Cascadia Mono', 
+        'Consolas', 
+        'JetBrains Mono', 
+        'Courier New', 
+        Courier, 
+        monospace;
+    font-size: 1em;
+    color: var(--code-foreground);
+    background-color: var(--code-background);
+    padding: 0.1em 0.2em;
+    border-radius: 0.2em;
+}
+
+code.inline {
+    display: inline;
+}
+
+code.block {
+    display: block;
+    padding: 0.6em 0.4em;
+}
+
+pre code {
+    overflow-x: scroll;
+}
+
+/* ------------------------------------------------------------ */
+
+button.link {
+    color: var(--button-link-foreground);
+    background-color: var(--button-link-background);
+    border: 0px none transparent;
+}
+
+button.link:hover {
+    color: var(--button-link-hover-foreground);
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 /* ------------------------------------------------------------ */

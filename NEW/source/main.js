@@ -66,7 +66,7 @@ function calculate_age(birthday) {
     const birthMonth = birthday.getMonth();
     const birthDate = birthday.getDate();
 
-    // INCREMENT THE YEAR AFTER THE BIRTHDAY DATE IF 
+    // INCREMENT THE YEAR IF AFTER THE BIRTHDAY DATE
     if (
         (monthNow == birthMonth && dateNow >= birthDate) ||
         monthNow > birthMonth
