@@ -1,0 +1,105 @@
+/* Hamburger Menu Credits:
+  "Web Dev Simplified" on YouTube - https://www.youtube.com/watch?v=dAIVbLrAb_U
+*/
+
+:root {
+    /* ------------------------------ */
+
+    --hamburger-bar-width: 60px;
+    --hamburger-bar-height: 8px;
+    --hamburger-gap: 4px;
+    --hamburger-background: #333;
+    --hamburger-foreground: #fff;
+    --hamburger-margin: 10px;
+    --hamburger-animation-timing: 200ms ease-in-out;
+    --hamburger-height: calc(
+        var(--hamburger-bar-height) * 3 + var(--hamburger-gap) * 2
+    );
+
+    /* ------------------------------ */
+}
+
+.hamburger-menu {
+    --x-width: calc(var(--hamburger-height) * 1.41421356237);
+
+    width: max-content;
+    position: absolute;
+    top: calc(var(--hamburger-margin) + var(--header-height));
+    left: var(--hamburger-margin);
+    display: flex;
+    flex-direction: column;
+    gap: var(--hamburger-gap);
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    z-index: 2;
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+    content: "";
+    width: var(--hamburger-bar-width);
+    height: var(--hamburger-bar-height);
+    background-color: var(--hamburger-foreground);
+    border-radius: 50px;
+    transform-origin: left center;
+    transition: opacity var(--hamburger-animation-timing),
+        width var(--hamburger-animation-timing),
+        rotate var(--hamburger-animation-timing),
+        translate var(--hamburger-animation-timing),
+        background-color var(--hamburger-animation-timing);
+}
+
+.hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+
+.hamburger-menu:has(input:checked) {
+    --hamburger-background: white;
+    --hamburger-foreground: #222;
+}
+
+.hamburger-menu:has(input:focus-visible)::before,
+.hamburger-menu:has(input:focus-visible)::after,
+.hamburger-menu input:focus-visible {
+    border: 1px solid var(--hamburger-background);
+    box-shadow: 0 0 0 1px var(--hamburger-foreground);
+}
+
+.hamburger-menu:has(input:checked)::before {
+    width: var(--x-width);
+    rotate: 45deg;
+    translate: 0 calc(var(--hamburger-bar-height) / -2);
+}
+
+.hamburger-menu:has(input:checked)::after {
+    width: var(--x-width);
+    rotate: -45deg;
+    translate: 0 calc(var(--hamburger-bar-height) / 2);
+}
+
+.hamburger-menu input:checked {
+    opacity: 0;
+    width: 0;
+}
+
+#nav {
+    padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+    translate: -100%;
+    transition: translate var(--hamburger-animation-timing) 0s;
+}
+
+.hamburger-menu:has(input:checked) + #nav {
+    translate: 0;
+}
+
+#main {
+    transition: 
+        padding var(--hamburger-animation-timing),
+        margin var(--hamburger-animation-timing);
+}
