@@ -167,40 +167,43 @@ function to_top_update() {
 
 // - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - //
 
-// function fix_navigation() {
-//     const header = document.getElementById("header");
-//     const headerHeight = header.offsetHeight;
-//     const nav = document.getElementById("nav");
-//     const navHamburgerButton = document.getElementsByClassName(
-//         "hamburger-menu"
-//     )[0];
+function fix_navigation() {
+    const headerContainer = document.querySelector("div:has(> #header)");
+    const navContainer = document.querySelector("div:has(> #nav)");
+    const navHamburgerButton = document.getElementsByClassName(
+        "hamburger-menu"
+        )[0];
+    const mainContainer = document.querySelector("div:has(> #main)");
 
-//     fixCondition: if (window.scrollY > headerHeight) {
-//         nav.style.position = "fixed";
-//         nav.style.top = 0;
-//         // nav.style.width = "16.66%";
+    navContainer.style.top = 0;
 
-//         if (!navHamburgerButton) break fixCondition;
+    fixNavCondition: if (window.scrollY > headerContainer.clientHeight) {
+        navContainer.style.position = "fixed";
+        mainContainer.style.marginLeft = 0; 
 
-//         navHamburgerButton.style.position = "fixed";
-//         navHamburgerButton.style.top = "var(--hamburger-margin)";
-//     } else {
-//         nav.style.position = "absolute";
-//         nav.style.top = headerHeight + "px";
-//         nav.style.width = "100%";
+        if (!navHamburgerButton) break fixNavCondition;
 
-//         if (!navHamburgerButton) break fixCondition;
+        navHamburgerButton.style.position = "fixed";
+        navHamburgerButton.style.top = "var(--hamburger-margin)";
+    } else {
+        navContainer.style.position = "sticky";
+        mainContainer.style.marginLeft = navContainer.clientWidth + "px";
 
-//         navHamburgerButton.style.position = "absolute";
-//         navHamburgerButton.style.top =
-//             "calc(var(--hamburger-margin) + var(--header-height))";
-//     }
-// }
+        if (!navHamburgerButton) break fixNavCondition;
+
+        navHamburgerButton.style.position = "absolute";
+        navHamburgerButton.style.top =
+            "calc(var(--hamburger-margin) + var(--header-height))";
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
-function main() {
-    
-}
+const headerContainer = document.querySelector("div:has(> #header)");
+const navContainer = document.querySelector("div:has(> #nav)");
+const mainContainer = document.querySelector("div:has(> #main)");
 
-main();
+const toTopButton = document.getElementById("to-top");
+toTopButton.onclick = to_top;
+
+on_scroll();
