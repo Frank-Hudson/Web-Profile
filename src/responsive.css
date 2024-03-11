@@ -29,6 +29,13 @@ body {
     border: 1px solid red;
 }
 
+/* Select any Element that is the child of an Element with both the .row Class 
+   and the .finished Class, and that has any Class containing "col-" */
+.row.finished [class*="col-"] {
+    /* Remove the border */
+    border: 0px none transparent;
+}
+
 /* Select any Element with the .header Class */
 .header {
     /* Pad the header `30px` on the top and bottom and `50px` on the sides */
