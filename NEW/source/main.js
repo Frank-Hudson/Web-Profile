@@ -203,7 +203,7 @@ const headerContainer = document.querySelector("div:has(> #header)");
 const navContainer = document.querySelector("div:has(> #nav)");
 const mainContainer = document.querySelector("div:has(> #main)");
 
-const toTopButton = document.getElementById("to-top") ? document.getElementById("to-top") : new HTMLButtonElement();
+const toTopButton = document.getElementById("to-top") ? document.getElementById("to-top") : { onclick: function() {} };
 toTopButton.onclick = to_top;
 
 on_scroll();
