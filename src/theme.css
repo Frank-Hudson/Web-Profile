@@ -152,6 +152,10 @@ code.inline {
     display: inline;
 }
 
+a:has(code) {
+    text-decoration-color: var(--code-foreground);
+}
+
 code.block {
     display: block;
     padding: 0.6em 0.4em;
