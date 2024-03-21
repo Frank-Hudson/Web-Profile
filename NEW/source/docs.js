@@ -221,7 +221,7 @@ const querySeparationCharacter = "#";
 
 const pageName = getSubstringAfterString(window.location.href, querySeparationCharacter);
 
-if (pageName.includes("/docs/index.html") || pageName === "") {
+if (pageName.includes("/docs") || pageName === "") {
     let items = "";
     for (const key in pages) {
         if (key === "invalid") { continue; }
