@@ -182,7 +182,7 @@ const pages = {
     ),
     "type.Skill": new DocPage(codeInline("Skill"), arrayToContent([
         paragraph("The " + c("Skill") + " type."),
-        codeBlock(
+        code(
 `class Skill {
     constructor(skill: string, description: string)
 }`
@@ -190,7 +190,7 @@ const pages = {
     ])),
     "function.calculate_age": new DocPage(codeInline("calculate_age"), arrayToContent([
         paragraph("The " + c("calculate_age") + " function."),
-        codeBlock(
+        code(
 `function calculate_age(birthday: Date) {
     // SET CURRENT RELATIVE DATES
     // SET INDIVIDUAL PARTS OF THE BIRTHDAY; YEAR, MONTH & DAY
