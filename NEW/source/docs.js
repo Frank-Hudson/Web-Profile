@@ -180,7 +180,31 @@ const pages = {
         "invalid page",
         "invalid page: please enter a valid page name (after the `#` character in the URI string"
     ),
-    "type.Skill": new DocPage(codeInline("Skill"), arrayToContent([
+    "type.MyElement": new DocPage(c("MyElement"), arrayToContent([
+        paragraph("The " + c("MyElement") + " type."),
+        code(
+`class MyElement {
+    constructor(
+        innerHTML: string,
+        id: string,
+        classes: string,
+        styles: string,
+        attributes: { string: string },
+    )
+
+    getHtmlString()
+
+    addClass()
+
+    addStyle()
+
+    getAttribute()
+
+    setAttribute()
+}`
+        ),
+    ])),
+    "type.Skill": new DocPage(c("Skill"), arrayToContent([
         paragraph("The " + c("Skill") + " type."),
         code(
 `class Skill {
@@ -188,7 +212,7 @@ const pages = {
 }`
         ),
     ])),
-    "function.calculate_age": new DocPage(codeInline("calculate_age"), arrayToContent([
+    "function.calculate_age": new DocPage(c("calculate_age"), arrayToContent([
         paragraph("The " + c("calculate_age") + " function."),
         code(
 `function calculate_age(birthday: Date) {
