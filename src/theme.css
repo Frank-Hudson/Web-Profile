@@ -152,7 +152,8 @@ code.inline {
     display: inline;
 }
 
-a:has(code) {
+a:has(code.inline),
+button.link:has(code.inline) {
     text-decoration-color: var(--code-foreground);
 }
 
