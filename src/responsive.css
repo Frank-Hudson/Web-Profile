@@ -26,7 +26,7 @@ body {
     padding: 0px;
     /* Give the grid items a red border to show their positions, 
        like an uneven table */
-    border: 1px solid red;
+    border: 1px solid transparent;
 }
 
 /* Select any Element that is the child of an Element with both the .row Class 
