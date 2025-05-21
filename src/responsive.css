@@ -24,7 +24,7 @@ body {
     float: left;
     /* Remove the padding from the element */ 
     padding: 0px;
-    /* Give the grid items a red border to show their positions, 
+    /* Give the grid items a transparent border to show their positions, 
        like an uneven table */
     border: 1px solid transparent;
 }
