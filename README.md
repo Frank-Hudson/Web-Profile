@@ -1,11 +1,10 @@
-
 # Hello, World
 
 &nbsp;
 
 ## Introduction
 
-Hi, my name is Frank Hudson, and this is my second rendition of a portfolio/profile website.  
+Hi, my name is Kira Hudson, and this is my second rendition of a portfolio/profile website.  
 (You can find my first portfolio [here](https://github.com/Frank-Hudson/portfolio-website--old-))
 
 The site is meant to promote myself to any employers, or other interviewers, by demonstrating my knowledge, skills, achievements and interests.
@@ -20,8 +19,7 @@ It is intended to be easy to read, navigate and use, as well as to be visually a
 
 ## Contributors
 
-- [Frank Hudson (GitHub @Frank-Hudson)](https://github.com/Frank-Hudson)  
-    <sub>_(I can't believe the handle was available! In 2022!)_</sub>
+- [Kira Hudson (GitHub @Frank-Hudson)](https://github.com/Frank-Hudson)
   - Creator and Developer
 - Anon. classmate
   - Feedback on designs
